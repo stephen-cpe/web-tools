@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Tools Hub</title>
+    <style>
+        body { margin: 0; font-family: Arial, sans-serif; background: #1e1e1e; color: #e0e0e0; }
+        nav { display: flex; background: #2b2b2b; }
+        nav button { flex: 1; padding: 15px; background: #2b2b2b; border: none; color: #e0e0e0; cursor: pointer; }
+        nav button.active, nav button:hover { background: #3c3c3c; }
+        .tool-section { display: none; padding: 20px; }
+        .tool-section.active { display: block; }
+        /* --- Clocks Styles --- */
+        #clockGrid { display: grid; grid-template-columns: repeat(3, 1fr); grid-auto-rows: minmax(216px, auto); gap: 20px;
+            background: #2a2a2a; padding: 20px; border-radius: 8px; }
+        .clockTile { background: #333; border: 1px solid #555; border-radius: 5px; padding: 18px;
+            display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        .timezoneSelect { margin-bottom: 10px; padding: 5px; border: 1px solid #666; border-radius: 4px; background: #444; color: #e0e0e0; }
+        .timeDisplay { font-size: 2em; font-weight: bold; color: #00ff00; }
+        .dateDisplay { font-size: 1em; color: #00ff00; margin: 5px 0; }
+        .timezoneName { font-size: 1em; color: #ccc; }
+        /* --- Number Sorter Styles --- */
+        .ns-container { display: flex; gap: 20px; }
+        .ns-textarea { flex: 1; }
+        .ns-textarea textarea { width: 100%; height: 200px; background: #2c2c2c; color: #e0e0e0; border: 2px solid #444; padding: 10px; font-family: monospace; }
+        .ns-controls { text-align: center; margin-top: 10px; }
+        .ns-controls button { padding: 10px 20px; margin: 0 5px; background: #4CAF50; border: none; border-radius: 5px; cursor: pointer; }
+        .ns-counter { text-align: right; font-size: 12px; color: #aaa; margin-top: 5px; }
+        /* --- Tree Generator Styles --- */
+        .tg-sections { display: flex; flex-direction: column; gap: 20px; }
+        @media (min-width: 768px) { .tg-sections { flex-direction: row; } }
+        .tg-section { flex: 1; background: #2b2b2b; padding: 15px; border-radius: 8px; }
+        .tg-section textarea, .tg-section pre { width: 100%; min-height: 150px; background: #3c3c3c; color: #ccc; border: 1px solid #555; padding: 10px; font-family: monospace; }
+        .tg-section button { margin-top: 10px; padding: 10px; border: none; border-radius: 4px; cursor: pointer; background: #5dade2; color: #1e1e1e; }
+        .tg-section button:hover { background: #48c9b0; }
+        .tg-error { color: #ff6b6b; margin-top: 5px; }
+    </style>
+</head>
+<body>
+    <nav>
+        <button id="tab-clocks" class="active">Clocks</button>
+		<button id="tab-tree">ASCII Tree</button>
+        <button id="tab-sorter">Number Sorter</button>
+        
+    </nav>
+    <section id="section-clocks" class="tool-section active">
+        <h2>Real-Time Timezone Clocks</h2>
+        <div id="clockGrid"></div>
+    </section>
+    <section id="section-sorter" class="tool-section">
+        <h2>Number Sorter</h2>
+        <div class="ns-container">
+            <div class="ns-textarea">
+                <h3>Input</h3>
+                <textarea id="ns-input" placeholder="Enter numbers separated by commas, spaces, or lines"></textarea>
+                <div class="ns-counter">Count: <span id="ns-inputCount">0</span></div>
+            </div>
+            <div class="ns-textarea">
+                <h3>Output</h3>
+                <textarea id="ns-output" readonly></textarea>
+                <div class="ns-counter">Count: <span id="ns-outputCount">0</span></div>
+            </div>
+        </div>
+        <div class="ns-controls">
+            <button onclick="ns_sort('asc')">Sort Ascending</button>
+            <button onclick="ns_sort('desc')">Sort Descending</button>
+        </div>
+    </section>
+    <section id="section-tree" class="tool-section">
+        <h2>Offline ASCII Tree Generator</h2>
+        <div class="tg-sections">
+            <div class="tg-section">
+                <h3>Input Structure <span style="font-size: 0.8em; font-weight: normal; color: #aaa;">(use “/” to identify a folder)</span></h3>
+                <textarea id="tg-input" placeholder="Use indentation to represent structure..."></textarea>
+                <div id="tg-error" class="tg-error"></div>
+                <button id="tg-generate">Generate Tree</button>
+            </div>
+            <div class="tg-section">
+                <h3>Generated Tree</h3>
+                <pre id="tg-output">Your tree will appear here.</pre>
+                <button id="tg-copy">Copy to Clipboard</button>
+            </div>
+        </div>
+    </section>
+
+    <script>
+    // Navigation
+    ['clocks','sorter','tree'].forEach(name => {
+        document.getElementById('tab-'+name).addEventListener('click', () => {
+            document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));
+            document.getElementById('tab-'+name).classList.add('active');
+            document.querySelectorAll('.tool-section').forEach(s=>s.classList.remove('active'));
+            document.getElementById('section-'+name).classList.add('active');
+        });
+    });
+    
+    // --- Clocks Initialization ---
+    function initClocks() {
+        const timezoneAliases = { "UTC":"UTC","America/New_York":"US East","America/Chicago":"US Central","America/Denver":"US Mountain","America/Los_Angeles":"US West","Europe/London":"London","Asia/Tokyo":"Tokyo","Asia/Manila":"Philippines" };
+        const coreTZ = Object.keys(timezoneAliases);
+        const initTZ = ["America/New_York","America/Chicago","America/Denver","America/Los_Angeles","Asia/Manila","Europe/London"];
+        const grid = document.getElementById('clockGrid');
+        initTZ.forEach(tz => { createTile(tz); });
+        function createTile(tz) {
+            const div = document.createElement('div'); div.className='clockTile';
+            const sel = document.createElement('select'); sel.className='timezoneSelect';
+            coreTZ.forEach(v=>{ let o=document.createElement('option'); o.value=v; o.text=timezoneAliases[v]; if(v===tz) o.selected=true; sel.add(o); });
+            const timeD = document.createElement('div'); timeD.className='timeDisplay';
+            const dateD = document.createElement('div'); dateD.className='dateDisplay';
+            const nameD = document.createElement('div'); nameD.className='timezoneName';
+            div.append(sel,timeD,dateD,nameD); grid.append(div);
+            sel.onchange=()=>update(div);
+            update(div);
+        }
+        function update(div) {
+            const tz = div.querySelector('select').value;
+            const now = new Date();
+            div.querySelector('.timeDisplay').textContent = now.toLocaleTimeString('en-US',{timeZone:tz,hour12:false});
+            div.querySelector('.dateDisplay').textContent = now.toLocaleDateString('en-US',{timeZone:tz,weekday:'short',month:'short',day:'numeric'});
+            div.querySelector('.timezoneName').textContent = timezoneAliases[tz];
+        }
+        setInterval(()=> document.querySelectorAll('.clockTile').forEach(update),1000);
+    }
+    initClocks();
+    
+    // --- Number Sorter ---
+    function ns_parse(input){ return input.split(/[,\s\n]+/).map(n=>parseFloat(n)).filter(n=>!isNaN(n)); }
+    function ns_updateCount(){ let nums=ns_parse(ns_input.value); ns_inputCount.textContent=nums.length; }
+    const ns_input=document.getElementById('ns-input'), ns_output=document.getElementById('ns-output');
+    const ns_inputCount=document.getElementById('ns-inputCount'), ns_outputCount=document.getElementById('ns-outputCount');
+    ns_input.addEventListener('input',ns_updateCount);
+    function ns_sort(order){ let arr=ns_parse(ns_input.value); arr.sort((a,b)=> order==='asc'?a-b:b-a); ns_output.value=arr.join('\n'); ns_outputCount.textContent=arr.length; }
+
+    // --- Tree Generator ---
+    function tg_generate() {
+        const input= document.getElementById('tg-input').value;
+        const lines = input.split('\n').filter(l=>l.trim());
+        if(!lines.length) { tg_error.textContent='Please enter structure lines.'; return; }
+        tg_error.textContent='';
+        const nodes=[]; let stack=[];
+        lines.forEach(line=>{
+            const indent=line.match(/^\s*/)[0].length;
+            const name=line.trim(); const level=Math.floor(indent/2);
+            while(stack.length && level<=stack[stack.length-1].level) stack.pop();
+            const node={name,level,children:[],parent:stack[stack.length-1]||null};
+            if(node.parent) node.parent.children.push(node); else nodes.push(node);
+            stack.push(node);
+        });
+        let out=''; function draw(n, p, isLast) {
+    out += p + (isLast ? '└── ' : '├── ') + n.name + '\n';
+    const np = p + (isLast ? '    ' : '│   ');
+    n.children.forEach((c, i) => {
+        draw(c, np, i === n.children.length - 1);
+    });
+}
+nodes.forEach((n, i) => {
+    draw(n, '', i === nodes.length - 1);
+});
+        tg_output.textContent=out;
+    }
+    const tg_error=document.getElementById('tg-error'), tg_output=document.getElementById('tg-output');
+    document.getElementById('tg-generate').onclick=tg_generate;
+    document.getElementById('tg-copy').onclick=()=>{ navigator.clipboard.writeText(tg_output.textContent) };
+    </script>
+</body>
+</html>

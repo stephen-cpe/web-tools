@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale-1.0">
+    <title>Offline ASCII Tree Generator (Dark Mode)</title>
+    <style>
+        /* Basic Reset */
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        /* Dark Mode Body */
+        body {
+            font-family: sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #1e1e1e; /* Dark background */
+            color: #cccccc; /* Light text */
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Layout (emulating w-full md:w-1/2) */
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 20px; /* Space between columns */
+        }
+
+        .section {
+            width: 100%;
+            background-color: #2b2b2b; /* Darker section background */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Darker shadow */
+            display: flex;
+            flex-direction: column;
+        }
+
+        @media (min-width: 768px) { /* md breakpoint */
+            .main-content {
+                flex-direction: row;
+            }
+            .section {
+                width: calc(50% - 10px); /* Half width minus half the gap */
+            }
+            .section:first-child {
+                margin-right: 10px; /* Half the gap */
+            }
+            .section:last-child {
+                 margin-left: 10px; /* Half the gap */
+            }
+        }
+
+        h1, h2 {
+            color: #5dade2; /* Lighter blue accent */
+            margin-top: 0;
+        }
+
+        textarea, pre {
+            width: 100%;
+            min-height: 200px;
+            padding: 10px;
+            border: 1px solid #555; /* Darker border */
+            border-radius: 4px;
+            font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+            white-space: pre-wrap; /* Ensure pre wraps long lines */
+            word-wrap: break-word;
+            resize: vertical;
+            margin-bottom: 15px;
+            font-size: 0.9em;
+            background-color: #3c3c3c; /* Dark input/output background */
+            color: #cccccc; /* Light text */
+        }
+
+        textarea {
+             min-height: 250px;
+             margin-bottom: 10px; /* Space before drag text */
+        }
+
+        pre {
+             background-color: #333; /* Slightly different dark for output */
+             overflow-x: auto; /* Allow horizontal scrolling if needed */
+        }
+
+        /*
+        .drag-info {
+            font-style: italic;
+            color: #aaa; 
+            text-align: center;
+            margin-bottom: 15px;
+            padding: 15px;
+            border: 2px dashed #555; 
+            border-radius: 5px;
+            transition: border-color 0.3s ease, background-color 0.3s ease;
+        }
+
+        .dragover {
+            border-color: #5dade2; 
+            background-color: #3a4a5a; 
+        }
+        */
+
+
+        button {
+            display: inline-block;
+            background-color: #5dade2; /* Accent color */
+            color: #1e1e1e; /* Dark text on accent */
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #48c9b0; /* Another accent color on hover */
+        }
+
+        button:active {
+            background-color: #3cb39b; /* Darker accent on active */
+        }
+
+        button:disabled {
+            background-color: #555; /* Dark disabled color */
+            cursor: not-allowed;
+            color: #888;
+        }
+
+        #copy-btn {
+            background-color: #48c9b0; /* Different accent for copy */
+            margin-top: 10px;
+        }
+
+        #copy-btn:hover {
+            background-color: #3cb39b; /* Darker copy accent */
+        }
+
+        .note {
+            font-size: 0.9em;
+            color: #cccccc; /* Light text */
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #3a3a3a; /* Dark note background */
+            border: 1px solid #555; /* Dark border */
+            border-radius: 4px;
+        }
+
+        .error {
+            color: #ff6b6b; /* Reddish error color */
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Offline ASCII Tree Generator</h1>
+
+        <div class="main-content">
+            <div id="input-section" class="section">
+                <h2>Input Structure</h2>
+                <textarea id="manual-input" placeholder="Enter your structure here using indentation. Example:&#10;My Project&#10;  src&#10;    index.js&#10;    styles.css&#10;  public&#10;    index.html&#10;    favicon.ico"></textarea>
+
+                <button id="generate-btn">Generate Tree</button>
+                <p id="status-message" class="error"></p>
+            </div>
+
+            <div id="output-section" class="section">
+                <h2>Generated Tree</h2>
+                <pre id="generated-tree" contenteditable="true" spellcheck="false">Your tree will appear here. Click to edit.</pre>
+                <button id="copy-btn">Copy Tree</button>
+            </div>
+        </div>
+
+        
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const manualInput = document.getElementById('manual-input');
+            const generatedTree = document.getElementById('generated-tree');
+            const generateBtn = document.getElementById('generate-btn');
+            const copyBtn = document.getElementById('copy-btn');
+            
+            const statusMessage = document.getElementById('status-message');
+
+            // --- Tree Generation Logic (from indented text) ---
+            function generateAsciiTree(indentedText) {
+                const lines = indentedText.split('\n').filter(line => line.trim() !== '');
+                if (lines.length === 0) {
+                    return '';
+                }
+
+                const treeNodes = [];
+                const stack = []; // To keep track of parent nodes
+
+                lines.forEach(line => {
+                    const leadingSpaces = line.search(/\S|$/); 
+                    const name = line.trim();
+                    if (!name) return; 
+
+                    const level = (line.match(/^(\s*)/)?.[1] || '').length / 2; 
+
+                    while (stack.length > 0 && level <= stack[stack.length - 1].level) {
+                        stack.pop();
+                    }
+
+                    const parent = stack.length > 0 ? stack[stack.length - 1] : null;
+
+                    const newNode = {
+                        name: name,
+                        level: level,
+                        children: [],
+                        parent: parent
+                    };
+
+                    if (parent) {
+                        parent.children.push(newNode);
+                    } else {
+                        treeNodes.push(newNode);
+                    }
+
+                    stack.push(newNode);
+                });
+
+                let asciiOutput = '';
+
+                function drawNode(node, prefix = '') {
+                    const isLast = node.parent ?
+                        node.parent.children.indexOf(node) === node.parent.children.length - 1 :
+                        true; 
+
+                    const connector = isLast ? '└── ' : '├── ';
+                    asciiOutput += prefix + connector + node.name + '\n';
+
+                    const childPrefix = prefix + (isLast ? '    ' : '│   ');
+
+                    node.children.forEach((child, index) => {
+                         drawNode(child, childPrefix);
+                    });
+                }
+
+                 if(treeNodes.length > 0) {
+                    drawNode(treeNodes[0], '');
+                    for(let i = 1; i < treeNodes.length; i++) {
+                         asciiOutput += '\n'; 
+                         drawNode(treeNodes[i], '');
+                    }
+                 }
+                return asciiOutput.trim();
+            }
+
+            generateBtn.addEventListener('click', () => {
+                const input = manualInput.value;
+                const tree = generateAsciiTree(input);
+                generatedTree.textContent = tree;
+                statusMessage.textContent = ''; 
+            });
+
+            // --- Copy Button ---
+            copyBtn.addEventListener('click', () => {
+                const textToCopy = generatedTree.textContent;
+                if (!textToCopy) {
+                    statusMessage.textContent = 'Nothing to copy!';
+                     setTimeout(() => statusMessage.textContent = '', 2000);
+                     return;
+                }
+                navigator.clipboard.writeText(textToCopy).then(() => {
+                    copyBtn.textContent = 'Copied!';
+                    statusMessage.textContent = 'Tree copied to clipboard.';
+                    setTimeout(() => {
+                        copyBtn.textContent = 'Copy Tree';
+                        statusMessage.textContent = '';
+                    }, 2000);
+                }).catch(err => {
+                    console.error('Failed to copy: ', err);
+                    statusMessage.textContent = 'Failed to copy tree. Browser might not support clipboard API directly.';
+                     setTimeout(() => statusMessage.textContent = '', 5000);
+                });
+            });
+            
+        });
+    </script>
+</body>
+</html>

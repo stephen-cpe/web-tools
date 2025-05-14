@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Timezone Clocks</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: #1a1a1a; /* Dark background */
+            color: #e0e0e0; /* Light default text */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+            padding-bottom: 30px; /* Add padding at bottom */
+        }
+
+        h1 {
+            color: #4CAF50; /* Green heading */
+            margin-bottom: 30px;
+        }
+
+        #clockGrid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            /* Increased min height by 20% */
+            grid-auto-rows: minmax(216px, auto);
+            gap: 29px; /* Increased space by 20% */
+            padding: 29px; /* Increased padding by 20% */
+            max-width: 1296px; /* Increased max width by 20% */
+            width: 90%;
+            background-color: #2a2a2a; /* Darker grid background */
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.4); /* Slightly adjusted shadow for dark */
+        }
+
+        .clockTile {
+            background-color: #333333; /* Dark tile background */
+            border: 1px solid #555; /* Lighter border for contrast */
+            border-radius: 5px;
+            padding: 20px; /* Increased padding by 10% (from 18px) */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+            overflow: hidden; /* Prevent content spillover */
+        }
+
+        .timezoneSelect {
+            margin-bottom: 15px; /* Adjusted margin */
+            padding: 6px 10px;
+            border: 1px solid #666;
+            border-radius: 4px;
+            font-size: 1.05em;
+            width: 90%;
+            max-width: 240px; /* Allow slightly more width if needed */
+            background-color: #444;
+            color: #e0e0e0;
+            cursor: pointer;
+        }
+        .timezoneSelect option {
+            background-color: #444;
+            color: #e0e0e0;
+        }
+
+        .timeDisplay {
+            font-size: 2.4em;
+            font-weight: bold;
+            color: #00ff00; /* Bright green time display */
+            margin-bottom: 0; /* Remove bottom margin, date is below */
+            letter-spacing: 1px;
+            line-height: 1.2; /* Adjust line height */
+        }
+
+        /* NEW: Styling for the date display */
+        .dateDisplay {
+            font-size: 1.15em;  /* Slightly larger than timezone name */
+            color: #00ff00; /* Green font */
+            margin-top: 4px; /* Space above */
+            margin-bottom: 6px; /* Space below */
+            font-weight: normal;
+            line-height: 1.3; /* Adjust line height */
+        }
+
+        .timezoneName {
+            font-size: 1.05em;
+            color: #cccccc; /* Light gray for timezone name */
+            margin-top: 0; /* Remove top margin, date is above */
+            word-wrap: break-word;
+            line-height: 1.3; /* Adjust line height */
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 900px) { /* Adjust breakpoint */
+            #clockGrid {
+                grid-template-columns: repeat(2, 1fr);
+                max-width: 800px; /* Adjust max width */
+            }
+        }
+
+        @media (max-width: 600px) { /* Adjust breakpoint */
+            #clockGrid {
+                grid-template-columns: 1fr;
+                max-width: 400px; /* Adjust max width */
+                grid-auto-rows: minmax(190px, auto); /* Adjust min height for single column */
+                gap: 20px;
+            }
+            .timeDisplay {
+                font-size: 2.2em; /* Adjust font size */
+            }
+            .dateDisplay {
+                font-size: 1.1em;
+            }
+             .clockTile {
+                padding: 18px; /* Adjust padding */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Real-Time Timezone Clocks</h1>
+
+    <div id="clockGrid">
+    </div>
+
+    <template id="clockTileTemplate">
+        <div class="clockTile">
+            <select class="timezoneSelect" aria-label="Select Timezone">
+            </select>
+            <div class="timeDisplay">--:--:--</div>
+            <div class="dateDisplay">--- --, ----</div> 
+            <div class="timezoneName">Loading...</div>
+        </div>
+    </template>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Configuration ---
+            const gridContainer = document.getElementById('clockGrid');
+            const clockTileTemplate = document.getElementById('clockTileTemplate');
+            const numberOfClocks = 6; // 3x2 grid
+
+            // Mapping from IANA Timezone to desired Display Name
+            const timezoneAliases = {
+                "UTC": "UTC",
+                "America/New_York": "US East (EST/EDT)",
+                "America/Chicago": "US Central (CST/CDT)",
+                "America/Denver": "US Mountain (MST/MDT)",
+                "America/Los_Angeles": "US West (PST/PDT)",
+                "Europe/London": "London (GMT/BST)",
+                "Europe/Paris": "Paris (CET/CEST)",
+                "Europe/Berlin": "Berlin (CET/CEST)",
+                "Asia/Tokyo": "Tokyo (JST)",
+                "Asia/Dubai": "Dubai (GST)",
+                "Asia/Kolkata": "India (IST)",
+                "Asia/Shanghai": "China (CST)",
+                "Asia/Singapore": "Singapore (SGT)",
+                "Asia/Manila": "Philippines (PHT)", // User's location
+                "Australia/Sydney": "Sydney (AEST/AEDT)",
+                "Pacific/Auckland": "Auckland (NZST/NZDT)",
+                "Africa/Johannesburg": "Johannesburg (SAST)",
+                "America/Sao_Paulo": "Sao Paulo (BRT/BRST)"
+            };
+
+            const coreTimezones = Object.keys(timezoneAliases);
+            const essentialTimezones = [
+                "UTC", "Asia/Manila", "America/New_York", "America/Chicago",
+                "America/Denver", "America/Los_Angeles", "Europe/London", "Asia/Tokyo",
+                "Australia/Sydney"
+            ];
+            essentialTimezones.forEach(tz => {
+                if (!coreTimezones.includes(tz)) {
+                    coreTimezones.push(tz);
+                    if (!timezoneAliases[tz]) {
+                        timezoneAliases[tz] = tz.replace(/_/g, ' ');
+                    }
+                }
+            });
+            coreTimezones.sort();
+
+            // Modified order: EST, CST, MST (top row) and US West, Philippines, London (bottom row)
+            const initialTimezones = [
+                "America/New_York",   // US East
+                "America/Chicago",    // US Central
+                "America/Denver",     // US Mountain
+                "America/Los_Angeles", // US West
+                "Asia/Manila",        // Philippines
+                "Europe/London"       // London
+            ];
+
+            // --- Functions ---
+
+            function populateTimezoneSelect(selectElement, selectedTzValue) {
+                selectElement.innerHTML = '';
+                const sortedForDisplay = coreTimezones.map(tzValue => ({
+                    value: tzValue,
+                    display: timezoneAliases[tzValue] || tzValue.replace(/_/g, ' ')
+                })).sort((a, b) => a.display.localeCompare(b.display));
+
+                sortedForDisplay.forEach(tzInfo => {
+                    const option = document.createElement('option');
+                    option.value = tzInfo.value;
+                    option.textContent = tzInfo.display;
+                    if (tzInfo.value === selectedTzValue) {
+                        option.selected = true;
+                    }
+                    selectElement.appendChild(option);
+                });
+            }
+
+            /**
+             * Updates the time, DATE, and timezone display for a single clock tile.
+             * @param {HTMLElement} tileElement - The clock tile div element.
+             */
+            function updateClock(tileElement) {
+                const selectElement = tileElement.querySelector('.timezoneSelect');
+                const timeDisplay = tileElement.querySelector('.timeDisplay');
+                const dateDisplay = tileElement.querySelector('.dateDisplay'); // Get date element
+                const timezoneNameDisplay = tileElement.querySelector('.timezoneName');
+                const selectedTimezoneValue = selectElement.value;
+
+                try {
+                    const now = new Date();
+
+                    // Formatter for Time
+                    const timeString = now.toLocaleTimeString('en-US', {
+                        timeZone: selectedTimezoneValue,
+                        hour12: false,
+                        hour: '2-digit',
+                        minute: '2-digit',
+                        second: '2-digit'
+                    });
+
+                    // Formatter for Date (using the SAME timezone)
+                    const dateString = now.toLocaleDateString('en-US', {
+                        timeZone: selectedTimezoneValue,
+                        weekday: 'short', // e.g., Mon
+                        month: 'short',   // e.g., May
+                        day: 'numeric',    // e.g., 5
+                        // year: 'numeric' // Optionally add year: e.g., 2025
+                    });
+
+                    // Update display
+                    timeDisplay.textContent = timeString;
+                    dateDisplay.textContent = dateString; // Update date display
+                    const displayAlias = timezoneAliases[selectedTimezoneValue] || selectedTimezoneValue.replace(/_/g, ' ');
+                    timezoneNameDisplay.textContent = displayAlias;
+
+                } catch (error) {
+                    console.error(`Error updating clock for timezone ${selectedTimezoneValue}:`, error);
+                    timeDisplay.textContent = "Error";
+                    dateDisplay.textContent = "--- --"; // Reset date on error
+                    timezoneNameDisplay.textContent = "Invalid Timezone?";
+                }
+            }
+
+
+            function createClockTile(index, initialTzValue) {
+                const tileClone = clockTileTemplate.content.cloneNode(true);
+                const tileElement = tileClone.querySelector('.clockTile');
+                const selectElement = tileElement.querySelector('.timezoneSelect');
+
+                populateTimezoneSelect(selectElement, initialTzValue);
+
+                selectElement.addEventListener('change', () => {
+                    updateClock(tileElement);
+                });
+
+                updateClock(tileElement); // Initial clock update
+
+                return tileClone;
+            }
+
+            // --- Initialization ---
+            if (!gridContainer || !clockTileTemplate) {
+                console.error("Initialization failed: Could not find grid container or template element.");
+                return;
+            }
+
+            for (let i = 0; i < numberOfClocks; i++) {
+                const tzValue = initialTimezones[i] || coreTimezones[i % coreTimezones.length] || "UTC";
+                const newTile = createClockTile(i, tzValue);
+                gridContainer.appendChild(newTile);
+            }
+
+            // --- Global Interval ---
+            setInterval(() => {
+                const allTiles = gridContainer.querySelectorAll('.clockTile');
+                allTiles.forEach(tile => {
+                    updateClock(tile);
+                });
+            }, 1000); // Update every 1 second
+        });
+    </script>
+</body>
+</html>

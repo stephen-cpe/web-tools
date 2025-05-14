@@ -1,0 +1,114 @@
+body {
+    font-family: sans-serif;
+    background-color: #1a1a1a; /* Dark background */
+    color: #e0e0e0; /* Light default text */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    padding-bottom: 30px; /* Add padding at bottom */
+}
+
+h1 {
+    color: #4CAF50; /* Green heading */
+    margin-bottom: 30px;
+}
+
+#clockGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* Increased min height by 20% */
+    grid-auto-rows: minmax(216px, auto);
+    gap: 29px; /* Increased space by 20% */
+    padding: 29px; /* Increased padding by 20% */
+    max-width: 1296px; /* Increased max width by 20% */
+    width: 90%;
+    background-color: #2a2a2a; /* Darker grid background */
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.4); /* Slightly adjusted shadow for dark */
+}
+
+.clockTile {
+    background-color: #333333; /* Dark tile background */
+    border: 1px solid #555; /* Lighter border for contrast */
+    border-radius: 5px;
+    padding: 20px; /* Increased padding by 10% (from 18px) */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    overflow: hidden; /* Prevent content spillover */
+}
+
+.timezoneSelect {
+    margin-bottom: 15px; /* Adjusted margin */
+    padding: 6px 10px;
+    border: 1px solid #666;
+    border-radius: 4px;
+    font-size: 1.05em;
+    width: 90%;
+    max-width: 240px; /* Allow slightly more width if needed */
+    background-color: #444;
+    color: #e0e0e0;
+    cursor: pointer;
+}
+.timezoneSelect option {
+    background-color: #444;
+    color: #e0e0e0;
+}
+
+
+.timeDisplay {
+    font-size: 2.4em;
+    font-weight: bold;
+    color: #00ff00; /* Bright green time display */
+    margin-bottom: 0; /* Remove bottom margin, date is below */
+    letter-spacing: 1px;
+    line-height: 1.2; /* Adjust line height */
+}
+
+/* NEW: Styling for the date display */
+.dateDisplay {
+    font-size: 1.15em;  /* Slightly larger than timezone name */
+    color: #00ff00; /* Green font */
+    margin-top: 4px; /* Space above */
+    margin-bottom: 6px; /* Space below */
+    font-weight: normal;
+    line-height: 1.3; /* Adjust line height */
+}
+
+.timezoneName {
+    font-size: 1.05em;
+    color: #cccccc; /* Light gray for timezone name */
+    margin-top: 0; /* Remove top margin, date is above */
+    word-wrap: break-word;
+    line-height: 1.3; /* Adjust line height */
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) { /* Adjust breakpoint */
+    #clockGrid {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 800px; /* Adjust max width */
+    }
+}
+
+@media (max-width: 600px) { /* Adjust breakpoint */
+    #clockGrid {
+        grid-template-columns: 1fr;
+        max-width: 400px; /* Adjust max width */
+        grid-auto-rows: minmax(190px, auto); /* Adjust min height for single column */
+        gap: 20px;
+    }
+    .timeDisplay {
+        font-size: 2.2em; /* Adjust font size */
+    }
+    .dateDisplay {
+        font-size: 1.1em;
+    }
+     .clockTile {
+        padding: 18px; /* Adjust padding */
+    }
+}
