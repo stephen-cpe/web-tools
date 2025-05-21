@@ -1,25 +1,16 @@
-// Validate timezone support
-function isValidZone(zone) {
-    if (!zone || typeof zone !== 'string') return false;
-    try {
-        const dt = luxon.DateTime.local().setZone(zone);
-        return dt.isValid;
-    } catch (e) {
-        return false;
-    }
-}
+// timeZoneConverter.js
 
-// Match input to supported timezone
-function findTimezone(input) {
-    const normalizedInput = input.toLowerCase();
-    if (timezoneAbbreviations[normalizedInput]) return timezoneAbbreviations[normalizedInput];
-
-    for (const tzId in timezoneAliases) {
-        if (timezoneAliases[tzId].toLowerCase() === normalizedInput) return tzId;
-    }
-
-    return null;
-}
+// Unified timezone display format for Google-style output
+const timezoneDisplayMap = {
+    "America/New_York": { name: "Eastern Time", abbr: "ET", location: "Eastern Time (ET)" },
+    "America/Chicago": { name: "Central Time", abbr: "CT", location: "Central Time (CT)" },
+    "America/Denver": { name: "Mountain Time", abbr: "MT", location: "Mountain Time (MT)" },
+    "America/Los_Angeles": { name: "Pacific Time", abbr: "PT", location: "Pacific Time (PT)" },
+    "UTC": { name: "UTC", abbr: "UTC", location: "UTC" },
+    "Europe/London": { name: "London", abbr: "GMT/BST", location: "London, UK" },
+    "Asia/Tokyo": { name: "Tokyo", abbr: "JST", location: "Tokyo, Japan" },
+    "Asia/Manila": { name: "Philippines", abbr: "PHT", location: "Philippines" }
+};
 
 // Time conversion function
 function convertTime() {
@@ -66,27 +57,91 @@ function convertTime() {
         return;
     }
 
-    // Convert time
+    // Create DateTime objects
     const now = luxon.DateTime.local();
     const fromDT = now.set({ hour: hours, minute: minutes }).setZone(fromTz, { keepLocalTime: true });
-    
-    if (!fromDT.isValid) {
-        resultDiv.textContent = 'Error creating date in source timezone.';
-        return;
-    }
-
     const toDT = fromDT.setZone(toTz);
 
-    const fromDisplayName = timezoneAliases[fromTz];
-    const toDisplayName = timezoneAliases[toTz];
+    // Get display names
+    const fromDisplay = timezoneDisplayMap[fromTz];
+    const toDisplay = timezoneDisplayMap[toTz];
 
-    resultDiv.textContent = `${timeStr} ${fromDisplayName} Time (${fromDisplayName.charAt(0)}T) is ` +
-        `${toDT.toFormat('HH:mm')} ${toDT.toFormat('ccc, LLL dd, yyyy')} (${toDisplayName})`;
+    // Format with Google-style format (12-hour AM/PM)
+    const sourceTime = fromDT.toFormat('h:mm a');
+    const targetTime = toDT.toFormat('h:mm a');
+    
+    // Format days with correct wording
+    const sourceDay = fromDT.toFormat('cccc');
+    const targetDay = toDT.toFormat('cccc');
+
+    // Build final output
+    resultDiv.textContent = `${sourceTime} ${sourceDay}, ${fromDisplay.location} is ` +
+                            `${targetTime} ${targetDay}, in ${toDisplay.location}`;
+}
+
+// Validates timezone support
+function isValidZone(zone) {
+    if (!zone || typeof zone !== 'string') return false;
+    try {
+        const dt = luxon.DateTime.local().setZone(zone);
+        return dt.isValid;
+    } catch (e) {
+        return false;
+    }
+}
+
+// Maps input to IANA timezone IDs
+function findTimezone(input) {
+    const normalizedInput = input.toLowerCase();
+    
+    // Match abbreviations
+    const abbrMap = {
+        'et': 'America/New_York',
+        'ct': 'America/Chicago',
+        'mt': 'America/Denver',
+        'pt': 'America/Los_Angeles',
+        'pst': 'America/Los_Angeles',
+        'pdt': 'America/Los_Angeles',
+        'est': 'America/New_York',
+        'edt': 'America/New_York',
+        'cst': 'America/Chicago',
+        'cdt': 'America/Chicago',
+        'mst': 'America/Denver',
+        'mdt': 'America/Denver',
+        'gmt': 'UTC',
+        'utc': 'UTC',
+        'tokyo': 'Asia/Tokyo',
+        'london': 'Europe/London',
+        'philippines': 'Asia/Manila',
+        'eastern': 'America/New_York',
+        'central': 'America/Chicago',
+        'mountain': 'America/Denver',
+        'pacific': 'America/Los_Angeles',
+        'western': 'America/Los_Angeles',
+        'us east': 'America/New_York',
+        'us central': 'America/Chicago',
+        'us mountain': 'America/Denver',
+        'us west': 'America/Los_Angeles'
+    };
+
+    if (abbrMap[normalizedInput]) return abbrMap[normalizedInput];
+
+    // Match display names
+    for (const tzId in timezoneDisplayMap) {
+        const display = timezoneDisplayMap[tzId].location.toLowerCase();
+        if (display === normalizedInput || display.includes(normalizedInput)) {
+            return tzId;
+        }
+    }
+
+    return null;
 }
 
 // Suggest similar timezones
 function getSuggestions(input) {
     const normalizedInput = input.toLowerCase();
-    const suggestions = Object.values(timezoneAliases).filter(tz => tz.toLowerCase().includes(normalizedInput));
-    return suggestions.join(', ') || 'Try: Eastern, London, Tokyo, etc.';
+    return Object.values(timezoneDisplayMap)
+        .filter(display => display.location.toLowerCase().includes(normalizedInput))
+        .map(display => display.location)
+        .join(', ') || 'Try: Eastern, London, Tokyo, etc.';
 }

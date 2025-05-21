@@ -1,13 +1,13 @@
 // Global timezone display names (IANA ID => Friendly Name)
 const timezoneAliases = {
-    "UTC": "UTC",
-    "America/New_York": "US East",
-    "America/Chicago": "US Central",
-    "America/Denver": "US Mountain",
-    "America/Los_Angeles": "US West",
-    "Europe/London": "London",
-    "Asia/Tokyo": "Tokyo",
-    "Asia/Manila": "Philippines"
+  "UTC": "UTC",
+  "America/New_York": "Eastern Time (ET)",
+  "America/Chicago": "Central Time (CT)",
+  "America/Denver": "Mountain Time (MT)",
+  "America/Los_Angeles": "Pacific Time (PT)",
+  "Europe/London": "London, UK",
+  "Asia/Tokyo": "Tokyo, Japan",
+  "Asia/Manila": "Philippines"
 };
 
 // Supported timezone abbreviations (Input => IANA ID)
