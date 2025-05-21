@@ -14,17 +14,6 @@ if (typeof luxon === 'undefined') {
     });
 });
 
-const timezoneAliases = { 
-        "UTC":"UTC",
-        "America/New_York":"US East",
-        "America/Chicago":"US Central",
-        "America/Denver":"US Mountain",
-        "America/Los_Angeles":"US West",
-        "Europe/London":"London",
-        "Asia/Tokyo":"Tokyo",
-        "Asia/Manila":"Philippines" 
-    };
-
 // Clocks Initialization
 function initClocks() {
     const coreTZ = Object.keys(timezoneAliases);
