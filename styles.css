@@ -1,0 +1,218 @@
+/* Base Styles */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #1e1e1e;
+    color: #e0e0e0;
+}
+
+nav {
+    display: flex;
+    background: #2b2b2b;
+}
+
+nav button {
+    flex: 1;
+    padding: 15px;
+    background: #2b2b2b;
+    border: none;
+    color: #e0e0e0;
+    cursor: pointer;
+}
+
+nav button.active,
+nav button:hover {
+    background: #3c3c3c;
+}
+
+.tool-section {
+    display: none;
+    padding: 20px;
+}
+
+.tool-section.active {
+    display: block;
+}
+
+/* Clocks Section */
+.converter-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.time-converter {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    max-width: 400px;
+}
+
+.time-converter input {
+    padding: 10px;
+    width: 100%;
+    border: 1px solid #555;
+    background: #2c2c2c;
+    color: #e0e0e0;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+.time-converter button {
+    padding: 10px 20px;
+    background: #4CAF50;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+    width: fit-content;
+    align-self: center;
+}
+
+.conversion-result {
+    margin-top: 10px;
+    color: #00ff00;
+    white-space: pre-wrap;
+    text-align: center;
+}
+
+#clockGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: minmax(216px, auto);
+    gap: 20px;
+    background: #2a2a2a;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.clockTile {
+    background: #333;
+    border: 1px solid #555;
+    border-radius: 5px;
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.timezoneSelect {
+    margin-bottom: 10px;
+    padding: 5px;
+    border: 1px solid #666;
+    border-radius: 4px;
+    background: #444;
+    color: #e0e0e0;
+}
+
+.timeDisplay {
+    font-size: 2em;
+    font-weight: bold;
+    color: #00ff00;
+}
+
+.dateDisplay {
+    font-size: 1em;
+    color: #00ff00;
+    margin: 5px 0;
+}
+
+.timezoneName {
+    font-size: 1em;
+    color: #ccc;
+}
+
+/* Number Sorter Styles */
+.ns-container {
+    display: flex;
+    gap: 20px;
+}
+
+.ns-textarea {
+    flex: 1;
+}
+
+.ns-textarea textarea {
+    width: 100%;
+    height: 200px;
+    background: #2c2c2c;
+    color: #e0e0e0;
+    border: 2px solid #444;
+    padding: 10px;
+    font-family: monospace;
+}
+
+.ns-controls {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.ns-controls button {
+    padding: 10px 20px;
+    margin: 0 5px;
+    background: #4CAF50;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.ns-counter {
+    text-align: right;
+    font-size: 12px;
+    color: #aaa;
+    margin-top: 5px;
+}
+
+/* Tree Generator Styles */
+.tg-sections {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+@media (min-width: 768px) {
+    .tg-sections {
+        flex-direction: row;
+    }
+}
+
+.tg-section {
+    flex: 1;
+    background: #2b2b2b;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.tg-section textarea,
+.tg-section pre {
+    width: 100%;
+    min-height: 150px;
+    background: #3c3c3c;
+    color: #ccc;
+    border: 1px solid #555;
+    padding: 10px;
+    font-family: monospace;
+}
+
+.tg-section button {
+    margin-top: 10px;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background: #5dade2;
+    color: #1e1e1e;
+}
+
+.tg-section button:hover {
+    background: #48c9b0;
+}
+
+.tg-error {
+    color: #ff6b6b;
+    margin-top: 5px;
+}
