@@ -4,8 +4,8 @@ if (typeof luxon === 'undefined') {
     alert('Luxon failed to load. Please check your internet connection and reload.');
 }
 
-// Navigation
-['clocks', 'sorter', 'tree'].forEach(name => {
+// Navigation - Updated to include IP tab
+['clocks', 'ip', 'sorter', 'tree'].forEach(name => {
     document.getElementById('tab-'+name).addEventListener('click', () => {
         document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
         document.getElementById('tab-'+name).classList.add('active');

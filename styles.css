@@ -126,6 +126,136 @@ nav button:hover {
     color: #ccc;
 }
 
+/* IP Tools Section */
+.ip-tools-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.ip-display-section {
+    background: #2b2b2b;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.ip-display-section h3 {
+    margin-top: 0;
+    color: #e0e0e0;
+    border-bottom: 2px solid #4CAF50;
+    padding-bottom: 10px;
+}
+
+.ip-display {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #4CAF50;
+    margin: 20px 0;
+    padding: 15px;
+    background: #333;
+    border-radius: 8px;
+    border: 2px solid #4CAF50;
+    font-family: monospace;
+}
+
+.ip-lookup-section {
+    background: #2b2b2b;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.ip-lookup-section h3 {
+    margin-top: 0;
+    color: #e0e0e0;
+    border-bottom: 2px solid #2196F3;
+    padding-bottom: 10px;
+}
+
+.lookup-form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+#lookup-input {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid #555;
+    background: #333;
+    color: #e0e0e0;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+#lookup-input:focus {
+    outline: none;
+    border-color: #2196F3;
+}
+
+#lookup-btn {
+    padding: 12px 20px;
+    background: #2196F3;
+    border: none;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s;
+}
+
+#lookup-btn:hover {
+    background: #1976D2;
+}
+
+.lookup-results {
+    margin-top: 20px;
+}
+
+.lookup-results table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #333;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.lookup-results th {
+    background: #444;
+    color: #e0e0e0;
+    padding: 12px;
+    text-align: left;
+    font-weight: bold;
+    width: 30%;
+}
+
+.lookup-results td {
+    padding: 12px;
+    border-bottom: 1px solid #555;
+    color: #ccc;
+}
+
+.lookup-results tr:last-child td {
+    border-bottom: none;
+}
+
+.lookup-loading {
+    color: #2196F3;
+    text-align: center;
+    font-style: italic;
+    padding: 20px;
+}
+
+.lookup-error {
+    color: #f44336;
+    background: rgba(244, 67, 54, 0.1);
+    padding: 15px;
+    border-radius: 4px;
+    border-left: 4px solid #f44336;
+}
+
 /* Number Sorter Styles */
 .ns-container {
     display: flex;
@@ -215,4 +345,21 @@ nav button:hover {
 .tg-error {
     color: #ff6b6b;
     margin-top: 5px;
+}
+
+/* Responsive Design for IP Tools */
+@media (max-width: 768px) {
+    .lookup-form {
+        flex-direction: column;
+    }
+    
+    .ip-display {
+        font-size: 1.4rem;
+    }
+    
+    .lookup-results th,
+    .lookup-results td {
+        padding: 8px;
+        font-size: 0.9em;
+    }
 }

@@ -10,6 +10,7 @@
 <body>
     <nav>
         <button id="tab-clocks" class="active">Clocks</button>
+        <button id="tab-ip">IP Tools</button>
         <button id="tab-tree">ASCII Tree</button>
         <button id="tab-sorter">Number Sorter</button>
     </nav>
@@ -25,6 +26,26 @@
             </div>
         </div>
         <div id="clockGrid"></div>
+    </section>
+
+    <!-- IP Tools Section -->
+    <section id="section-ip" class="tool-section">
+        <h2>IP & Network Utilities</h2>
+        <div class="ip-tools-container">
+            <div class="ip-display-section">
+                <h3>Your Public IP Address</h3>
+                <div id="my-ip" class="ip-display">Loading...</div>
+            </div>
+
+            <div class="ip-lookup-section">
+                <h3>IP or Domain Lookup</h3>
+                <div class="lookup-form">
+                    <input type="text" id="lookup-input" placeholder="Enter IP or domain (e.g., google.com, 8.8.8.8)">
+                    <button id="lookup-btn">🔍 Lookup</button>
+                </div>
+                <div id="lookup-results" class="lookup-results"></div>
+            </div>
+        </div>
     </section>
 
     <!-- Number Sorter Section -->
@@ -53,7 +74,7 @@
         <h2>Offline ASCII Tree Generator</h2>
         <div class="tg-sections">
             <div class="tg-section">
-                <h3>Input Structure <span style="font-size: 0.8em; font-weight: normal; color: #aaa;">(use “/” to identify a folder)</span></h3>
+                <h3>Input Structure <span style="font-size: 0.8em; font-weight: normal; color: #aaa;">(use "/" to identify a folder)</span></h3>
                 <textarea id="tg-input" placeholder="Use indentation to represent structure..."></textarea>
                 <div id="tg-error" class="tg-error"></div>
                 <button id="tg-generate">Generate Tree</button>
@@ -72,6 +93,7 @@
 	<script src="timeZoneConverter.js"></script>
 	<script src="numberSorter.js"></script>
 	<script src="asciiTreeGenerator.js"></script>
+	<script src="ipTools.js"></script>
 	
 </body>
 </html>
