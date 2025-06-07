@@ -1,23 +1,57 @@
-// IP Tools JavaScript
+// IP Tools JavaScript (Final Version with Hostname Resolution)
 
-// --- Get and Display Public IP ---
+// --- Get and Display Public IP (Both IPv4 and IPv6) ---
 async function showMyPublicIP() {
+    const ipElement = document.getElementById('my-ip');
+    ipElement.innerHTML = 'Fetching IPs...'; // Use innerHTML to allow line breaks
+
+    // Use Promise.allSettled to fetch both IPs concurrently.
+    const promises = [
+        fetch('https://api.ipify.org?format=json'), // A reliable service for IPv4
+        fetch('https://api64.ipify.org?format=json') // A reliable service for IPv6 (or IPv4 as fallback)
+    ];
+
     try {
-        const response = await fetch('https://api.ipify.org?format=json');
-        const data = await response.json();
-        document.getElementById('my-ip').textContent = data.ip;
+        const results = await Promise.allSettled(promises);
+        const ipv4Result = results[0];
+        const ipv6Result = results[1];
+        let ipDisplay = [];
+        let ipv4 = '';
+
+        if (ipv4Result.status === 'fulfilled') {
+            const data = await ipv4Result.value.json();
+            ipv4 = data.ip;
+            ipDisplay.push(`<b>IPv4:</b> ${ipv4}`);
+        } else {
+            console.error('Error fetching IPv4:', ipv4Result.reason);
+        }
+
+        if (ipv6Result.status === 'fulfilled') {
+            const data = await ipv6Result.value.json();
+            if (data.ip && data.ip !== ipv4) {
+                 ipDisplay.push(`<b>IPv6:</b> ${data.ip}`);
+            }
+        } else {
+             console.error('Error fetching IPv6:', ipv6Result.reason);
+        }
+        
+        if (ipDisplay.length > 0) {
+            ipElement.innerHTML = ipDisplay.join('<br>');
+        } else {
+            ipElement.textContent = 'Could not fetch IP';
+        }
+
     } catch (error) {
-        document.getElementById('my-ip').textContent = 'Could not fetch IP';
-        console.error('Error fetching public IP:', error);
+        ipElement.textContent = 'Could not fetch IP';
+        console.error('Error fetching public IPs:', error);
     }
 }
 
-// --- IP/Domain Lookup Function ---
+
+// --- IP/Domain Lookup Function (with DNS-over-HTTPS workaround) ---
 async function lookupIP() {
     const query = document.getElementById('lookup-input').value.trim();
     const resultsDiv = document.getElementById('lookup-results');
-    
-    // Clear previous results
     resultsDiv.innerHTML = '<div class="lookup-loading">🔍 Looking up information...</div>';
 
     if (!query) {
@@ -25,26 +59,55 @@ async function lookupIP() {
         return;
     }
 
+    // Regular expression to check for valid IPv4 or IPv6 addresses.
+    // This helps us decide if we need to perform a DNS lookup.
+    const ipRegex = /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$|^(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(ffff(:0{1,4}){0,1}:){0,1}((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]))$/;
+
+    let ipToLookup = query;
+
+    // If the query is NOT an IP address, assume it's a hostname and resolve it.
+    if (!ipRegex.test(query)) {
+        resultsDiv.innerHTML = `<div class="lookup-loading">🔍 Resolving hostname: ${query}...</div>`;
+        try {
+            const dnsResponse = await fetch(`https://dns.google/resolve?name=${query}&type=A`);
+            const dnsData = await dnsResponse.json();
+
+            // Status 0 (NOERROR) is a successful lookup. Answer must also exist.
+            if (dnsData.Status !== 0 || !dnsData.Answer) {
+                resultsDiv.innerHTML = `<div class="lookup-error">❌ Error: Could not resolve hostname '${query}'.</div>`;
+                return;
+            }
+            
+            // Extract the first IPv4 address from the response
+            ipToLookup = dnsData.Answer[0].data;
+            resultsDiv.innerHTML = `<div class="lookup-loading">✅ Hostname resolved to ${ipToLookup}.<br>🔍 Looking up information...</div>`;
+
+        } catch (error) {
+            resultsDiv.innerHTML = `<div class="lookup-error">❌ An error occurred during hostname resolution.</div>`;
+            console.error('Error resolving DNS:', error);
+            return;
+        }
+    }
+    
+    // --- Now, lookup the IP with ipapi.co ---
     try {
-        // Using ip-api.com as it's free and requires no key
-        const response = await fetch(`https://ip-api.com/json/${query}?fields=status,message,country,regionName,city,zip,lat,lon,isp,org,as,query`);
+        const response = await fetch(`https://ipapi.co/${ipToLookup}/json/`);
         const data = await response.json();
 
-        if (data.status === 'fail') {
-            resultsDiv.innerHTML = `<div class="lookup-error">❌ Error: ${data.message}</div>`;
+        if (data.error) {
+            resultsDiv.innerHTML = `<div class="lookup-error">❌ Error: ${data.reason}</div>`;
             return;
         }
 
-        // Create a table to display the results
         resultsDiv.innerHTML = `
-            <h4>📊 Results for ${data.query}</h4>
+            <h4>📊 Results for ${data.ip} (${query})</h4>
             <table>
-                <tr><th>🌍 Country</th><td>${data.country || 'N/A'}</td></tr>
-                <tr><th>🏙️ Location</th><td>${data.city || 'N/A'}, ${data.regionName || 'N/A'} ${data.zip || ''}</td></tr>
+                <tr><th>🌍 Country</th><td>${data.country_name || 'N/A'}</td></tr>
+                <tr><th>🏙️ Location</th><td>${data.city || 'N/A'}, ${data.region || 'N/A'} ${data.postal || ''}</td></tr>
                 <tr><th>🌐 ISP</th><td>${data.isp || 'N/A'}</td></tr>
                 <tr><th>🏢 Organization</th><td>${data.org || 'N/A'}</td></tr>
-                <tr><th>🔢 AS Number</th><td>${data.as || 'N/A'}</td></tr>
-                <tr><th>📍 Coordinates</th><td>Lat: ${data.lat || 'N/A'}, Lon: ${data.lon || 'N/A'}</td></tr>
+                <tr><th>🔢 AS Number</th><td>${data.asn || 'N/A'}</td></tr>
+                <tr><th>📍 Coordinates</th><td>Lat: ${data.latitude || 'N/A'}, Lon: ${data.longitude || 'N/A'}</td></tr>
             </table>
         `;
     } catch (error) {
@@ -53,12 +116,10 @@ async function lookupIP() {
     }
 }
 
+
 // --- Initialize IP Tools when page loads ---
 function initIPTools() {
-    // Show public IP immediately
     showMyPublicIP();
-    
-    // Add event listeners
     const lookupBtn = document.getElementById('lookup-btn');
     const lookupInput = document.getElementById('lookup-input');
     
@@ -67,14 +128,10 @@ function initIPTools() {
     }
     
     if (lookupInput) {
-        // Allow pressing Enter to trigger lookup
         lookupInput.addEventListener('keypress', (event) => {
-            if (event.key === 'Enter') {
-                lookupIP();
-            }
+            if (event.key === 'Enter') lookupIP();
         });
     }
 }
 
-// Initialize IP tools when DOM is loaded
 document.addEventListener('DOMContentLoaded', initIPTools);

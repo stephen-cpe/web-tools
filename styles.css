@@ -256,6 +256,10 @@ nav button:hover {
     border-left: 4px solid #f44336;
 }
 
+#section-ip h2 {
+    text-align: center;
+}
+
 /* Number Sorter Styles */
 .ns-container {
     display: flex;
