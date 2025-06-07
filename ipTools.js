@@ -27,7 +27,7 @@ async function lookupIP() {
 
     try {
         // Using ip-api.com as it's free and requires no key
-        const response = await fetch(`http://ip-api.com/json/${query}?fields=status,message,country,regionName,city,zip,lat,lon,isp,org,as,query`);
+        const response = await fetch(`https://ip-api.com/json/${query}?fields=status,message,country,regionName,city,zip,lat,lon,isp,org,as,query`);
         const data = await response.json();
 
         if (data.status === 'fail') {
