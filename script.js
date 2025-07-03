@@ -4,29 +4,28 @@ if (typeof luxon === 'undefined') {
     alert('Luxon failed to load. Please check your internet connection and reload.');
 }
 
-// Navigation - Updated to include IP tab
-['clocks', 'ip', 'sorter', 'tree'].forEach(name => {
-    document.getElementById('tab-'+name).addEventListener('click', () => {
-        document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
-        document.getElementById('tab-'+name).classList.add('active');
-        document.querySelectorAll('.tool-section').forEach(s => s.classList.remove('active'));
-        document.getElementById('section-'+name).classList.add('active');
-    });
+['clocks', 'ip', 'tree', 'compare', 'sorter', 'calculator'].forEach(name => {
+    const tab = document.getElementById('tab-' + name);
+    if (tab) {
+        tab.addEventListener('click', () => {
+            document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+            document.getElementById('tab-' + name).classList.add('active');
+            document.querySelectorAll('.tool-section').forEach(s => s.classList.remove('active'));
+            document.getElementById('section-' + name).classList.add('active');
+        });
+    }
 });
-
 // Clocks Initialization
 function initClocks() {
     const coreTZ = Object.keys(timezoneAliases);
     const initTZ = ["America/New_York","America/Chicago","America/Denver","America/Los_Angeles","Asia/Manila","Europe/London"];
     const grid = document.getElementById('clockGrid');
-    
     function createTile(tz) {
         const div = document.createElement('div'); 
         div.className='clockTile';
         
         const sel = document.createElement('select'); 
         sel.className='timezoneSelect';
-        
         coreTZ.forEach(v => {
             let o = document.createElement('option'); 
             o.value = v; 
@@ -34,7 +33,6 @@ function initClocks() {
             if(v === tz) o.selected = true; 
             sel.add(o); 
         });
-        
         const timeD = document.createElement('div'); 
         timeD.className='timeDisplay';
         
@@ -46,7 +44,6 @@ function initClocks() {
         
         div.append(sel, timeD, dateD, nameD); 
         grid.append(div);
-        
         sel.onchange = () => update(div);
         update(div);
     }
