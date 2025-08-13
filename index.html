@@ -15,7 +15,7 @@
         <button id="tab-tree">ASCII Tree</button>
         <button id="tab-compare">Text Compare</button>
         <button id="tab-sorter">Number Sorter</button>
-        <button id="tab-calculator">Sci-Calculator</button>
+        <button id="tab-password-generator">Password Generator</button>
     </nav>
 
     <section id="section-compare" class="tool-section">
@@ -45,54 +45,39 @@
         </div>
     </section>
 
-    <section id="section-calculator" class="tool-section">
-        <h2>Scientific Calculator (fx-991MS Style)</h2>
-		 <div class="work-in-progress">
-			<i class="fas fa-exclamation-triangle"></i>
-			Work In Progress. Should not be used. This is just a placeholder but the goal is to make a functioning calculator in the future.
-		 </div>
-        <div class="calculator-container">
-            <div class="calculator-display">
-                <div id="calc-expression" class="expression"></div>
-                <div id="calc-result" class="result">0</div>
+    <section id="section-password-generator" class="tool-section">
+        <h2>Password Generator</h2>
+        <div class="password-generator-container">
+            <div class="pg-main-password">
+                <input type="text" id="pg-password" class="pg-password-display" readonly>
+                <button id="pg-copy" class="pg-copy-btn">Copy</button>
             </div>
-            <div id="calc-mode-indicator" class="mode-indicator">DEG</div>
-            <div class="calculator-buttons">
-                 <button data-key="rad" class="function">Rad</button>
-                <button data-key="deg" class="function">Deg</button>
-                <button data-key="sin" class="function">sin</button>
-                <button data-key="cos" class="function">cos</button>
-                <button data-key="tan" class="function">tan</button>
-                 <button data-key="asin" class="function">sin⁻¹</button>
-                <button data-key="acos" class="function">cos⁻¹</button>
-                <button data-key="atan" class="function">tan⁻¹</button>
-                <button data-key="(" class="operator">(</button>
-                <button data-key=")" class="operator">)</button>
-                <button data-key="sqrt" class="function">√</button>
-                 <button data-key="log" class="function">log</button>
-                <button data-key="ln" class="function">ln</button>
-                <button data-key="pow" class="function">xʸ</button>
-                <button data-key="pi" class="function">π</button>
-                <button data-key="7" class="number">7</button>
-                 <button data-key="8" class="number">8</button>
-                <button data-key="9" class="number">9</button>
-                <button data-key="del" class="control">DEL</button>
-                <button data-key="ac" class="control">AC</button>
-                <button data-key="4" class="number">4</button>
-                <button data-key="5" class="number">5</button>
-                 <button data-key="6" class="number">6</button>
-                <button data-key="*" class="operator">×</button>
-                <button data-key="/" class="operator">÷</button>
-                <button data-key="1" class="number">1</button>
-                <button data-key="2" class="number">2</button>
-                <button data-key="3" class="number">3</button>
-                <button data-key="+" class="operator">+</button>
-                <button data-key="-" class="operator">−</button>
-                <button data-key="0" class="number">0</button>
-                <button data-key="." class="number">.</button>
-                <button data-key="e" class="function">e</button>
-                <button data-key="ans" class="control">Ans</button>
-                <button data-key="=" class="equals">=</button>
+            
+            <div class="pg-options">
+                <div class="pg-option-group">
+                    <label for="pg-length">Password Length:</label>
+                    <input type="number" id="pg-length" class="pg-length-input" min="4" max="128" value="16">
+                </div>
+                
+                <div class="pg-option-group">
+                    <label for="pg-count">Number of Passwords:</label>
+                    <input type="number" id="pg-count" class="pg-count-input" min="1" max="100" value="5">
+                </div>
+                
+                <div class="pg-checkbox-group">
+                    <label><input type="checkbox" id="pg-uppercase" checked> Uppercase (A-Z)</label>
+                    <label><input type="checkbox" id="pg-lowercase" checked> Lowercase (a-z)</label>
+                    <label><input type="checkbox" id="pg-numbers" checked> Numbers (0-9)</label>
+                    <label><input type="checkbox" id="pg-symbols"> Symbols (!@#$%^&*)</label>
+                    <label><input type="checkbox" id="pg-ambiguous" checked> Exclude Ambiguous (il1Lo0O)</label>
+                </div>
+                
+                <button id="pg-generate" class="pg-generate-btn">Generate Passwords</button>
+            </div>
+            
+            <div class="pg-password-list-container">
+                <h3>Generated Passwords</h3>
+                <div id="pg-password-list" class="pg-password-list"></div>
             </div>
         </div>
     </section>
@@ -174,7 +159,7 @@
 	<script src="numberSorter.js"></script>
 	<script src="asciiTreeGenerator.js"></script>
 	<script src="ipTools.js"></script>
-    <script src="calculator.js"></script>
+    <script src="passwordGenerator.js"></script>
     <script src="textCompare.js"></script>
 
 	<footer class="site-footer">
