@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Random Names - Contact Grid</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 10px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .contact-card {
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            font-size: 12px;
+        }
+        .name {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .email, .phone {
+            margin-bottom: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-container" id="contactGrid">
+        <!-- Contacts will be dynamically generated here -->
+    </div>
+
+    <script>
+        // All contact data (120 total)
+        const contacts = [
+            
+            { name: "Michael Johnson", email: "michael.johnson@example.com", phone: "415-555-0123" },
+            { name: "Mary Johnson", email: "mary.johnson@example.com", phone: "415-555-1123" },
+            { name: "Robert Williams", email: "robert.williams@email.com", phone: "212-555-0456" },
+            { name: "Patricia Williams", email: "patricia.williams@email.com", phone: "212-555-1456" },
+            { name: "David Brown", email: "david.brown@domain.com", phone: "312-555-0789" },
+            { name: "Linda Brown", email: "linda.brown@domain.com", phone: "312-555-1789" },
+            { name: "James Jones", email: "james.jones@test.com", phone: "617-555-0123" },
+            { name: "Barbara Jones", email: "barbara.jones@test.com", phone: "617-555-1123" },
+            { name: "Christopher Garcia", email: "chris@sample.com", phone: "718-555-0456" },
+            { name: "Elizabeth Garcia", email: "elizabeth@sample.com", phone: "718-555-1456" },
+            { name: "William Miller", email: "will@demo.com", phone: "305-555-0789" },
+            { name: "Jennifer Miller", email: "jennifer@demo.com", phone: "305-555-1789" },
+            { name: "Richard Davis", email: "richard@placeholder.com", phone: "404-555-0123" },
+            { name: "Maria Davis", email: "maria@placeholder.com", phone: "404-555-1123" },
+            { name: "Joseph Rodriguez", email: "joseph@mail.com", phone: "503-555-0456" },
+            { name: "Susan Rodriguez", email: "susan@mail.com", phone: "503-555-1456" },
+            { name: "Thomas Martinez", email: "thomas.m@user.com", phone: "612-555-0789" },
+            { name: "Margaret Martinez", email: "margaret.m@user.com", phone: "612-555-1789" },
+            { name: "Charles Hernandez", email: "charles@contact.com", phone: "713-555-0123" },
+            { name: "Dorothy Hernandez", email: "dorothy@contact.com", phone: "713-555-1123" },
+            { name: "Daniel Lopez", email: "danny@address.com", phone: "805-555-0456" },
+            { name: "Lisa Lopez", email: "lisa@address.com", phone: "805-555-1456" },
+            { name: "Matthew Gonzalez", email: "matt@info.com", phone: "908-555-0789" },
+            { name: "Nancy Gonzalez", email: "nancy@info.com", phone: "908-555-1789" },
+            { name: "Anthony Wilson", email: "tony@service.com", phone: "206-555-0123" },
+            { name: "Karen Wilson", email: "karen@service.com", phone: "206-555-1123" },
+            { name: "Mark Anderson", email: "mark.a@account.com", phone: "215-555-0456" },
+            { name: "Betty Anderson", email: "betty@account.com", phone: "215-555-1456" },
+            { name: "Donald Thomas", email: "donald@person.com", phone: "317-555-0789" },
+            { name: "Helen Thomas", email: "helen@person.com", phone: "317-555-1789" },
+            { name: "Steven Taylor", email: "steve@individual.com", phone: "425-555-0123" },
+            { name: "Sandra Taylor", email: "sandra@individual.com", phone: "425-555-1123" },
+            { name: "Paul Moore", email: "paul@profile.com", phone: "510-555-0456" },
+            { name: "Donna Moore", email: "donna@profile.com", phone: "510-555-1456" },
+            { name: "Andrew Jackson", email: "andy@user.net", phone: "602-555-0789" },
+            { name: "Carol Jackson", email: "carol@user.net", phone: "602-555-1789" },
+            { name: "Joshua Martin", email: "josh@client.net", phone: "704-555-0123" },
+            { name: "Ruth Martin", email: "ruth@client.net", phone: "704-555-1123" },
+            { name: "Kevin Lee", email: "kevin@customer.net", phone: "803-555-0456" },
+            { name: "Sharon Lee", email: "sharon@customer.net", phone: "803-555-1456" },
+            { name: "Brian Thompson", email: "brian.thompson@example.com", phone: "415-555-2345" },
+            { name: "Laura King", email: "laura.king@example.com", phone: "415-555-2346" },
+            { name: "George White", email: "george.white@email.com", phone: "212-555-3456" },
+            { name: "Sarah Wright", email: "sarah.wright@email.com", phone: "212-555-3457" },
+            { name: "Edward Harris", email: "edward.harris@domain.com", phone: "312-555-4567" },
+            { name: "Kimberly Scott", email: "kim.scott@domain.com", phone: "312-555-4568" },
+            { name: "Ronald Clark", email: "ron.clark@test.com", phone: "617-555-5678" },
+            { name: "Deborah Green", email: "debbie.green@test.com", phone: "617-555-5679" },
+            { name: "Timothy Lewis", email: "tim.lewis@sample.com", phone: "718-555-6789" },
+            { name: "Amanda Baker", email: "amanda.baker@sample.com", phone: "718-555-6780" },
+            { name: "Jason Robinson", email: "jason.robinson@demo.com", phone: "305-555-7890" },
+            { name: "Stephanie Adams", email: "steph.adams@demo.com", phone: "305-555-7891" },
+            { name: "Jeffrey Walker", email: "jeff.walker@placeholder.com", phone: "404-555-8901" },
+            { name: "Rebecca Nelson", email: "rebecca.nelson@placeholder.com", phone: "404-555-8902" },
+            { name: "Ryan Hall", email: "ryan.hall@mail.com", phone: "503-555-9012" },
+            { name: "Michelle Hill", email: "michelle.hill@mail.com", phone: "503-555-9013" },
+            { name: "Nicholas Allen", email: "nick.allen@user.com", phone: "612-555-0123" },
+            { name: "Emily Carter", email: "emily.carter@user.com", phone: "612-555-0124" },
+            { name: "Eric Young", email: "eric.young@contact.com", phone: "713-555-1234" },
+            { name: "Jessica Mitchell", email: "jess.mitchell@contact.com", phone: "713-555-1235" },
+            
+            
+            { name: "Jacob Perez", email: "jacob.perez@web.com", phone: "214-555-2345" },
+            { name: "Tyler Roberts", email: "tyler.roberts@web.com", phone: "214-555-2346" },
+            { name: "Brandon Turner", email: "brandon.turner@web.com", phone: "214-555-2347" },
+            { name: "Aaron Phillips", email: "aaron.phillips@web.com", phone: "214-555-2348" },
+            { name: "Benjamin Campbell", email: "ben.campbell@web.com", phone: "214-555-2349" },
+            { name: "Gregory Parker", email: "greg.parker@web.com", phone: "214-555-2350" },
+            { name: "Samuel Evans", email: "sam.evans@web.com", phone: "214-555-2351" },
+            { name: "Patrick Edwards", email: "patrick.edwards@web.com", phone: "214-555-2352" },
+            { name: "Alexander Collins", email: "alex.collins@web.com", phone: "214-555-2353" },
+            { name: "Jack Stewart", email: "jack.stewart@web.com", phone: "214-555-2354" },
+            { name: "Joshua Sanchez", email: "josh.sanchez@web.com", phone: "214-555-2355" },
+            { name: "Jonathan Morris", email: "jonathan.morris@web.com", phone: "214-555-2356" },
+            { name: "Scott Rogers", email: "scott.rogers@web.com", phone: "214-555-2357" },
+            { name: "Nathan Reed", email: "nathan.reed@web.com", phone: "214-555-2358" },
+            { name: "Stephen Cook", email: "stephen.cook@web.com", phone: "214-555-2359" },
+            { name: "Shawn Morgan", email: "shawn.morgan@web.com", phone: "214-555-2360" },
+            { name: "Dylan Bell", email: "dylan.bell@web.com", phone: "214-555-2361" },
+            { name: "Sean Murphy", email: "sean.murphy@web.com", phone: "214-555-2362" },
+            { name: "Craig Bailey", email: "craig.bailey@web.com", phone: "214-555-2363" },
+            { name: "Adam Rivera", email: "adam.rivera@web.com", phone: "214-555-2364" },
+            { name: "Luke Cooper", email: "luke.cooper@web.com", phone: "214-555-2365" },
+            { name: "Ethan Richardson", email: "ethan.richardson@web.com", phone: "214-555-2366" },
+            { name: "Jeremy Cox", email: "jeremy.cox@web.com", phone: "214-555-2367" },
+            { name: "Christian Howard", email: "christian.howard@web.com", phone: "214-555-2368" },
+            { name: "Ian Ward", email: "ian.ward@web.com", phone: "214-555-2369" },
+            { name: "Mason Torres", email: "mason.torres@web.com", phone: "214-555-2370" },
+            { name: "Noah Peterson", email: "noah.peterson@web.com", phone: "214-555-2371" },
+            { name: "Caleb Gray", email: "caleb.gray@web.com", phone: "214-555-2372" },
+            { name: "Logan Ramirez", email: "logan.ramirez@web.com", phone: "214-555-2373" },
+            { name: "Owen James", email: "owen.james@web.com", phone: "214-555-2374" },
+            { name: "Elijah Watson", email: "elijah.watson@web.com", phone: "214-555-2375" },
+            { name: "Isaac Brooks", email: "isaac.brooks@web.com", phone: "214-555-2376" },
+            
+          
+            { name: "Olivia Bennett", email: "olivia.bennett@web.com", phone: "214-555-3345" },
+            { name: "Emma Wood", email: "emma.wood@web.com", phone: "214-555-3346" },
+            { name: "Ava Barnes", email: "ava.barnes@web.com", phone: "214-555-3347" },
+            { name: "Sophia Ross", email: "sophia.ross@web.com", phone: "214-555-3348" },
+            { name: "Isabella Henderson", email: "isabella.henderson@web.com", phone: "214-555-3349" },
+            { name: "Mia Coleman", email: "mia.coleman@web.com", phone: "214-555-3350" },
+            { name: "Charlotte Jenkins", email: "charlotte.jenkins@web.com", phone: "214-555-3351" },
+            { name: "Abigail Perry", email: "abigail.perry@web.com", phone: "214-555-3352" },
+            { name: "Emily Powell", email: "emily.powell@web.com", phone: "214-555-3353" },
+            { name: "Harper Long", email: "harper.long@web.com", phone: "214-555-3354" },
+            { name: "Amelia Patterson", email: "amelia.patterson@web.com", phone: "214-555-3355" },
+            { name: "Elizabeth Hughes", email: "elizabeth.hughes@web.com", phone: "214-555-3356" },
+            { name: "Sofia Flores", email: "sofia.flores@web.com", phone: "214-555-3357" },
+            { name: "Madison Washington", email: "madison.washington@web.com", phone: "214-555-3358" },
+            { name: "Evelyn Butler", email: "evelyn.butler@web.com", phone: "214-555-3359" },
+            { name: "Avery Simmons", email: "avery.simmons@web.com", phone: "214-555-3360" },
+            { name: "Chloe Foster", email: "chloe.foster@web.com", phone: "214-555-3361" },
+            { name: "Ella Gonzalez", email: "ella.gonzalez@web.com", phone: "214-555-3362" },
+            { name: "Grace Bryant", email: "grace.bryant@web.com", phone: "214-555-3363" },
+            { name: "Victoria Alexander", email: "victoria.alexander@web.com", phone: "214-555-3364" },
+            { name: "Aubrey Russell", email: "aubrey.russell@web.com", phone: "214-555-3365" },
+            { name: "Scarlett Griffin", email: "scarlett.griffin@web.com", phone: "214-555-3366" },
+            { name: "Zoe Diaz", email: "zoe.diaz@web.com", phone: "214-555-3367" },
+            { name: "Natalie Hayes", email: "natalie.hayes@web.com", phone: "214-555-3368" },
+            { name: "Hannah Myers", email: "hannah.myers@web.com", phone: "214-555-3369" },
+            { name: "Lily Ford", email: "lily.ford@web.com", phone: "214-555-3370" },
+            { name: "Addison Hamilton", email: "addison.hamilton@web.com", phone: "214-555-3371" },
+            { name: "Leah Graham", email: "leah.graham@web.com", phone: "214-555-3372" },
+            { name: "Harper Sullivan", email: "harper.sullivan@web.com", phone: "214-555-3373" },
+            { name: "Lillian Wallace", email: "lillian.wallace@web.com", phone: "214-555-3374" },
+            { name: "Samantha West", email: "samantha.west@web.com", phone: "214-555-3375" },
+            { name: "Ariana Owens", email: "ariana.owens@web.com", phone: "214-555-3376" }
+        ];
+
+        // Function to shuffle array using Fisher-Yates algorithm
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        // Function to generate contact cards
+        function generateContactCards() {
+            const contactGrid = document.getElementById('contactGrid');
+            contactGrid.innerHTML = ''; // Clear existing content
+            
+            // Shuffle the contacts array
+            const shuffledContacts = shuffleArray([...contacts]);
+            
+            // Generate HTML for each contact
+            shuffledContacts.forEach(contact => {
+                const contactCard = document.createElement('div');
+                contactCard.className = 'contact-card';
+                contactCard.innerHTML = `
+                    <div class="name">${contact.name}</div>
+                    <div class="email">${contact.email}</div>
+                    <div class="phone">${contact.phone}</div>
+                `;
+                contactGrid.appendChild(contactCard);
+            });
+        }
+
+        // Generate contact cards when page loads
+        window.onload = generateContactCards;
+    </script>
+</body>
+</html>
