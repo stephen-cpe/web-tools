@@ -3,23 +3,204 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Under Construction</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <title>About Page - Work In Progress</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            align-items: center; /* Aligns items vertically */
+        }
+        .profile {
+            flex: 1;
+            min-width: 200px;
+        }
+        .progress-report {
+            flex: 3;
+            min-width: 400px;
+        }
+        .profile img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        h1, h2 {
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+        .course-section {
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden; /* Ensures the border radius is respected by children */
+        }
+        /* Style for the clickable summary */
+        summary {
+            cursor: pointer;
+            padding: 15px;
+            font-weight: bold;
+            font-size: 1.1em;
+            background-color: #f9f9f9;
+            outline: none; /* Removes the focus ring */
+            list-style-position: inside; /* Keeps the dropdown arrow aligned */
+        }
+        /* Add a hover effect for better UX */
+        summary:hover {
+            background-color: #f1f1f1;
+        }
+        .details-content {
+            padding: 15px;
+            border-top: 1px solid #ddd;
+        }
+        .progress-bar-container {
+            width: 100%;
+            background-color: #f3f3f3;
+            border-radius: 5px;
+            margin: 5px 0 15px 0; /* Added bottom margin */
+        }
+        .progress-bar {
+            height: 20px;
+            background-color: #4CAF50;
+            text-align: center;
+            line-height: 20px;
+            color: white;
+            border-radius: 5px;
+        }
+        .status {
+            margin-right: 10px;
+        }
+        .complete {
+            color: green;
+        }
+        .incomplete {
+            color: orange;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        li {
+            margin-bottom: 5px;
+        }
+        .site-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #eee;
+        }
+    </style>
 </head>
 <body>
-    <div class="about-container">
-        <h1>Under Construction</h1>
-        <a href="index.html" class="back-button">
-            Back to Main Page
-        </a>
+
+    <div class="container">
+        <div class="profile">
+            <img src="photo.jpg" alt="Profile Picture">
+        </div>
+        <div class="progress-report">
+            <h1>My Progress</h1>
+            <p>Currently pursuing a Master of Science in Software Engineering (MSSE) at Quantic School of Business & Technology.</p>
+            <p style="background-color: #fff3cd; border: 1px solid #ffeaa7; padding: 10px; border-radius: 5px; color: #856404; margin-top: 15px;">
+                <strong>Work in Progress:</strong> This page is still under development and will be updated regularly as I continue my studies and projects.
+            </p>
+        </div>
     </div>
 
+    <h2>MSSE Progress Report</h2>
+
+    <details class="course-section">
+        <summary>MANAGING SOFTWARE ENGINEER (100%)</summary>
+        <div class="details-content">
+            <div class="progress-bar-container">
+                <div class="progress-bar" style="width: 100%;">100%</div>
+            </div>
+            <ul>
+                <li><span class="status complete">✔</span> Managing Application Development</li>
+                <li><span class="status complete">✔</span> User-Centered Design</li>
+                <li><span class="status complete">✔</span> Cloud Foundations</li>
+                <li><span class="status complete">✔</span> Professionalism and Ethics</li>
+                <li><span class="status complete">✔</span> Exam and Project</li>
+            </ul>
+        </div>
+    </details>
+
+    <details class="course-section">
+        <summary>WEB APPLICATION AND INTERFACE DESIGN (100%)</summary>
+        <div class="details-content">
+            <div class="progress-bar-container">
+                <div class="progress-bar" style="width: 100%;">100%</div>
+            </div>
+            <ul>
+                <li><span class="status complete">✔</span> Web Application Foundations</li>
+                <li><span class="status complete">✔</span> Interactive Web Pages</li>
+                <li><span class="status complete">✔</span> Relational Databases</li>
+                <li><span class="status complete">✔</span> Back Ends</li>
+                <li><span class="status complete">✔</span> Exam and Project</li>
+            </ul>
+        </div>
+    </details>
+
+    <details class="course-section">
+        <summary>SOFTWARE DESIGN AND ARCHITECTURE (80%)</summary>
+        <div class="details-content">
+            <div class="progress-bar-container">
+                <div class="progress-bar" style="width: 80%;">80%</div>
+            </div>
+            <ul>
+                <li><span class="status complete">✔</span> Design and UML</li>
+                <li><span class="status complete">✔</span> Paradigms and Patterns</li>
+                <li><span class="status complete">✔</span> Enterprise Architectures</li>
+                <li><span class="status complete">✔</span> Cloud Services and Architectures</li>
+                <li><span class="status incomplete">●</span> Course Exam and Project (not yet complete)</li>
+            </ul>
+        </div>
+    </details>
+
+    <details class="course-section">
+        <summary>SOFTWARE TESTING AND CI/CD (40%)</summary>
+        <div class="details-content">
+            <div class="progress-bar-container">
+                <div class="progress-bar" style="width: 20%;">40%</div>
+            </div>
+            <ul>
+                <li><span class="status complete">✔</span> Introduction to Git and GitHub</li>
+                <li><span class="status incomplete">✔</span> Software Testing </li>
+                <li><span class="status incomplete">●</span> CI/CD and Software Maintenance (not yet complete)</li>
+                <li><span class="status incomplete">●</span> Performance Monitoring (not yet complete)</li>
+                <li><span class="status incomplete">●</span> Exam (not yet complete)</li>
+            </ul>
+        </div>
+    </details>
+    
+    <h2>Other Courses Completed</h2>
+
+    <h3>Learning Platform Placeholder #1</h3>
+    <ul>
+        <li><span class="status complete">✔</span> Course Completed Placeholder </li>
+        <li>More Courses to be added.</li>
+    </ul>
+
+    <h3>Learning Platform Placeholder #2</h3>
+    <ul>
+        <li><span class="status complete">✔</span> Course Completed Placeholder </li>
+        <li>More Courses to be added.</li>
+    </ul>
+
     <footer class="site-footer">
-        <a href="#">RPSLS</a> |
         <a href="#">PROJECT 1</a> |
         <a href="#">PROJECT 2</a> |
         <a href="#">PROJECT 3</a> |
+        <a href="#">PROJECT 4</a> |
+        <a href="#">PROJECT 5</a> |
+        <a href="#">PROJECT 6</a> |
         <a href="about.html">ABOUT</a>
     </footer>
 </body>

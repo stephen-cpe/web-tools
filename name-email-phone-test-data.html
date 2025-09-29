@@ -36,7 +36,6 @@
     </div>
 
     <script>
-        // All contact data (120 total)
         const contacts = [
             
             { name: "Michael Johnson", email: "michael.johnson@example.com", phone: "415-555-0123" },
@@ -134,7 +133,6 @@
             { name: "Elijah Watson", email: "elijah.watson@web.com", phone: "214-555-2375" },
             { name: "Isaac Brooks", email: "isaac.brooks@web.com", phone: "214-555-2376" },
             
-          
             { name: "Olivia Bennett", email: "olivia.bennett@web.com", phone: "214-555-3345" },
             { name: "Emma Wood", email: "emma.wood@web.com", phone: "214-555-3346" },
             { name: "Ava Barnes", email: "ava.barnes@web.com", phone: "214-555-3347" },
@@ -166,8 +164,53 @@
             { name: "Harper Sullivan", email: "harper.sullivan@web.com", phone: "214-555-3373" },
             { name: "Lillian Wallace", email: "lillian.wallace@web.com", phone: "214-555-3374" },
             { name: "Samantha West", email: "samantha.west@web.com", phone: "214-555-3375" },
-            { name: "Ariana Owens", email: "ariana.owens@web.com", phone: "214-555-3376" }
+            { name: "Ariana Owens", email: "ariana.owens@web.com", phone: "214-555-3376" },
+			
+            { name: "Hiro Tanaka", email: "hiro.tanaka@web.com", phone: "214-555-1001" },
+            { name: "Kenji Sato", email: "kenji.sato@web.com", phone: "214-555-1002" },
+            { name: "Wei Chen", email: "wei.chen@web.com", phone: "214-555-2001" },
+            { name: "Liang Zhang", email: "liang.zhang@web.com", phone: "214-555-2002" },
+            { name: "Yuki Nakamura", email: "yuki.nakamura@web.com", phone: "214-555-1003" },
+            { name: "Jian Wang", email: "jian.wang@web.com", phone: "214-555-2003" },
+            { name: "Aiko Fujimoto", email: "aiko.fujimoto@web.com", phone: "214-555-1004" },
+            { name: "Mei Lin", email: "mei.lin@web.com", phone: "214-555-2004" },
+            { name: "Mika Kobayashi", email: "mika.kobayashi@web.com", phone: "214-555-1005" },
+            { name: "Xiao Liu", email: "xiao.liu@web.com", phone: "214-555-2005" },
+            { name: "Naomi Suzuki", email: "naomi.suzuki@web.com", phone: "214-555-1006" },
+            { name: "Ying Zhao", email: "ying.zhao@web.com", phone: "214-555-2006" },
+            { name: "Rina Ito", email: "rina.ito@web.com", phone: "214-555-1007" },
+            { name: "Fang Huang", email: "fang.huang@web.com", phone: "214-555-2007" },
         ];
+
+        // Deduplicate by name, email, and phone
+        function getUniqueContacts(contacts, limit = 120) {
+            // Use a Set for each field to track seen values efficiently
+            const seenNames = new Set();
+            const seenEmails = new Set();
+            const seenPhones = new Set();
+            const unique = [];
+
+            for (const contact of contacts) {
+                // If this contact's name, email, OR phone has been seen before, skip it
+                if (seenNames.has(contact.name) || seenEmails.has(contact.email) || seenPhones.has(contact.phone)) {
+                    continue; // Skip to the next contact
+                }
+
+                // If all fields are unique, add them to the sets
+                seenNames.add(contact.name);
+                seenEmails.add(contact.email);
+                seenPhones.add(contact.phone);
+                
+                // And add the contact to our final list
+                unique.push(contact);
+
+                // Stop once we reach the desired limit
+                if (unique.length >= limit) {
+                    break;
+                }
+            }
+            return unique;
+        }
 
         // Function to shuffle array using Fisher-Yates algorithm
         function shuffleArray(array) {
@@ -182,10 +225,13 @@
         function generateContactCards() {
             const contactGrid = document.getElementById('contactGrid');
             contactGrid.innerHTML = ''; // Clear existing content
-            
+
+            // Deduplicate and limit to 120
+            const uniqueContacts = getUniqueContacts(contacts);
+
             // Shuffle the contacts array
-            const shuffledContacts = shuffleArray([...contacts]);
-            
+            const shuffledContacts = shuffleArray([...uniqueContacts]);
+
             // Generate HTML for each contact
             shuffledContacts.forEach(contact => {
                 const contactCard = document.createElement('div');

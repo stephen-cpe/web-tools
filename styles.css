@@ -708,3 +708,42 @@ nav button:hover {
 .work-in-progress .fa-exclamation-triangle {
     margin-right: 8px;
 }
+
+/* Color Hex Visualizer Styles */
+#section-color-hex h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.ch-container {
+    max-width: 500px;
+    margin: 0 auto;
+    background: #2b2b2b;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.ch-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.ch-input {
+    width: 100px;
+    padding: 10px;
+    background: #3c3c3c;
+    border: 1px solid #555;
+    color: #e0e0e0;
+    border-radius: 4px;
+    font-family: monospace;
+    font-size: 1em;
+    margin-right: 10px;
+}
+
+.ch-bar {
+    flex: 1;
+    height: 40px;
+    border: 1px solid #555;
+    border-radius: 4px;
+}
