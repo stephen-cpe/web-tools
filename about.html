@@ -4,20 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Page - Work In Progress</title>
+    <link rel="stylesheet" href="styles.css">
     <style>
+        /* Applying dark theme styles consistent with styles.css */
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
             line-height: 1.6;
-            color: #333;
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
+            background-color: #1e1e1e;
+            color: #e0e0e0;
         }
         .container {
             display: flex;
             flex-wrap: wrap;
             gap: 20px;
-            align-items: center; /* Aligns items vertically */
+            align-items: center;
         }
         .profile {
             flex: 1;
@@ -33,38 +36,37 @@
             border-radius: 8px;
         }
         h1, h2 {
-            border-bottom: 2px solid #eee;
+            border-bottom: 2px solid #30363d;
             padding-bottom: 10px;
         }
         .course-section {
             margin-bottom: 10px;
-            border: 1px solid #ddd;
+            border: 1px solid #30363d;
             border-radius: 8px;
-            overflow: hidden; /* Ensures the border radius is respected by children */
+            overflow: hidden;
         }
-        /* Style for the clickable summary */
         summary {
             cursor: pointer;
             padding: 15px;
             font-weight: bold;
             font-size: 1.1em;
-            background-color: #f9f9f9;
-            outline: none; /* Removes the focus ring */
-            list-style-position: inside; /* Keeps the dropdown arrow aligned */
+            background-color: #2b2b2b;
+            outline: none;
+            list-style-position: inside;
         }
-        /* Add a hover effect for better UX */
         summary:hover {
-            background-color: #f1f1f1;
+            background-color: #3c3c3c;
         }
         .details-content {
             padding: 15px;
-            border-top: 1px solid #ddd;
+            border-top: 1px solid #30363d;
+            background-color: #2b2b2b;
         }
         .progress-bar-container {
             width: 100%;
-            background-color: #f3f3f3;
+            background-color: #3c3c3c;
             border-radius: 5px;
-            margin: 5px 0 15px 0; /* Added bottom margin */
+            margin: 5px 0 15px 0;
         }
         .progress-bar {
             height: 20px;
@@ -78,10 +80,10 @@
             margin-right: 10px;
         }
         .complete {
-            color: green;
+            color: #28a745; /* Brighter green for dark mode */
         }
         .incomplete {
-            color: orange;
+            color: #fd7e14; /* Orange for incomplete */
         }
         ul {
             list-style: none;
@@ -91,11 +93,18 @@
         li {
             margin-bottom: 5px;
         }
-        .site-footer {
-            text-align: center;
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 2px solid #eee;
+        /* WIP notice styling for dark mode */
+        .wip-notice {
+            background-color: rgba(255, 243, 205, 0.1);
+            border: 1px solid rgba(255, 234, 167, 0.2);
+            padding: 10px;
+            border-radius: 5px;
+            color: #fff3cd;
+            margin-top: 15px;
+        }
+        /* Footer styles are in styles.css, but ensuring link colors are correct */
+        .site-footer a {
+            color: #58a6ff;
         }
     </style>
 </head>
@@ -108,7 +117,7 @@
         <div class="progress-report">
             <h1>My Progress</h1>
             <p>Currently pursuing a Master of Science in Software Engineering (MSSE) at Quantic School of Business & Technology.</p>
-            <p style="background-color: #fff3cd; border: 1px solid #ffeaa7; padding: 10px; border-radius: 5px; color: #856404; margin-top: 15px;">
+            <p class="wip-notice">
                 <strong>Work in Progress:</strong> This page is still under development and will be updated regularly as I continue my studies and projects.
             </p>
         </div>
@@ -116,11 +125,11 @@
 
     <h2>MSSE Progress Report</h2>
 
-    <details class="course-section">
-        <summary>MANAGING SOFTWARE ENGINEER (100%)</summary>
+    <details class="course-section" data-progress="100">
+        <summary>MANAGING SOFTWARE ENGINEER</summary>
         <div class="details-content">
             <div class="progress-bar-container">
-                <div class="progress-bar" style="width: 100%;">100%</div>
+                <div class="progress-bar"></div>
             </div>
             <ul>
                 <li><span class="status complete">✔</span> Managing Application Development</li>
@@ -132,11 +141,11 @@
         </div>
     </details>
 
-    <details class="course-section">
-        <summary>WEB APPLICATION AND INTERFACE DESIGN (100%)</summary>
+    <details class="course-section" data-progress="100">
+        <summary>WEB APPLICATION AND INTERFACE DESIGN</summary>
         <div class="details-content">
             <div class="progress-bar-container">
-                <div class="progress-bar" style="width: 100%;">100%</div>
+                <div class="progress-bar"></div>
             </div>
             <ul>
                 <li><span class="status complete">✔</span> Web Application Foundations</li>
@@ -148,11 +157,11 @@
         </div>
     </details>
 
-    <details class="course-section">
-        <summary>SOFTWARE DESIGN AND ARCHITECTURE (80%)</summary>
+    <details class="course-section" data-progress="80">
+        <summary>SOFTWARE DESIGN AND ARCHITECTURE</summary>
         <div class="details-content">
             <div class="progress-bar-container">
-                <div class="progress-bar" style="width: 80%;">80%</div>
+                <div class="progress-bar"></div>
             </div>
             <ul>
                 <li><span class="status complete">✔</span> Design and UML</li>
@@ -164,15 +173,15 @@
         </div>
     </details>
 
-    <details class="course-section">
-        <summary>SOFTWARE TESTING AND CI/CD (40%)</summary>
+    <details class="course-section" data-progress="40">
+        <summary>SOFTWARE TESTING AND CI/CD</summary>
         <div class="details-content">
             <div class="progress-bar-container">
-                <div class="progress-bar" style="width: 20%;">40%</div>
+                <div class="progress-bar"></div>
             </div>
             <ul>
                 <li><span class="status complete">✔</span> Introduction to Git and GitHub</li>
-                <li><span class="status incomplete">✔</span> Software Testing </li>
+                <li><span class="status complete">✔</span> Software Testing </li>
                 <li><span class="status incomplete">●</span> CI/CD and Software Maintenance (not yet complete)</li>
                 <li><span class="status incomplete">●</span> Performance Monitoring (not yet complete)</li>
                 <li><span class="status incomplete">●</span> Exam (not yet complete)</li>
@@ -195,7 +204,7 @@
     </ul>
 
     <footer class="site-footer">
-        <a href="#">PROJECT 1</a> |
+        <a href="https://github.com/stephen-cpe/inventory_management_system">PROJECT 1</a> |
         <a href="#">PROJECT 2</a> |
         <a href="#">PROJECT 3</a> |
         <a href="#">PROJECT 4</a> |
@@ -203,5 +212,26 @@
         <a href="#">PROJECT 6</a> |
         <a href="about.html">ABOUT</a>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const courseSections = document.querySelectorAll('.course-section');
+            courseSections.forEach(section => {
+                const progress = section.dataset.progress;
+                if (progress) {
+                    const summary = section.querySelector('summary');
+                    const progressBar = section.querySelector('.progress-bar');
+
+                    // Update summary
+                    summary.textContent += ` (${progress}%)`;
+
+                    // Update progress bar
+                    progressBar.style.width = `${progress}%`;
+                    progressBar.textContent = `${progress}%`;
+                }
+            });
+        });
+    </script>
+
 </body>
 </html>
