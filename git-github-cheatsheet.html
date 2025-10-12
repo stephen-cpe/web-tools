@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Git & GitHub Commands Cheatsheet</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+  <section class="tool-section active">
+    <h2>Git & GitHub Commands Cheatsheet</h2>
+
+    <div class="topic">
+      <h3><i class="fas fa-folder-plus"></i> 1. FOR INITIAL PROJECTS or IF YOU ARE JUST TESTING GITHUB</h3>
+      <div class="topic-steps">
+        <div class="step">
+          <strong>Step 1 — Initialize repository</strong>
+          <pre>git init</pre>
+        </div>
+        <div class="step">
+          <strong>Step 2 — Create / edit .gitignore</strong>
+          <pre>(create a file named .gitignore and add patterns)
+e.g. node_modules/
+     __pycache__/
+     .env</pre>
+        </div>
+        <div class="step">
+          <strong>Step 3 — Add files to staging</strong>
+          <pre>git add .</pre>
+        </div>
+        <div class="step">
+          <strong>Step 4 — Commit</strong>
+          <pre>git commit -m "Initial commit."</pre>
+        </div>
+        <div class="step">
+          <strong>Step 5 — Add remote (replace URL)</strong>
+          <pre>git remote add origin https://github.com/username/repo.git</pre>
+        </div>
+        <div class="step">
+          <strong>Step 6 — Push to GitHub</strong>
+          <pre>git push -u origin main</pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="topic">
+      <h3><i class="fas fa-folder-open"></i> 2. FOR EXISTING PROJECTS</h3>
+      <div class="topic-steps">
+        <div class="step">
+          <strong>Step 1 — Check status</strong>
+          <pre>git status</pre>
+        </div>
+        <div class="step">
+          <strong>Step 2 — Add files (specific)</strong>
+          <pre>git add file1 file2</pre>
+        </div>
+        <div class="step">
+          <strong>Step 3 — Add all changes</strong>
+          <pre>git add .</pre>
+        </div>
+        <div class="step">
+          <strong>Step 4 — Commit</strong>
+          <pre>git commit -m "Your descriptive commit message here"</pre>
+        </div>
+        <div class="step">
+          <strong>Step 5 — Pull latest (avoid conflicts)</strong>
+          <pre>git pull origin main</pre>
+        </div>
+        <div class="step">
+          <strong>Step 6 — Push commits</strong>
+          <pre>git push origin main</pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="topic">
+      <h3><i class="fas fa-ban"></i> 3. If files in .gitignore are still being pushed</h3>
+      <div class="topic-steps">
+        <div class="step">
+          <strong>Step 1 — Remove cached files</strong>
+          <pre>git rm -r --cached .</pre>
+        </div>
+        <div class="step">
+          <strong>Step 2 — Re-add files (respect .gitignore)</strong>
+          <pre>git add .</pre>
+        </div>
+        <div class="step">
+          <strong>Step 3 — Commit the removal</strong>
+          <pre>git commit -m "Remove ignored files"</pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="topic">
+      <h3><i class="fas fa-download"></i> 4. Getting Code from a Remote Repository</h3>
+      <div class="topic-steps">
+        <div class="step">
+          <strong>A. First Time (Cloning)</strong>
+          <p>If you don't have the project locally, clone it. This downloads the entire repository to a new folder.</p>
+          <pre>git clone https://github.com/username/repo.git</pre>
+        </div>
+        <div class="step">
+          <strong>B. Existing Project (Pulling)</strong>
+          <p>If you have already cloned the project and want to get the latest updates from the remote repository.</p>
+          <pre># Navigate into your project directory first
+cd repo
+# Pull the latest changes
+git pull origin main</pre>
+        </div>
+        <div class="step">
+          <strong class="small">Note</strong>
+          <pre>You only need to `git clone` once. Afterwards, use `git pull` to update your local copy with changes from the remote.</pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="topic">
+      <h3><i class="fas fa-trash-alt"></i> 5. To delete the branch "456123branch" (local & remote)</h3>
+      <div class="topic-steps">
+        <div class="step">
+          <strong>Step 1 — Switch to a safe branch (e.g., main)</strong>
+          <pre>git checkout main</pre>
+        </div>
+        <div class="step">
+          <strong>Step 2 — Delete local branch (safe)</strong>
+          <pre>git branch -d 456123branch</pre>
+        </div>
+        <div class="step">
+          <strong>Step 3 — Force-delete local branch (if unmerged)</strong>
+          <pre>git branch -D 456123branch</pre>
+        </div>
+        <div class="step">
+          <strong>Step 4 — Delete remote branch</strong>
+          <pre>git push origin --delete 456123branch
+# or alternative:
+git push origin :456123branch</pre>
+        </div>
+        <div class="step">
+          <strong>Step 5 — Verify</strong>
+          <pre>git branch       # local
+git branch -r    # remote</pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="footer.js"></script>
+
+
+</body>
+</html>

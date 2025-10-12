@@ -21,7 +21,7 @@ async function showMyPublicIP() {
         if (ipv4Result.status === 'fulfilled') {
             const data = await ipv4Result.value.json();
             ipv4 = data.ip;
-            ipDisplay.push(`<b>IPv4:</b> ${ipv4}`);
+            ipDisplay.push(`${ipv4}`);
         } else {
             console.error('Error fetching IPv4:', ipv4Result.reason);
         }
@@ -29,7 +29,7 @@ async function showMyPublicIP() {
         if (ipv6Result.status === 'fulfilled') {
             const data = await ipv6Result.value.json();
             if (data.ip && data.ip !== ipv4) {
-                 ipDisplay.push(`<b>IPv6:</b> ${data.ip}`);
+                 ipDisplay.push(`${data.ip}`);
             }
         } else {
              console.error('Error fetching IPv6:', ipv6Result.reason);

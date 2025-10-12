@@ -330,6 +330,7 @@ nav button:hover {
     border: 1px solid #555;
     padding: 10px;
     font-family: monospace;
+    box-sizing: border-box;
 }
 
 .tg-section button {
@@ -746,4 +747,174 @@ nav button:hover {
     height: 40px;
     border: 1px solid #555;
     border-radius: 4px;
+}
+
+/* Applying dark theme styles consistent with styles.css */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    line-height: 1.6;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+}
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.profile {
+    flex: 0 0 200px; /* Don't grow, don't shrink, set a base width of 200px */
+    margin-right: 25px; /* Creates a controlled gap */
+}
+.profile-details {
+    flex: 1; /* Allow this section to take up the remaining space */
+    min-width: 400px;
+}
+.profile-details h1 {
+    margin-top: 0;
+}
+.profile img {
+    width: 100%; /* Make the image fill its container */
+    height: auto;
+    border-radius: 8px;
+    display: block; /* Removes potential whitespace below the image */
+}
+h1, h2 {
+    border-bottom: 2px solid #30363d;
+    padding-bottom: 10px;
+}
+
+.course-section {
+    max-width: 600px; /* Sets the maximum width to 50% of the body's 1200px max-width */
+    margin-bottom: 10px;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    overflow: hidden;
+}
+summary {
+    cursor: pointer;
+    padding: 15px;
+    font-weight: bold;
+    font-size: 1.1em;
+    background-color: #2b2b2b;
+    outline: none;
+    list-style-position: inside;
+}
+summary:hover {
+    background-color: #3c3c3c;
+}
+.details-content {
+    padding: 15px;
+    border-top: 1px solid #30363d;
+    background-color: #2b2b2b;
+}
+.progress-bar-container {
+    width: 100%;
+    background-color: #3c3c3c;
+    border-radius: 5px;
+    margin: 5px 0 15px 0;
+}
+.progress-bar {
+    height: 20px;
+    background-color: #4CAF50;
+    text-align: center;
+    line-height: 20px;
+    color: white;
+    border-radius: 5px;
+}
+.status {
+    margin-right: 10px;
+}
+.complete {
+    color: #28a745; /* Brighter green for dark mode */
+}
+.incomplete {
+    color: #fd7e14; /* Orange for incomplete */
+}
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+li {
+    margin-bottom: 5px;
+}
+/* WIP notice styling for dark mode */
+.wip-notice {
+    max-width: 400px;
+    background-color: rgba(255, 243, 205, 0.1);
+    border: 1px solid rgba(255, 234, 167, 0.2);
+    padding: 10px;
+    border-radius: 5px;
+    color: #fff3cd;
+    margin-top: 15px;
+}
+/* Footer styles are in styles.css, but ensuring link colors are correct */
+.site-footer a {
+    color: #58a6ff;
+}
+
+.topic {
+  background: #2b2b2b;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  border: 1px solid #444;
+}
+
+.topic h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: #4CAF50;
+  border-bottom: 2px solid #4CAF50;
+  padding-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.topic-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.step {
+  background: #333;
+  padding: 15px;
+  border-radius: 6px;
+  border-left: 4px solid #2196F3;
+}
+
+.step pre {
+  background: #2c2c2c;
+  color: #f8f8f2;
+  padding: 10px;
+  border-radius: 5px;
+  overflow-x: auto;
+  margin: 8px 0 0 0;
+  font-family: monospace;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  border: 1px solid #444;
+}
+
+.step strong {
+  display: block;
+  margin-bottom: 6px;
+  color: #e74c3c;
+}
+
+.small { 
+  font-size: 0.9rem; 
+  color: #666; 
+  margin-top: 6px 
+}
+
+.tool-section {
+  padding: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
 }
