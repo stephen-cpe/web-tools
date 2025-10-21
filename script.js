@@ -4,7 +4,7 @@ if (typeof luxon === 'undefined') {
     alert('Luxon failed to load. Please check your internet connection and reload.');
 }
 
-['clocks', 'ip', 'tree', 'compare', 'sorter', 'password-generator', 'color-hex'].forEach(name => {
+['clocks', 'ip', 'tree', 'compare', 'sorter', 'password-generator', 'color-hex', 'mermaid'].forEach(name => {
     const tab = document.getElementById('tab-' + name);
     if (tab) {
         tab.addEventListener('click', () => {

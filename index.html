@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Web Tools Hub</title>
+	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 	<link rel="stylesheet" href="styles.css">
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
@@ -17,6 +18,7 @@
         <button id="tab-compare">Text Compare</button>
         <button id="tab-sorter">Number Sorter</button>
         <button id="tab-password-generator">Password Generator</button>
+        <button id="tab-mermaid">Mermaid Diagrams</button>
     </nav>
 
     <section id="section-compare" class="tool-section">
@@ -79,6 +81,35 @@
             <div class="pg-password-list-container">
                 <h3>Generated Passwords</h3>
                 <div id="pg-password-list" class="pg-password-list"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="section-mermaid" class="tool-section">
+        <h2>Mermaid Diagram Generator</h2>
+        <div class="mermaid-container">
+            <div class="mermaid-input-section">
+                <h3>Mermaid Code</h3>
+                <textarea id="mermaid-input" placeholder="Enter your Mermaid diagram code here...">graph TD
+    A[Start] --> B{Decision}
+    B -->|Yes| C[Process Yes]
+    B -->|No| D[Process No]
+    C --> E[End]
+    D --> E</textarea>
+                <div class="mermaid-controls">
+                    <button id="mermaid-generate">Generate Diagram</button>
+                    <button id="mermaid-copy">Copy Diagram</button>
+                    <button id="mermaid-reset">Reset</button>
+                </div>
+            </div>
+            <div class="mermaid-output-section">
+                <h3>Diagram Preview</h3>
+                <div id="mermaid-output" class="mermaid-output"></div>
+                <div class="mermaid-zoom-controls">
+                    <button id="zoom-out">Zoom Out</button>
+                    <div class="mermaid-zoom-display">100%</div>
+                    <button id="zoom-in">Zoom In</button>
+                </div>
             </div>
         </div>
     </section>
@@ -170,6 +201,17 @@
     <script src="passwordGenerator.js"></script>
     <script src="textCompare.js"></script>
     <script src="colorHexVisualizer.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.initialize({ 
+            startOnLoad: false,
+            theme: 'dark',
+            securityLevel: 'loose',
+            fontFamily: 'Arial',
+            fontSize: 14
+        });
+    </script>
+    <script src="mermaidDiagram.js"></script>
 
 	<script src="footer.js"></script>
 </body>

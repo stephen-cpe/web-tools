@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Random Vehicle Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 10px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .vehicle-card {
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            font-size: 12px;
+        }
+        .make {
+            font-weight: bold;
+            margin-bottom: 3px;
+        }
+        .model, .color, .regnum, .type, .charge {
+            margin-bottom: 3px;
+        }
+        .charge {
+            color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-container" id="vehicleGrid">
+        <!-- Vehicles will be dynamically generated here -->
+    </div>
+
+    <script src="vehicle-data.js"></script>
+    <script src="utils.js"></script>
+    <script>
+
+
+
+        // Function to generate vehicle cards
+        function generateVehicleCards() {
+            const vehicleGrid = document.getElementById('vehicleGrid');
+            vehicleGrid.innerHTML = ''; // Clear existing content
+
+            // Deduplicate based on all vehicle properties and limit to 120
+            const uniqueVehicles = getUniqueItems(vehicles, ['make', 'model', 'color', 'regnum', 'type', 'charge']);
+
+            // Shuffle the vehicles array
+            const shuffledVehicles = shuffleArray([...uniqueVehicles]);
+
+            // Generate HTML for each vehicle
+            shuffledVehicles.forEach(vehicle => {
+                const vehicleCard = document.createElement('div');
+                vehicleCard.className = 'vehicle-card';
+                vehicleCard.innerHTML = `
+                    <div class="make">${vehicle.make}</div>
+                    <div class="model">Model: ${vehicle.model}</div>
+                    <div class="color">Color: ${vehicle.color}</div>
+                    <div class="regnum">Reg: ${vehicle.regnum}</div>
+                    <div class="type">Type: ${vehicle.type}</div>
+                    ${vehicle.charge ? '<div class="charge">Charge: ' + vehicle.charge + '</div>' : ''}
+                `;
+                vehicleGrid.appendChild(vehicleCard);
+            });
+        }
+
+        // Generate vehicle cards when page loads
+        window.onload = generateVehicleCards;
+    </script>
+</body>
+</html>
