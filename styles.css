@@ -256,7 +256,9 @@ nav button:hover {
     border-left: 4px solid #f44336;
 }
 
-#section-ip h2 {
+#section-ip h2,
+#section-tree h2,
+#section-sorter h2 {
     text-align: center;
 }
 
