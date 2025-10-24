@@ -1,7 +1,7 @@
 const vehicles = [
     { make: "Toyota", model: "Camry", color: "Silver", regnum: "AB1234", type: "Car", charge: null },
     { make: "Honda", model: "Accord", color: "Black", regnum: "CD5678", type: "Car", charge: null },
-    { make: "Tesla", model: "Model 3", color: "Red", regnum: "EF9012", type: "Car", charge: "85%" },
+    { make: "Tesla", model: "Model3", color: "Red", regnum: "EF9012", type: "Car", charge: "85%" },
     { make: "HarleyDavidson", model: "Iron883", color: "Black", regnum: "GH3456", type: "Motorcycle", charge: null },
     { make: "Ford", model: "F150", color: "Blue", regnum: "IJ7890", type: "Truck", charge: null },
     { make: "Nissan", model: "Leaf", color: "White", regnum: "KL2345", type: "Car", charge: "60%" },

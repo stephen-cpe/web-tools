@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Random Parking Lot Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 10px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .parking-lot-card {
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            font-size: 12px;
+        }
+        .name {
+            font-weight: bold;
+            margin-bottom: 3px;
+        }
+        .location {
+            margin-bottom: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-container" id="parkingLotGrid">
+        <!-- Parking lots will be dynamically generated here -->
+    </div>
+
+    <script src="parking-lot-data.js"></script>
+    <script src="utils.js"></script>
+    <script>
+        // Function to generate parking lot cards
+        function generateParkingLotCards() {
+            const parkingLotGrid = document.getElementById('parkingLotGrid');
+            parkingLotGrid.innerHTML = ''; // Clear existing content
+
+            // Deduplicate based on all parking lot properties
+            const uniqueParkingLots = getUniqueItems(parkingLots, ['name', 'location']);
+
+            // Shuffle the parking lots array
+            const shuffledParkingLots = shuffleArray([...uniqueParkingLots]);
+
+            // Generate HTML for each parking lot
+            shuffledParkingLots.forEach(parkingLot => {
+                const parkingLotCard = document.createElement('div');
+                parkingLotCard.className = 'parking-lot-card';
+                parkingLotCard.innerHTML = `
+                    <div class="name">${parkingLot.name}</div>
+                    <div class="location">Location: ${parkingLot.location}</div>
+                `;
+                parkingLotGrid.appendChild(parkingLotCard);
+            });
+        }
+
+        // Generate parking lot cards when page loads
+        window.onload = generateParkingLotCards;
+    </script>
+</body>
+</html>
