@@ -14,10 +14,13 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(data => {
             if (document.getElementById('footer-container')) {
                 let footerContent = data;
-                // Check if the current page is about.html
+                // Check if the current page is about.html or certificates.html
                 if (window.location.pathname.endsWith('about.html')) {
                     // Replace the ABOUT link with WEB TOOLS link
                     footerContent = footerContent.replace('<a href="about.html">ABOUT</a>', '<a href="index.html">WEB TOOLS</a>');
+                } else if (window.location.pathname.endsWith('certificates.html')) {
+                    // Replace the CERTIFICATES link with WEB TOOLS link
+                    footerContent = footerContent.replace('<a href="certificates.html">CERTIFICATES</a>', '<a href="index.html">WEB TOOLS</a>');
                 }
                 document.getElementById('footer-container').innerHTML = footerContent;
             }
@@ -34,10 +37,13 @@ document.addEventListener('DOMContentLoaded', function() {
     <a href="#">PROJECT 4</a> |
     <a href="#">PROJECT 5</a> |
     <a href="#">PROJECT 6</a> |
+    <a href="certificates.html">CERTIFICATES</a> |
     <a href="about.html">ABOUT</a>
 `;
             if (window.location.pathname.endsWith('about.html')) {
                 fallbackContent = fallbackContent.replace('<a href="about.html">ABOUT</a>', '<a href="index.html">WEB TOOLS</a>');
+            } else if (window.location.pathname.endsWith('certificates.html')) {
+                fallbackContent = fallbackContent.replace('<a href="certificates.html">CERTIFICATES</a>', '<a href="index.html">WEB TOOLS</a>');
             }
             fallbackFooter.innerHTML = fallbackContent;
             document.body.appendChild(fallbackFooter);
