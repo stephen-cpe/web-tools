@@ -6,9 +6,137 @@
     <title>About Page - Work In Progress</title>
 	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
     <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .home-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+        }
+
+        .home-button a {
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 15px;
+            background-color: #333;
+            color: #e0e0e0;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .home-button a:hover {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .home-button a i {
+            margin-right: 8px;
+        }
+
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-content-wrapper {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            gap: 20px;
+            width: 90%;
+            height: 90%;
+        }
+        
+        .lightbox-image-container {
+            flex: 1;
+            max-width: 60%;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+        
+        .certificate-details {
+            width: 40%;
+            background: #2b2b2b;
+            border-left: 2px solid #444;
+            padding: 20px;
+            overflow-y: auto;
+            display: block;
+        }
+        
+        .certificate-details-content h3 {
+            color: #4CAF50;
+            margin-top: 0;
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 10px;
+        }
+
+        .certificate-details-content p {
+            margin: 10px 0;
+            padding: 8px 0;
+            border-bottom: 1px solid #444;
+        }
+
+        .certificate-details-content p strong {
+            display: inline-block;
+            width: 80px;
+            color: #e0e0e0;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .lightbox-close:hover {
+            color: #4CAF50;
+        }
+
+        @media (max-width: 1100px) {
+            .lightbox-content-wrapper {
+                flex-direction: column;
+                align-items: center;
+                overflow-y: auto;
+                height: 95%;
+                gap: 10px;
+            }
+            .lightbox-image-container {
+                max-width: 90%;
+                flex: 0 1 auto;
+            }
+            .certificate-details {
+                width: 90%;
+                border-left: none;
+                border-top: 2px solid #444;
+            }
+        }
+    </style>
 
 </head>
 <body>
+    <div class="home-button">
+        <a href="index.html" title="Home"><i class="fas fa-home"></i> Home</a>
+    </div>
 
     <div class="container">
         <div class="profile">
@@ -32,10 +160,10 @@
                 <div class="progress-bar"></div>
             </div>
             <ul>
-                <li><span class="status complete">✔</span> Managing Application Development</li>
-                <li><span class="status complete">✔</span> User-Centered Design</li>
-                <li><span class="status complete">✔</span> Cloud Foundations</li>
-                <li><span class="status complete">✔</span> Professionalism and Ethics</li>
+                <li><span class="status complete">✔</span> <a href="#" class="certificate-link" data-cert-name="Managing Application Development">Managing Application Development</a></li>
+                <li><span class="status complete">✔</span> <a href="#" class="certificate-link" data-cert-name="User-Centered Design">User-Centered Design</a></li>
+                <li><span class="status complete">✔</span> <a href="#" class="certificate-link" data-cert-name="Cloud Foundations">Cloud Foundations</a></li>
+                <li><span class="status complete">✔</span> <a href="#" class="certificate-link" data-cert-name="Professionalism And Ethics">Professionalism and Ethics</a></li>
                 <li><span class="status complete">✔</span> Exam and Project</li>
             </ul>
         </div>
@@ -48,10 +176,10 @@
                 <div class="progress-bar"></div>
             </div>
             <ul>
-                <li><span class="status complete">✔</span> Web Application Foundations</li>
-                <li><span class="status complete">✔</span> Interactive Web Pages</li>
-                <li><span class="status complete">✔</span> Relational Databases</li>
-                <li><span class="status complete">✔</span> Back Ends</li>
+                <li><span class="status complete">✔</span> <a href="#" class="certificate-link" data-cert-name="Web Application Foundations">Web Application Foundations</a></li>
+                <li><span class="status complete">✔</span> <a href="#" class="certificate-link" data-cert-name="Interactive Web Pages">Interactive Web Pages</a></li>
+                <li><span class="status complete">✔</span> <a href="#" class="certificate-link" data-cert-name="Relational Databases">Relational Databases</a></li>
+                <li><span class="status complete">✔</span> <a href="#" class="certificate-link" data-cert-name="Back Ends">Back Ends</a></li>
                 <li><span class="status complete">✔</span> Exam and Project</li>
             </ul>
         </div>
@@ -64,10 +192,10 @@
                 <div class="progress-bar"></div>
             </div>
             <ul>
-                <li><span class="status complete">✔</span> Design and UML</li>
-                <li><span class="status complete">✔</span> Paradigms and Patterns</li>
-                <li><span class="status complete">✔</span> Enterprise Architectures</li>
-                <li><span class="status complete">✔</span> Cloud Services and Architectures</li>
+                <li><span class="status complete">✔</span> <a href="#" class="certificate-link" data-cert-name="Design And UML">Design and UML</a></li>
+                <li><span class="status complete">✔</span> <a href="#" class="certificate-link" data-cert-name="Paradigms And Patterns">Paradigms and Patterns</a></li>
+                <li><span class="status complete">✔</span> <a href="#" class="certificate-link" data-cert-name="Enterprise Architectures">Enterprise Architectures</a></li>
+                <li><span class="status complete">✔</span> <a href="#" class="certificate-link" data-cert-name="Cloud Services And Architectures">Cloud Services and Architectures</a></li>
                 <li><span class="status incomplete">✔</span> Exam and Project</li>
             </ul>
         </div>
@@ -80,10 +208,10 @@
                 <div class="progress-bar"></div>
             </div>
             <ul>
-                <li><span class="status complete">✔</span> Introduction to Git and GitHub</li>
-                <li><span class="status complete">✔</span> Software Testing </li>
-                <li><span class="status complete">✔</span> CI/CD and Software Maintenance</li>
-                <li><span class="status complete">✔</span> Performance Monitoring</li>
+                <li><span class="status complete">✔</span> <a href="#" class="certificate-link" data-cert-name="Introduction to Git And Github">Introduction to Git and GitHub</a></li>
+                <li><span class="status complete">✔</span> <a href="#" class="certificate-link" data-cert-name="Software Testing">Software Testing</a></li>
+                <li><span class="status complete">✔</span> <a href="#" class="certificate-link" data-cert-name="CI/CD And Software-Maintenance">CI/CD and Software Maintenance</a></li>
+                <li><span class="status complete">✔</span> <a href="#" class="certificate-link" data-cert-name="Performance Monitoring">Performance Monitoring</a></li>
                 <li><span class="status incomplete">●</span> Exam (not yet complete)</li>
             </ul>
         </div>
@@ -110,7 +238,7 @@
 
     <h3>Codecademy</h3>
     <ul>
-        <li><span class="status complete">✔</span><a href="https://www.codecademy.com/enrolled/paths/generative-ai-for-everyone" target="_blank">Generative AI for Everyone (Skill Path)</a></li>
+        <li><span class="status complete">✔</span><a href="#" class="certificate-link" data-cert-name="Generative AI for Everyone">Generative AI for Everyone (Skill Path)</a></li>
         <li>More Courses to be added.</li>
     </ul>
 
@@ -121,6 +249,23 @@
     </ul>
 
     <script src="footer.js"></script>
+
+    <!-- Lightbox Modal -->
+    <div id="certificateLightbox" class="lightbox">
+        <span id="lightboxClose" class="lightbox-close">&times;</span>
+        <div class="lightbox-content-wrapper">
+            <div class="lightbox-image-container">
+                <img id="lightboxImage" src="" alt="Certificate" style="max-width: 100%; max-height: 80vh; object-fit: contain; border-radius: 8px; box-shadow: 0 10px 20px rgba(0,0,0,0.5);">
+            </div>
+            <div id="certificateDetails" class="certificate-details lightbox-details">
+                <div id="certificateDetailsContent" class="certificate-details-content">
+                    <!-- Certificate details will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="certificates.js"></script>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -139,7 +284,56 @@
                     progressBar.textContent = `${progress}%`;
                 }
             });
+
+            // Certificate link handlers
+            const certificateLinks = document.querySelectorAll('.certificate-link');
+            certificateLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const certName = this.getAttribute('data-cert-name');
+                    const cert = certificatesData.find(c => c.name === certName);
+                    if (cert) {
+                        showCertificate(cert);
+                    }
+                });
+            });
+
+            // Lightbox functionality
+            document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+            
+            document.getElementById('certificateLightbox').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeLightbox();
+                }
+            });
+
+            document.addEventListener('keydown', function(e) {
+                if (document.getElementById('certificateLightbox').classList.contains('active')) {
+                    if (e.key === 'Escape') {
+                        closeLightbox();
+                    }
+                }
+            });
         });
+
+        function showCertificate(cert) {
+            document.getElementById('lightboxImage').src = `certificates/${cert.filename}`;
+            
+            const detailsContent = document.getElementById('certificateDetailsContent');
+            detailsContent.innerHTML = `
+                <h3>${cert.name}</h3>
+                <p><strong>Certificate:</strong> ${cert.name}</p>
+                <p><strong>Issuer:</strong> ${cert.issuer}</p>
+                <p><strong>Date:</strong> ${cert.dateFormatted}</p>
+                <p><strong>Filename:</strong> ${cert.filename}</p>
+            `;
+            
+            document.getElementById('certificateLightbox').classList.add('active');
+        }
+
+        function closeLightbox() {
+            document.getElementById('certificateLightbox').classList.remove('active');
+        }
     </script>
 
 </body>
