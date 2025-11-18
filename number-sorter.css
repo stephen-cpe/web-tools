@@ -1,0 +1,40 @@
+/* Number Sorter Styles */
+.ns-container {
+    display: flex;
+    gap: 20px;
+}
+
+.ns-textarea {
+    flex: 1;
+}
+
+.ns-textarea textarea {
+    width: 100%;
+    height: 200px;
+    background: #2c2c2c;
+    color: #e0e0e0;
+    border: 2px solid #444;
+    padding: 10px;
+    font-family: monospace;
+}
+
+.ns-controls {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.ns-controls button {
+    padding: 10px 20px;
+    margin: 0 5px;
+    background: #4CAF50;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.ns-counter {
+    text-align: right;
+    font-size: 12px;
+    color: #aaa;
+    margin-top: 5px;
+}

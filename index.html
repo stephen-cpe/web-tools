@@ -5,7 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Web Tools Hub</title>
 	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-	<link rel="stylesheet" href="styles.css">
+	<link rel="stylesheet" href="common.css">
+	<link rel="stylesheet" href="clocks.css">
+	<link rel="stylesheet" href="ip-tools.css">
+	<link rel="stylesheet" href="number-sorter.css">
+	<link rel="stylesheet" href="ascii-tree.css">
+	<link rel="stylesheet" href="password-generator.css">
+	<link rel="stylesheet" href="mermaid-diagram.css">
+	<link rel="stylesheet" href="about.css">
+	<link rel="stylesheet" href="text-compare.css">
+	<link rel="stylesheet" href="color-hex.css">
+	<link rel="stylesheet" href="status-monitor.css">
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
 </head>
@@ -19,6 +29,8 @@
         <button id="tab-sorter">Number Sorter</button>
         <button id="tab-password-generator">Password Generator</button>
         <button id="tab-mermaid">Mermaid Diagrams</button>
+        <!-- Added Status navigation button -->
+        <button id="tab-status">Status</button>
     </nav>
 
     <section id="section-compare" class="tool-section">
@@ -114,6 +126,42 @@
         </div>
     </section>
 
+    <!-- Added new Status section -->
+    <section id="section-status" class="tool-section">
+        <h2>Service Status Monitor</h2>
+        <div class="status-container">
+            <p class="wip-notice">
+                <strong>Work in Progress:</strong> This page is still under development and the data might not be accurate.
+            </p>
+            <div class="status-header">
+                <p class="status-description">Monitor the operational status of major cloud service providers</p>
+                <button id="status-refresh" class="status-refresh-btn">
+                    <i class="fas fa-sync-alt"></i> Refresh Status
+                </button>
+            </div>
+            <div id="status-grid" class="status-grid">
+                <!-- Status cards will be dynamically inserted here -->
+            </div>
+            <div class="status-legend">
+                <div class="legend-item">
+                    <span class="status-dot status-operational"></span>
+                    <span>Operational</span>
+                </div>
+                <div class="legend-item">
+                    <span class="status-dot status-degraded"></span>
+                    <span>Degraded Performance</span>
+                </div>
+                <div class="legend-item">
+                    <span class="status-dot status-major"></span>
+                    <span>Major Outage</span>
+                </div>
+                <div class="legend-item">
+                    <span class="status-dot status-unknown"></span>
+                    <span>Checking...</span>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <section id="section-clocks" class="tool-section active">
          <div class="converter-container">
@@ -214,5 +262,6 @@
     <script src="mermaidDiagram.js"></script>
 
 	<script src="footer.js"></script>
+	<script src="statusMonitor.js"></script>
 </body>
 </html>

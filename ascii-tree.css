@@ -1,0 +1,50 @@
+/* Tree Generator Styles */
+.tg-sections {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+@media (min-width: 768px) {
+    .tg-sections {
+        flex-direction: row;
+    }
+}
+
+.tg-section {
+    flex: 1;
+    background: #2b2b2b;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.tg-section textarea,
+.tg-section pre {
+    width: 100%;
+    min-height: 150px;
+    background: #3c3c3c;
+    color: #ccc;
+    border: 1px solid #555;
+    padding: 10px;
+    font-family: monospace;
+    box-sizing: border-box;
+}
+
+.tg-section button {
+    margin-top: 10px;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background: #5dade2;
+    color: #1e1e1e;
+}
+
+.tg-section button:hover {
+    background: #48c9b0;
+}
+
+.tg-error {
+    color: #ff6b6b;
+    margin-top: 5px;
+}

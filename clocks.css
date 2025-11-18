@@ -1,0 +1,91 @@
+/* Clocks Section */
+.converter-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.time-converter {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    max-width: 400px;
+}
+
+.time-converter input {
+    padding: 10px;
+    width: 100%;
+    border: 1px solid #555;
+    background: #2c2c2c;
+    color: #e0e0e0;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+.time-converter button {
+    padding: 10px 20px;
+    background: #4CAF50;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+    width: fit-content;
+    align-self: center;
+}
+
+.conversion-result {
+    margin-top: 10px;
+    color: #00ff00;
+    white-space: pre-wrap;
+    text-align: center;
+}
+
+#clockGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: minmax(216px, auto);
+    gap: 20px;
+    background: #2a2a2a;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.clockTile {
+    background: #333;
+    border: 1px solid #555;
+    border-radius: 5px;
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.timezoneSelect {
+    margin-bottom: 10px;
+    padding: 5px;
+    border: 1px solid #666;
+    border-radius: 4px;
+    background: #444;
+    color: #e0e0e0;
+}
+
+.timeDisplay {
+    font-size: 2em;
+    font-weight: bold;
+    color: #00ff00;
+}
+
+.dateDisplay {
+    font-size: 1em;
+    color: #00ff00;
+    margin: 5px 0;
+}
+
+.timezoneName {
+    font-size: 1em;
+    color: #ccc;
+}

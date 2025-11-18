@@ -1,0 +1,86 @@
+/* Text Compare Styles */
+#section-compare h2,
+#section-compare h3 {
+    text-align: center;
+}
+
+.tc-container,
+.tc-results-container {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 15px;
+}
+
+.tc-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.tc-panel textarea,
+.tc-panel pre {
+    width: 100%;
+    min-height: 300px;
+    background: #2c2c2c;
+    color: #e0e0e0;
+    border: 2px solid #444;
+    padding: 10px;
+    font-family: monospace;
+    font-size: 1em;
+    resize: vertical;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.tc-panel pre {
+    resize: none;
+}
+
+.tc-controls {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.tc-controls button {
+    padding: 12px 25px;
+    background: #2196F3;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    font-size: 1.1em;
+}
+
+.tc-controls button:hover {
+    background: #1976D2;
+}
+
+/* Base style for all diff lines to ensure alignment */
+.diff-line {
+    display: block;
+    min-height: 1.2em; /* Corresponds to a standard line-height */
+    white-space: pre-wrap; /* Allow wrapping within the line */
+}
+
+.diff-placeholder {
+    background-color: #3a3a3a;
+}
+
+.diff-inserted {
+    background-color: rgba(46, 160, 67, 0.25);
+}
+
+.diff-deleted {
+    background-color: rgba(248, 81, 73, 0.25);
+}
+
+/* For character-level highlighting within a line */
+.diff-inserted span {
+    background-color: #0d5d22;
+    color: #c8ffc8;
+}
+
+.diff-deleted span {
+    background-color: #631c1c;
+    color: #ffc8c8;
+}

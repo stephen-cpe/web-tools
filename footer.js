@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
     <a href="#">PROJECT 3</a> |
     <a href="#">PROJECT 4</a> |
     <a href="#">PROJECT 5</a> |
-    <a href="#">PROJECT 6</a> |
+    <a href="https://github.com/stephen-cpe/meteoric-garden-shop-v4" target="_blank">PROJECT 6</a> |
     <a href="certificates.html">CERTIFICATES</a> |
     <a href="about.html">ABOUT</a>
 `;
