@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Certificates Gallery</title>
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="css/common.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         .certificates-container {
@@ -200,136 +199,9 @@
         </div>
     </div>
 
-    <script src="certificates.js"></script>
-    <script src="footer.js"></script>
-    
-    <script>
-        let currentCertificateIndex = -1;
-
-        document.addEventListener('DOMContentLoaded', function() {
-            loadCertificates();
-            
-            const searchInput = document.getElementById('searchInput');
-            searchInput.addEventListener('input', filterCertificates);
-            
-            document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
-            
-            document.getElementById('closeDetails').addEventListener('click', function(e) {
-                e.stopPropagation();
-                document.getElementById('certificateDetails').classList.add('hidden');
-            });
-            
-            document.getElementById('lightbox').addEventListener('click', function(e) {
-                if (e.target === this) {
-                    closeLightbox();
-                }
-            });
-
-            document.getElementById('prevCertificate').addEventListener('click', function(e) {
-                e.stopPropagation();
-                navigateCertificate(-1);
-            });
-
-            document.getElementById('nextCertificate').addEventListener('click', function(e) {
-                e.stopPropagation();
-                navigateCertificate(1);
-            });
-
-            document.addEventListener('keydown', function(e) {
-                if (document.getElementById('lightbox').classList.contains('active')) {
-                    if (e.key === 'ArrowRight') {
-                        navigateCertificate(1);
-                    } else if (e.key === 'ArrowLeft') {
-                        navigateCertificate(-1);
-                    } else if (e.key === 'Escape') {
-                        closeLightbox();
-                    }
-                }
-            });
-        });
-        
-        function loadCertificates() {
-            const certificatesGrid = document.getElementById('certificatesGrid');
-            certificatesGrid.innerHTML = '';
-            
-            if (typeof certificatesData !== 'undefined' && certificatesData.length > 0) {
-                certificatesData.forEach((cert, index) => {
-                    const card = document.createElement('div');
-                    card.className = 'certificate-card';
-                    card.dataset.index = index;
-                    
-                    card.innerHTML = `
-                        <img src="certificates/${cert.filename}" alt="${cert.name}" class="certificate-image" loading="lazy">
-                        <div class="certificate-name">${cert.name}</div>
-                    `;
-                    
-                    card.addEventListener('click', function() {
-                        showCertificate(index);
-                    });
-                    
-                    certificatesGrid.appendChild(card);
-                });
-            } else {
-                certificatesGrid.innerHTML = '<div class="no-results">No certificates found</div>';
-            }
-        }
-
-        function showCertificate(index) {
-            if (index < 0 || index >= certificatesData.length) return;
-            
-            currentCertificateIndex = index;
-            const cert = certificatesData[index];
-            
-            document.getElementById('lightboxImage').src = `certificates/${cert.filename}`;
-            
-            const detailsContent = document.getElementById('certificateDetailsContent');
-            detailsContent.innerHTML = `
-                <h3>${cert.name}</h3>
-                <p><strong>Certificate:</strong> ${cert.name}</p>
-                <p><strong>Issuer:</strong> ${cert.issuer}</p>
-                <p><strong>Date:</strong> ${cert.dateFormatted}</p>
-                <p><strong>Filename:</strong> ${cert.filename}</p>
-            `;
-            
-            document.getElementById('lightbox').classList.add('active');
-            document.getElementById('certificateDetails').classList.remove('hidden');
-        }
-
-        function closeLightbox() {
-            document.getElementById('lightbox').classList.remove('active');
-        }
-
-        function navigateCertificate(direction) {
-            const total = certificatesData.length;
-            if (total === 0) return;
-            
-            let newIndex = currentCertificateIndex + direction;
-            
-            if (newIndex >= total) {
-                newIndex = 0;
-            } else if (newIndex < 0) {
-                newIndex = total - 1;
-            }
-            
-            showCertificate(newIndex);
-        }
-        
-        function filterCertificates() {
-            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-            const certificateCards = document.querySelectorAll('.certificate-card');
-            let firstVisibleFound = false;
-            
-            certificateCards.forEach(card => {
-                const index = card.dataset.index;
-                const cert = certificatesData[index];
-                
-                const matches = 
-                    cert.name.toLowerCase().includes(searchTerm) || 
-                    cert.issuer.toLowerCase().includes(searchTerm);
-                
-                card.style.display = matches ? 'block' : 'none';
-            });
-        }
-    </script>
+    <script src="data/certificates-data.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/certificates-gallery.js"></script>
+    <script src="js/footer.js"></script>
 </body>
 </html>

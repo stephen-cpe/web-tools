@@ -9,7 +9,18 @@ document.addEventListener('DOMContentLoaded', function() {
         renderCourses(otherContainer, otherCourses, false);
     }
 
-    initializeLightbox();
+    const lightbox = new Lightbox('certificateLightbox', 'lightboxClose', 'lightboxImage', 'certificateDetailsContent');
+
+    document.body.addEventListener('click', function(e) {
+        if (e.target.classList.contains('certificate-link')) {
+            e.preventDefault();
+            const certName = e.target.getAttribute('data-cert-name');
+            const cert = certificatesData.find(c => c.name === certName);
+            if (cert) {
+                lightbox.show(cert);
+            }
+        }
+    });
 });
 
 function renderCourses(container, courseData, isMSSE) {
@@ -55,11 +66,11 @@ function renderCourses(container, courseData, isMSSE) {
             statusSpan.textContent = course.status === 'complete' ? '✓' : '●';
             li.appendChild(statusSpan);
 
-            if (course.certName) {
+            if (course.certificate) {
                 const anchor = document.createElement('a');
                 anchor.href = '#';
                 anchor.className = 'certificate-link';
-                anchor.dataset.certName = course.certName;
+                anchor.dataset.certName = course.certificate.name;
                 anchor.textContent = ` ${course.name}`;
                 li.appendChild(anchor);
             } else {
@@ -70,57 +81,4 @@ function renderCourses(container, courseData, isMSSE) {
         contentWrapper.appendChild(ul);
         container.appendChild(sectionElement);
     });
-}
-
-function initializeLightbox() {
-    document.body.addEventListener('click', function(e) {
-        if (e.target.classList.contains('certificate-link')) {
-            e.preventDefault();
-            const certName = e.target.getAttribute('data-cert-name');
-            const cert = certificatesData.find(c => c.name === certName);
-            if (cert) {
-                showCertificate(cert);
-            }
-        }
-    });
-
-    const lightbox = document.getElementById('certificateLightbox');
-    if (lightbox) {
-        document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
-        lightbox.addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeLightbox();
-            }
-        });
-    }
-
-    document.addEventListener('keydown', function(e) {
-        if (lightbox && lightbox.classList.contains('active') && e.key === 'Escape') {
-            closeLightbox();
-        }
-    });
-}
-
-function showCertificate(cert) {
-    const lightbox = document.getElementById('certificateLightbox');
-    const detailsContent = document.getElementById('certificateDetailsContent');
-
-    if (lightbox && detailsContent) {
-        document.getElementById('lightboxImage').src = `certificates/${cert.filename}`;
-        detailsContent.innerHTML = `
-            <h3>${cert.name}</h3>
-            <p><strong>Certificate:</strong> ${cert.name}</p>
-            <p><strong>Issuer:</strong> ${cert.issuer}</p>
-            <p><strong>Date:</strong> ${cert.dateFormatted}</p>
-            <p><strong>Filename:</strong> ${cert.filename}</p>
-        `;
-        lightbox.classList.add('active');
-    }
-}
-
-function closeLightbox() {
-    const lightbox = document.getElementById('certificateLightbox');
-    if (lightbox) {
-        lightbox.classList.remove('active');
-    }
 }

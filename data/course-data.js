@@ -1,54 +1,55 @@
+const certificates = certificatesData;
 
 const mssceCourses = [
     {
         title: "MANAGING SOFTWARE ENGINEER",
         courses: [
-            { name: "Managing Application Development", status: "complete", certName: "Managing Application Development" },
-            { name: "User-Centered Design", status: "complete", certName: "User-Centered Design" },
-            { name: "Cloud Foundations", status: "complete", certName: "Cloud Foundations" },
-            { name: "Professionalism And Ethics", status: "complete", certName: "Professionalism And Ethics" },
-            { name: "Exam and Project", status: "complete", certName: null }
+            { name: "Managing Application Development", status: "complete", certificate: certificates.find(c => c.name === 'Managing Application Development') },
+            { name: "User-Centered Design", status: "complete", certificate: certificates.find(c => c.name === 'User-Centered Design') },
+            { name: "Cloud Foundations", status: "complete", certificate: certificates.find(c => c.name === 'Cloud Foundations') },
+            { name: "Professionalism And Ethics", status: "complete", certificate: certificates.find(c => c.name === 'Professionalism And Ethics') },
+            { name: "Exam and Project", status: "complete" }
         ]
     },
     {
         title: "WEB APPLICATION AND INTERFACE DESIGN",
         courses: [
-            { name: "Web Application Foundations", status: "complete", certName: "Web Application Foundations" },
-            { name: "Interactive Web Pages", status: "complete", certName: "Interactive Web Pages" },
-            { name: "Relational Databases", status: "complete", certName: "Relational Databases" },
-            { name: "Back Ends", status: "complete", certName: "Back Ends" },
-            { name: "Exam and Project", status: "complete", certName: null }
+            { name: "Web Application Foundations", status: "complete", certificate: certificates.find(c => c.name === 'Web Application Foundations') },
+            { name: "Interactive Web Pages", status: "complete", certificate: certificates.find(c => c.name === 'Interactive Web Pages') },
+            { name: "Relational Databases", status: "complete", certificate: certificates.find(c => c.name === 'Relational Databases') },
+            { name: "Back Ends", status: "complete", certificate: certificates.find(c => c.name === 'Back Ends') },
+            { name: "Exam and Project", status: "complete" }
         ]
     },
     {
         title: "SOFTWARE DESIGN AND ARCHITECTURE",
         courses: [
-            { name: "Design And UML", status: "complete", certName: "Design And UML" },
-            { name: "Paradigms And Patterns", status: "complete", certName: "Paradigms And Patterns" },
-            { name: "Enterprise Architectures", status: "complete", certName: "Enterprise Architectures" },
-            { name: "Cloud Services And Architectures", status: "complete", certName: "Cloud Services And Architectures" },
-            { name: "Exam and Project", status: "complete", certName: null }
+            { name: "Design And UML", status: "complete", certificate: certificates.find(c => c.name === 'Design And UML') },
+            { name: "Paradigms And Patterns", status: "complete", certificate: certificates.find(c => c.name === 'Paradigms And Patterns') },
+            { name: "Enterprise Architectures", status: "complete", certificate: certificates.find(c => c.name === 'Enterprise Architectures') },
+            { name: "Cloud Services And Architectures", status: "complete", certificate: certificates.find(c => c.name === 'Cloud Services And Architectures') },
+            { name: "Exam and Project", status: "complete" }
         ]
     },
     {
         title: "SOFTWARE TESTING AND CI/CD",
         courses: [
-            { name: "Introduction to Git and GitHub", status: "complete", certName: "Introduction to Git And Github" },
-            { name: "Software Testing", status: "complete", certName: "Software Testing" },
-            { name: "CI/CD and Software Maintenance", status: "complete", certName: "CI/CD And Software-Maintenance" },
-            { name: "Performance Monitoring", status: "complete", certName: "Performance Monitoring" },
-            { name: "Exam (not yet complete)", status: "incomplete", certName: null }
+            { name: "Introduction to Git and GitHub", status: "complete", certificate: certificates.find(c => c.name === 'Introduction to Git And Github') },
+            { name: "Software Testing", status: "complete", certificate: certificates.find(c => c.name === 'Software Testing') },
+            { name: "CI/CD and Software Maintenance", status: "complete", certificate: certificates.find(c => c.name === 'CI/CD And Software-Maintenance') },
+            { name: "Performance Monitoring", status: "complete", certificate: certificates.find(c => c.name === 'Performance Monitoring') },
+            { name: "Exam (not yet complete)", status: "incomplete" }
         ]
     },
     {
         title: "CLOUD AND APPLICATIONS ARCHITECTURES",
         courses: [
-            { name: "AWS Academy Cloud Foundations", status: "incomplete", certName: null },
-            { name: "Migrating an Existing Web Application I", status: "incomplete", certName: null },
-            { name: "Migrating an Existing Web Application II", status: "incomplete", certName: null },
-            { name: "Serverless Application Development I", status: "incomplete", certName: null },
-            { name: "Serverless Application Development II", status: "incomplete", certName: null },
-            { name: "Exam (not yet complete)", status: "incomplete", certName: null }
+            { name: "AWS Academy Cloud Foundations", status: "incomplete" },
+            { name: "Migrating an Existing Web Application I", status: "incomplete" },
+            { name: "Migrating an Existing Web Application II", status: "incomplete" },
+            { name: "Serverless Application Development I", status: "incomplete" },
+            { name: "Serverless Application Development II", status: "incomplete" },
+            { name: "Exam (not yet complete)", status: "incomplete" }
         ]
     }
 ];
@@ -57,15 +58,15 @@ const otherCourses = [
     {
         platform: "Codecademy",
         courses: [
-            { name: "Generative AI for Everyone (Skill Path)", status: "complete", certName: "Generative AI for Everyone" },
-            { name: "More Courses to be added.", status: "incomplete", certName: null }
+            { name: "Generative AI for Everyone (Skill Path)", status: "complete", certificate: certificates.find(c => c.name === 'Generative AI for Everyone') },
+            { name: "More Courses to be added.", status: "incomplete" }
         ]
     },
     {
-        platform: "Learning Platform Placeholder",
+        platform: "AWS Training and Certification",
         courses: [
-            { name: "Course Completed Placeholder", status: "complete", certName: null },
-            { name: "More Courses to be added.", status: "incomplete", certName: null }
+            { name: "AWS Technical Essentials", status: "complete", certificate: certificates.find(c => c.name === 'AWS Technical Essentials') },
+            { name: "More Courses to be added.", status: "incomplete" }
         ]
     }
 ];

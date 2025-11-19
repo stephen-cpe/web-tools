@@ -3,10 +3,17 @@
 
 const certificatesData = [
     {
+        filename: "AWS_Technical_Essentials_AWS_11_19_2025.png",
+        name: "AWS Technical Essentials",
+        issuer: "AWS",
+        date: new Date(2025, 10, 19), // Month is 0-indexed (October = 9)
+        dateFormatted: "November 19, 2025"
+    },
+    {
         filename: "Performance_Monitoring_QUANTIC_10_28_2025.png",
         name: "Performance Monitoring",
         issuer: "QUANTIC",
-        date: new Date(2025, 9, 28), // Month is 0-indexed (October = 9)
+        date: new Date(2025, 9, 28),
         dateFormatted: "October 28, 2025"
     },
     {
