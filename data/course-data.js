@@ -38,18 +38,31 @@ const mssceCourses = [
             { name: "Software Testing", status: "complete", certificate: certificates.find(c => c.name === 'Software Testing') },
             { name: "CI/CD and Software Maintenance", status: "complete", certificate: certificates.find(c => c.name === 'CI/CD And Software-Maintenance') },
             { name: "Performance Monitoring", status: "complete", certificate: certificates.find(c => c.name === 'Performance Monitoring') },
-            { name: "Exam (not yet complete)", status: "incomplete" }
+            { name: "Exam", status: "complete" }
         ]
     },
     {
         title: "CLOUD AND APPLICATIONS ARCHITECTURES",
         courses: [
-            { name: "AWS Academy Cloud Foundations", status: "incomplete" },
-            { name: "Migrating an Existing Web Application I", status: "incomplete" },
-            { name: "Migrating an Existing Web Application II", status: "incomplete" },
-            { name: "Serverless Application Development I", status: "incomplete" },
-            { name: "Serverless Application Development II", status: "incomplete" },
+            { name: "AWS Academy Cloud Foundations", status: "complete", certificate: certificates.find(c => c.name === 'AWS Academy Cloud Foundations') },
+            { name: "Migrating an Existing Web Application I", status: "complete", certificate: certificates.find(c => c.name === 'Migrating an Existing Web Application I') },
+            { name: "Migrating an Existing Web Application II", status: "complete", certificate: certificates.find(c => c.name === 'Migrating an Existing Web Application II') },
+            { name: "Serverless Application Development I", status: "complete", certificate: certificates.find(c => c.name === 'Serverless Application Development I') },
+            { name: "Serverless Application Development II", status: "complete", certificate: certificates.find(c => c.name === 'Serverless Application Development II') },
             { name: "Exam (not yet complete)", status: "incomplete" }
+        ]
+    },
+    {
+        title: "INTRODUCTION TO MACHINE LEARNING",
+        courses: [
+            { name: "Introduction to Machine Learning", status: "complete", certificate: certificates.find(c => c.name === 'Introduction to Machine Learning') },
+            { name: "Data Preprocessing", status: "incomplete" },
+            { name: "Linear Algebra for Machine Learning", status: "incomplete" },
+            { name: "Logistic Regression", status: "incomplete" },
+            { name: "Decision Trees and Random Forests", status: "incomplete" },
+            { name: "Clustering with Unsupervised Learning", status: "incomplete" },
+            { name: "Introduction to Deep Learning", status: "incomplete" },
+            { name: "Exam and Project (not yet complete)", status: "incomplete" }
         ]
     }
 ];
@@ -66,6 +79,7 @@ const otherCourses = [
         platform: "AWS Training and Certification",
         courses: [
             { name: "AWS Technical Essentials", status: "complete", certificate: certificates.find(c => c.name === 'AWS Technical Essentials') },
+            { name: "Cloud Foundations", status: "complete", certificate: certificates.find(c => c.name === 'Cloud Foundations') },
             { name: "More Courses to be added.", status: "incomplete" }
         ]
     }

@@ -1,12 +1,54 @@
 // Certificate data extracted from certificate filenames
 // Format: Certificate_Name_Issuer_DD_DD_YYYY.png
-
+// Month is 0-indexed (October = 9)
 const certificatesData = [
+    {
+        filename: "Serverless_Application_Development_II_QUANTIC_12_04_2025.png",
+        name: "Serverless Application Development II",
+        issuer: "QUANTIC",
+        date: new Date(2025, 11, 4),
+        dateFormatted: "December 4, 2025"
+    },
+    {
+        filename: "Serverless_Application_Development_I_QUANTIC_12_02_2025.png",
+        name: "Serverless Application Development I",
+        issuer: "QUANTIC",
+        date: new Date(2025, 11, 2),
+        dateFormatted: "December 2, 2025"
+    },
+    {
+        filename: "Migrating_An_Existing_Web_Application_II_QUANTIC_11_28_2025.png",
+        name: "Migrating an Existing Web Application II",
+        issuer: "QUANTIC",
+        date: new Date(2025, 10, 28),
+        dateFormatted: "November 28, 2025"
+    },
+    {
+        filename: "Migrating_An_Existing_Web_Application_I_QUANTIC_11_26_2025.png",
+        name: "Migrating an Existing Web Application I",
+        issuer: "QUANTIC",
+        date: new Date(2025, 10, 26),
+        dateFormatted: "November 26, 2025"
+    },
+    {
+        filename: "AWS_Academy_Cloud_Foundations_QUANTIC_11_25_2025.png",
+        name: "AWS Academy Cloud Foundations",
+        issuer: "QUANTIC",
+        date: new Date(2025, 10, 25),
+        dateFormatted: "November 25, 2025"
+    },
+    {
+        filename: "Cloud_Foundations_AWS_ACADEMY_11_24_2025.png",
+        name: "Cloud Foundations",
+        issuer: "AWS ACADEMY",
+        date: new Date(2025, 10, 24),
+        dateFormatted: "November 24, 2025"
+    },
     {
         filename: "AWS_Technical_Essentials_AWS_11_19_2025.png",
         name: "AWS Technical Essentials",
         issuer: "AWS",
-        date: new Date(2025, 10, 19), // Month is 0-indexed (October = 9)
+        date: new Date(2025, 10, 19), 
         dateFormatted: "November 19, 2025"
     },
     {

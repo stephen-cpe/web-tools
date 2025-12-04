@@ -28,7 +28,13 @@ function renderCourses(container, courseData, isMSSE) {
         const sectionElement = document.createElement(isMSSE ? 'details' : 'div');
         if (isMSSE) {
             sectionElement.className = 'course-section';
-            sectionElement.open = true; // Optional: keep sections open by default
+            // Calculate progress to determine if section should be open
+            const completedCount = section.courses.filter(c => c.status === 'complete').length;
+            const totalCount = section.courses.length;
+            const progress = totalCount > 0 ? (completedCount / totalCount) * 100 : 0;
+
+            // Only keep sections that are NOT 100% complete open by default
+            sectionElement.open = progress < 100;
         }
 
         const titleElement = document.createElement(isMSSE ? 'summary' : 'h3');
