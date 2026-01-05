@@ -3,6 +3,76 @@
 // Month is 0-indexed (October = 9)
 const certificatesData = [
     {
+        filename: "AWS_Artificial_Intelligence_Practitioner_Learning_Plan_AWS_12_22_2025.png",
+        name: "AWS Artificial Intelligence Practitioner Learning Plan",
+        issuer: "AWS",
+        date: new Date(2025, 11, 22),
+        dateFormatted: "December 22, 2025"
+    },
+    {
+        filename: "Essentials_of_Prompt_Engineering_AWS_12_22_2025.png",
+        name: "Essentials of Prompt Engineering",
+        issuer: "AWS",
+        date: new Date(2025, 11, 22),
+        dateFormatted: "December 22, 2025"
+    },
+    {
+        filename: "Security_Compliance_and_Governance_for_AI_Solutions_AWS_12_22_2025.png",
+        name: "Security, Compliance, and Governance for AI Solutions",
+        issuer: "AWS",
+        date: new Date(2025, 11, 22),
+        dateFormatted: "December 22, 2025"
+    },
+    {
+        filename: "Optimizing_Foundation_Models_AWS_12_20_2025.png",
+        name: "Optimizing Foundation Models",
+        issuer: "AWS",
+        date: new Date(2025, 11, 20),
+        dateFormatted: "December 20, 2025"
+    },
+    {
+        filename: "Developing_Machine_Learning_Solutions_AWS_12_20_2025.png",
+        name: "Developing Machine Learning Solutions",
+        issuer: "AWS",
+        date: new Date(2025, 11, 20),
+        dateFormatted: "December 20, 2025"
+    },
+    {
+        filename: "Developing_Generative_Artificial_Intelligence_Solutions_AWS_12_20_2025.png",
+        name: "Developing Generative Artificial Intelligence Solutions",
+        issuer: "AWS",
+        date: new Date(2025, 11, 20),
+        dateFormatted: "December 20, 2025"
+    },
+    {
+        filename: "Responsible_Artificial_Intelligence_Practices_AWS_12_19_2025.png",
+        name: "Responsible Artificial Intelligence Practices",
+        issuer: "AWS",
+        date: new Date(2025, 11, 19),
+        dateFormatted: "December 19, 2025"
+    },
+    {
+        filename: "Exploring_Artificial_Intelligence_Use_Cases_and_Applications_AWS_12_18_2025.png",
+        name: "Exploring Artificial Intelligence Use Cases and Applications",
+        issuer: "AWS",
+        date: new Date(2025, 11, 18),
+        dateFormatted: "December 18, 2025"
+    },
+    {
+        filename: "Fundamentals_of_Machine_Learning_and_Artificial_Intelligence_AWS_12_18_2025.png",
+        name: "Fundamentals of Machine Learning and Artificial Intelligence",
+        issuer: "AWS",
+        date: new Date(2025, 11, 18),
+        dateFormatted: "December 18, 2025"
+    },
+    {
+        filename: "AWS_Cloud_Practitioner_Essentials_AWS_12_09_2025.png",
+        name: "AWS Cloud Practitioner Essentials",
+        issuer: "AWS",
+        date: new Date(2025, 11, 9),
+        dateFormatted: "December 9, 2025"
+    },
+    {
         filename: "Serverless_Application_Development_II_QUANTIC_12_04_2025.png",
         name: "Serverless Application Development II",
         issuer: "QUANTIC",

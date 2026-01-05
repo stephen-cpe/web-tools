@@ -49,7 +49,7 @@ const mssceCourses = [
             { name: "Migrating an Existing Web Application II", status: "complete", certificate: certificates.find(c => c.name === 'Migrating an Existing Web Application II') },
             { name: "Serverless Application Development I", status: "complete", certificate: certificates.find(c => c.name === 'Serverless Application Development I') },
             { name: "Serverless Application Development II", status: "complete", certificate: certificates.find(c => c.name === 'Serverless Application Development II') },
-            { name: "Exam (not yet complete)", status: "incomplete" }
+            { name: "Exam", status: "complete" }
         ]
     },
     {
@@ -80,6 +80,7 @@ const otherCourses = [
         courses: [
             { name: "AWS Technical Essentials", status: "complete", certificate: certificates.find(c => c.name === 'AWS Technical Essentials') },
             { name: "Cloud Foundations", status: "complete", certificate: certificates.find(c => c.name === 'Cloud Foundations') },
+            { name: "AWS Cloud Practitioner Essentials", status: "complete", certificate: certificates.find(c => c.name === 'AWS Cloud Practitioner Essentials') },
             { name: "More Courses to be added.", status: "incomplete" }
         ]
     }
