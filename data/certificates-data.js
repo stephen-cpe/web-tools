@@ -314,7 +314,7 @@ const certificatesData = [
     },
     {
         filename: "Organizational_Behavior_Working_In_Groups_And_Teams_QUANTIC_07_05_2025.png",
-        name: "Organizational Behavior Working In Groups And Teams",
+        name: "Organizational Behavior: Working in Groups and Teams",
         issuer: "QUANTIC",
         date: new Date(2025, 6, 5),
         dateFormatted: "July 5, 2025",

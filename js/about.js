@@ -4,6 +4,11 @@ document.addEventListener('DOMContentLoaded', function() {
         renderCourses(msseContainer, mssceCourses, true);
     }
 
+    const specializationsContainer = document.getElementById('specializations-container');
+    if (specializationsContainer) {
+        renderCourses(specializationsContainer, specializations, true);
+    }
+
     const otherContainer = document.getElementById('other-courses-container');
     if (otherContainer) {
         renderCourses(otherContainer, otherCourses, false);

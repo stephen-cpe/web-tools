@@ -86,6 +86,66 @@ const mssceCourses = [
 
 ];
 
+const specializations = [
+    {
+        title: "AI FOR BUSINESS SPECIALIZATION",
+        courses: [
+            { name: "AI and Business Transformation", status: "incomplete" },
+            { name: "AI Leadership and Management", status: "incomplete" },
+            { name: "AI and Augmented Productivity", status: "incomplete" },
+            { name: "Exam", status: "incomplete" }
+        ]
+    },
+    {
+        title: "BLOCKCHAIN SPECIALIZATION",
+        courses: [
+            { name: "Introduction to Blockchain", status: "incomplete" },
+            { name: "Decentralized Applications", status: "incomplete" },
+            { name: "Blockchain in Practice", status: "incomplete" },
+            { name: "Decentralized Finance", status: "incomplete" },
+            { name: "Exam", status: "incomplete" }
+        ]
+    },
+    {
+        title: "COMMUNICATING WITH DATA SPECIALIZATION",
+        courses: [
+            { name: "Data Visualization", status: "incomplete" },
+            { name: "Storytelling with Data", status: "incomplete" },
+            { name: "Effective Business Writing", status: "incomplete" },
+            { name: "Cultural Intelligence", status: "complete", certificate: certificates.find(c => c.name === 'Cultural Intelligence') },
+            { name: "The Art of Presentation", status: "incomplete" },
+            { name: "Exam", status: "incomplete" }
+        ]
+    },
+    {
+        title: "LEADING ORGANIZATIONS SPECIALIZATION",
+        courses: [
+            { name: "Organizational Behavior: Working in Groups and Teams", status: "complete", certificate: certificates.find(c => c.name === 'Organizational Behavior: Working in Groups and Teams') },
+            { name: "Organization Structure and Culture", status: "incomplete" },
+            { name: "Organization Structure and Culture", status: "incomplete" },
+            { name: "Corporate Governance", status: "incomplete" },
+            { name: "Corporate Governance", status: "incomplete" },
+            { name: "Developing a Corporate Philosophy", status: "incomplete" },
+            { name: "Modern Theories of Leadership", status: "incomplete" },
+            { name: "Business Ethics and Social Responsibility", status: "incomplete" },
+            { name: "Business Ethics and Social Responsibility", status: "incomplete" },
+            { name: "Exam", status: "incomplete" }
+        ]
+    },
+    {
+        title: "STATISTICS FOR SOFTWARE ENGINEERING SPECIALIZATION",
+        courses: [
+            { name: "One-Variable Statistics", status: "incomplete" },
+            { name: "Finding Relationships among Variables", status: "incomplete" },
+            { name: "Probability Fundamentals and Rules", status: "incomplete" },
+            { name: "Probability Distributions", status: "incomplete" },
+            { name: "Probability Distributions", status: "incomplete" },
+            { name: "Probability Distributions", status: "incomplete" },
+            { name: "Exam", status: "incomplete" }
+        ]
+    }
+];
+
 const otherCourses = [
     {
         platform: "Codecademy",

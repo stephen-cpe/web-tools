@@ -62,6 +62,41 @@ h1, h2 {
     border-radius: 8px;
     overflow: hidden;
 }
+
+/* MSSE Progress two-column layout */
+.msse-progress-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.msse-column h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.5em;
+}
+
+.core-header {
+    color: #79c0ff;
+}
+
+.spec-header {
+    color: #ffa657;
+}
+
+.msse-column .course-section {
+    max-width: 100%;
+}
+
+/* Responsive: stack columns on smaller screens */
+@media (max-width: 900px) {
+    .msse-progress-wrapper {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+
 summary {
     cursor: pointer;
     padding: 15px;
