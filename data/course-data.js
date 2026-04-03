@@ -56,21 +56,41 @@ const mssceCourses = [
         title: "INTRODUCTION TO MACHINE LEARNING",
         courses: [
             { name: "Introduction to Machine Learning", status: "complete", certificate: certificates.find(c => c.name === 'Introduction to Machine Learning') },
-            { name: "Data Preprocessing", status: "incomplete" },
-            { name: "Linear Algebra for Machine Learning", status: "incomplete" },
-            { name: "Logistic Regression", status: "incomplete" },
-            { name: "Decision Trees and Random Forests", status: "incomplete" },
-            { name: "Clustering with Unsupervised Learning", status: "incomplete" },
-            { name: "Introduction to Deep Learning", status: "incomplete" },
-            { name: "Exam and Project (not yet complete)", status: "incomplete" }
+            { name: "Data Preprocessing", status: "complete", certificate: certificates.find(c => c.name === 'Data Preprocessing') },
+            { name: "Linear Algebra for Machine Learning", status: "complete", certificate: certificates.find(c => c.name === 'Linear Algebra For Machine Learning') },
+            { name: "Logistic Regression", status: "complete", certificate: certificates.find(c => c.name === 'Logistic Regression') },
+            { name: "Decision Trees and Random Forests", status: "complete", certificate: certificates.find(c => c.name === 'Decision Trees And Random Forests') },
+            { name: "Clustering with Unsupervised Learning", status: "complete", certificate: certificates.find(c => c.name === 'Clustering With Unsupervised Learning') },
+            { name: "Introduction to Deep Learning", status: "complete", certificate: certificates.find(c => c.name === 'Introduction To Deep Learning') },
+            { name: "Exam and Project", status: "complete" }
         ]
-    }
+    },
+    {
+        title: "ARTIFICIAL INTELLIGENCE ENGINEERING",
+        courses: [
+            { name: "Adopting AI in Your Organization", status: "complete", certificate: certificates.find(c => c.name === 'Adopting AI in Your Organization')  },
+            { name: "LLM-Based Apps", status: "complete", certificate: certificates.find(c => c.name === 'LLM-Based Apps')  },
+            { name: "Model Fine-Tuning", status: "complete", certificate: certificates.find(c => c.name === 'Model Fine-Tuning')  },
+            { name: "Exam and Presentation", status: "complete" }
+        ]
+    },
+    {
+        title: "MICROSERVICES ARCHITECTURES",
+        courses: [
+            { name: "Microservices I: Designing and Building", status: "incomplete" },
+            { name: "Microservices II: Deploying and Testing", status: "incomplete" },
+            { name: "Microservices III: Scaling and Kubernetes", status: "incomplete"  },
+            { name: "Exam", status: "incomplete" }
+        ]
+    },
+
 ];
 
 const otherCourses = [
     {
         platform: "Codecademy",
         courses: [
+            { name: "AIF-C01 AWS Certified AI Practitioner", status: "complete", certificate: certificates.find(c => c.name === 'AIF-C01 AWS Certified AI Practitioner') },
             { name: "Generative AI for Everyone (Skill Path)", status: "complete", certificate: certificates.find(c => c.name === 'Generative AI for Everyone') },
             { name: "More Courses to be added.", status: "incomplete" }
         ]

@@ -9,6 +9,11 @@ document.addEventListener('DOMContentLoaded', function() {
         renderCourses(otherContainer, otherCourses, false);
     }
 
+    const professionalCertsContainer = document.getElementById('professional-certifications-container');
+    if (professionalCertsContainer) {
+        renderProfessionalCertifications(professionalCertsContainer);
+    }
+
     const lightbox = new Lightbox('certificateLightbox', 'lightboxClose', 'lightboxImage', 'certificateDetailsContent');
 
     document.body.addEventListener('click', function(e) {
@@ -86,5 +91,39 @@ function renderCourses(container, courseData, isMSSE) {
         });
         contentWrapper.appendChild(ul);
         container.appendChild(sectionElement);
+    });
+}
+
+function renderProfessionalCertifications(container) {
+    const professionalCertNames = ["AWS Certified Cloud Practitioner", "AWS Certified AI Practitioner"];
+    const professionalCerts = certificatesData.filter(cert => professionalCertNames.includes(cert.name));
+
+    professionalCerts.forEach(cert => {
+        const certItem = document.createElement('div');
+        certItem.className = 'certificate-item';
+
+        const certTitle = document.createElement('p');
+        certTitle.className = 'certificate-title';
+
+        const certLink = document.createElement('a');
+        certLink.href = '#';
+        certLink.className = 'certificate-link';
+        certLink.dataset.certName = cert.name;
+        certLink.textContent = cert.name;
+
+        certTitle.appendChild(certLink);
+        certItem.appendChild(certTitle);
+
+        if (cert.credlyUrl) {
+            const credlyLink = document.createElement('a');
+            credlyLink.href = cert.credlyUrl;
+            credlyLink.target = '_blank';
+            credlyLink.rel = 'noopener noreferrer';
+            credlyLink.className = 'credly-link';
+            credlyLink.textContent = 'View on Credly';
+            certItem.appendChild(credlyLink);
+        }
+
+        container.appendChild(certItem);
     });
 }
