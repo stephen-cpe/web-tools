@@ -3,6 +3,27 @@
 // Month is 0-indexed (October = 9)
 const certificatesData = [
     {
+        filename: "Microservices-3-Scaling-and-Kubernetes_QUANTIC_04_30_2026.png",
+        name: "Microservices 3: Scaling and Kubernetes",
+        issuer: "QUANTIC",
+        date: new Date(2026, 3, 30),
+        dateFormatted: "April 30, 2026",
+    },
+    {
+        filename: "Microservices-2-Deploying-and-Testing_QUANTIC_04_18_2026.png",
+        name: "Microservices 2: Deploying and Testing",
+        issuer: "QUANTIC",
+        date: new Date(2026, 3, 18),
+        dateFormatted: "April 18, 2026",
+    },
+    {
+        filename: "Microservices-1-Designing-and-Building_QUANTIC_04_12_2026.png",
+        name: "Microservices 1: Designing and Building",
+        issuer: "QUANTIC",
+        date: new Date(2026, 3, 12),
+        dateFormatted: "April 12, 2026",
+    },
+    {
         filename: "Model-Fine-Tuning_QUANTIC_03_22_2026.png",
         name: "Model Fine-Tuning",
         issuer: "QUANTIC",

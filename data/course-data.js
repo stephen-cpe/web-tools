@@ -77,9 +77,9 @@ const mssceCourses = [
     {
         title: "MICROSERVICES ARCHITECTURES",
         courses: [
-            { name: "Microservices I: Designing and Building", status: "incomplete" },
-            { name: "Microservices II: Deploying and Testing", status: "incomplete" },
-            { name: "Microservices III: Scaling and Kubernetes", status: "incomplete"  },
+            { name: "Microservices I: Designing and Building", status: "complete", certificate: certificates.find(c => c.name === 'Microservices 1: Designing and Building') },
+            { name: "Microservices II: Deploying and Testing", status: "complete", certificate: certificates.find(c => c.name === 'Microservices 2: Deploying and Testing') },
+            { name: "Microservices III: Scaling and Kubernetes", status: "complete", certificate: certificates.find(c => c.name === 'Microservices 3: Scaling and Kubernetes') },
             { name: "Exam", status: "incomplete" }
         ]
     },
