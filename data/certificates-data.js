@@ -3,6 +3,13 @@
 // Month is 0-indexed (October = 9)
 const certificatesData = [
     {
+        filename: "AI-And-Business-Transformation-QUANTIC_05_28_2026.png",
+        name: "AI and Business Transformation",
+        issuer: "QUANTIC",
+        date: new Date(2026, 4, 28),
+        dateFormatted: "May 28, 2026",
+    },
+    {
         filename: "Microservices-3-Scaling-and-Kubernetes_QUANTIC_04_30_2026.png",
         name: "Microservices 3: Scaling and Kubernetes",
         issuer: "QUANTIC",

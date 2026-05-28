@@ -80,7 +80,7 @@ const mssceCourses = [
             { name: "Microservices I: Designing and Building", status: "complete", certificate: certificates.find(c => c.name === 'Microservices 1: Designing and Building') },
             { name: "Microservices II: Deploying and Testing", status: "complete", certificate: certificates.find(c => c.name === 'Microservices 2: Deploying and Testing') },
             { name: "Microservices III: Scaling and Kubernetes", status: "complete", certificate: certificates.find(c => c.name === 'Microservices 3: Scaling and Kubernetes') },
-            { name: "Exam", status: "incomplete" }
+            { name: "Exam", status: "complete" }
         ]
     },
 
@@ -90,7 +90,7 @@ const specializations = [
     {
         title: "AI FOR BUSINESS SPECIALIZATION",
         courses: [
-            { name: "AI and Business Transformation", status: "incomplete" },
+            { name: "AI and Business Transformation", status: "complete", certificate: certificates.find(c => c.name === 'AI and Business Transformation') },
             { name: "AI Leadership and Management", status: "incomplete" },
             { name: "AI and Augmented Productivity", status: "incomplete" },
             { name: "Exam", status: "incomplete" }
