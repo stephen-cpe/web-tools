@@ -31,9 +31,9 @@ document.addEventListener('DOMContentLoaded', function() {
             const fallbackFooter = document.createElement('footer');
             fallbackFooter.className = 'site-footer';
             let fallbackContent = `
-    <a href="https://github.com/stephen-cpe/inventory_management_system" target="_blank">PROJECT 1</a> |
-    <a href="https://github.com/stephen-cpe/eternal_fusion_pavilion" target="_blank">PROJECT 2</a> |
-    <a href="#">PROJECT 3</a> |
+    <a href="https://github.com/stephen-cpe/study-and-learn" target="_blank">PROJECT 1</a> |
+    <a href="https://github.com/stephen-cpe/inventory_management_system" target="_blank">PROJECT 2</a> |
+    <a href="https://github.com/stephen-cpe/eternal_fusion_pavilion" target="_blank">PROJECT 3</a> |
     <a href="#">PROJECT 4</a> |
     <a href="#">PROJECT 5</a> |
     <a href="https://github.com/stephen-cpe/meteoric-garden-shop-v4" target="_blank">PROJECT 6</a> |

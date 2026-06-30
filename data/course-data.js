@@ -91,9 +91,9 @@ const specializations = [
         title: "AI FOR BUSINESS SPECIALIZATION",
         courses: [
             { name: "AI and Business Transformation", status: "complete", certificate: certificates.find(c => c.name === 'AI and Business Transformation') },
-            { name: "AI Leadership and Management", status: "incomplete" },
-            { name: "AI and Augmented Productivity", status: "incomplete" },
-            { name: "Exam", status: "incomplete" }
+            { name: "AI Leadership and Management", status: "complete", certificate: certificates.find(c => c.name === 'AI Leadership And Management') },
+            { name: "AI and Augmented Productivity", status: "complete", certificate: certificates.find(c => c.name === 'AI And Augmented Productivity') },
+            { name: "Exam", status: "complete" }
         ]
     },
     {
@@ -109,7 +109,7 @@ const specializations = [
     {
         title: "COMMUNICATING WITH DATA SPECIALIZATION",
         courses: [
-            { name: "Data Visualization", status: "incomplete" },
+            { name: "Data Visualization", status: "complete", certificate: certificates.find(c => c.name === 'Data Visualization') },
             { name: "Storytelling with Data", status: "incomplete" },
             { name: "Effective Business Writing", status: "incomplete" },
             { name: "Cultural Intelligence", status: "complete", certificate: certificates.find(c => c.name === 'Cultural Intelligence') },
