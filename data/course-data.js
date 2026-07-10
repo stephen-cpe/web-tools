@@ -110,25 +110,23 @@ const specializations = [
         title: "COMMUNICATING WITH DATA SPECIALIZATION",
         courses: [
             { name: "Data Visualization", status: "complete", certificate: certificates.find(c => c.name === 'Data Visualization') },
-            { name: "Storytelling with Data", status: "incomplete" },
-            { name: "Effective Business Writing", status: "incomplete" },
+            { name: "Storytelling with Data", status: "complete", certificate: certificates.find(c => c.name === 'Storytelling With Data') },
+            { name: "Effective Business Writing", status: "complete", certificate: certificates.find(c => c.name === 'Effective Business Writing') },
             { name: "Cultural Intelligence", status: "complete", certificate: certificates.find(c => c.name === 'Cultural Intelligence') },
-            { name: "The Art of Presentation", status: "incomplete" },
-            { name: "Exam", status: "incomplete" }
+            { name: "The Art of Presentation", status: "complete", certificate: certificates.find(c => c.name === 'The Art of Presentation') },
+            { name: "Exam", status: "complete" }
         ]
     },
     {
         title: "LEADING ORGANIZATIONS SPECIALIZATION",
         courses: [
             { name: "Organizational Behavior: Working in Groups and Teams", status: "complete", certificate: certificates.find(c => c.name === 'Organizational Behavior: Working in Groups and Teams') },
-            { name: "Organization Structure and Culture", status: "incomplete" },
-            { name: "Organization Structure and Culture", status: "incomplete" },
-            { name: "Corporate Governance", status: "incomplete" },
+            { name: "Organizational Structure and Culture", status: "complete", certificate: certificates.find(c => c.name === 'Organizational Structure and Culture') },
             { name: "Corporate Governance", status: "incomplete" },
             { name: "Developing a Corporate Philosophy", status: "incomplete" },
             { name: "Modern Theories of Leadership", status: "incomplete" },
             { name: "Business Ethics and Social Responsibility", status: "incomplete" },
-            { name: "Business Ethics and Social Responsibility", status: "incomplete" },
+            { name: "Talent Management", status: "incomplete" },
             { name: "Exam", status: "incomplete" }
         ]
     },

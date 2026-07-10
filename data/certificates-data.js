@@ -3,6 +3,34 @@
 // Month is 0-indexed (October = 9)
 const certificatesData = [
     {
+        filename: "Organizational-Structure-And-Culture_QUANTIC_07_10_2026.png",
+        name: "Organizational Structure and Culture",
+        issuer: "QUANTIC",
+        date: new Date(2026, 6, 10),
+        dateFormatted: "July 10, 2026",
+    },
+    {
+        filename: "The-Art-Of-Presentation_QUANTIC_07_06_2026.png",
+        name: "The Art of Presentation",
+        issuer: "QUANTIC",
+        date: new Date(2026, 6, 6),
+        dateFormatted: "July 6, 2026",
+    },
+    {
+        filename: "Effective-Business-Writing_QUANTIC_07_04_2026.png",
+        name: "Effective Business Writing",
+        issuer: "QUANTIC",
+        date: new Date(2026, 6, 4),
+        dateFormatted: "July 4, 2026",
+    },
+    {
+        filename: "Storytelling-With-Data_QUANTIC_07_01_2026.png",
+        name: "Storytelling With Data",
+        issuer: "QUANTIC",
+        date: new Date(2026, 6, 1),
+        dateFormatted: "July 1, 2026",
+    },
+    {
         filename: "Data-Visualization_QUANTIC_06_30_2026.png",
         name: "Data Visualization",
         issuer: "QUANTIC",
