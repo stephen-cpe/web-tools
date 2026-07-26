@@ -3,6 +3,41 @@
 // Month is 0-indexed (October = 9)
 const certificatesData = [
     {
+        filename: "Talent-Management_QUANTIC_07_23_2026.png",
+        name: "Talent Management",
+        issuer: "QUANTIC",
+        date: new Date(2026, 6, 23),
+        dateFormatted: "July 23, 2026",
+    },
+    {
+        filename: "Business-Ethics-And-Social-Responsibility_QUANTIC_07_22_2026.png",
+        name: "Business Ethics and Social Responsibility",
+        issuer: "QUANTIC",
+        date: new Date(2026, 6, 22),
+        dateFormatted: "July 22, 2026",
+    },
+    {
+        filename: "Modern-Theories-Of-Leadership_QUANTIC_07_19_2026.png",
+        name: "Modern Theories of Leadership",
+        issuer: "QUANTIC",
+        date: new Date(2026, 6, 19),
+        dateFormatted: "July 19, 2026",
+    },
+    {
+        filename: "Developing-A-Corporate-Philosophy_QUANTIC_07_16_2026.png",
+        name: "Developing a Corporate Philosophy",
+        issuer: "QUANTIC",
+        date: new Date(2026, 6, 16),
+        dateFormatted: "July 16, 2026",
+    },
+    {
+        filename: "Corporate-Governance_QUANTIC_07_15_2026.png",
+        name: "Corporate Governance",
+        issuer: "QUANTIC",
+        date: new Date(2026, 6, 15),
+        dateFormatted: "July 15, 2026",
+    },
+    {
         filename: "Organizational-Structure-And-Culture_QUANTIC_07_10_2026.png",
         name: "Organizational Structure and Culture",
         issuer: "QUANTIC",

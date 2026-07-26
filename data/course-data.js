@@ -122,12 +122,12 @@ const specializations = [
         courses: [
             { name: "Organizational Behavior: Working in Groups and Teams", status: "complete", certificate: certificates.find(c => c.name === 'Organizational Behavior: Working in Groups and Teams') },
             { name: "Organizational Structure and Culture", status: "complete", certificate: certificates.find(c => c.name === 'Organizational Structure and Culture') },
-            { name: "Corporate Governance", status: "incomplete" },
-            { name: "Developing a Corporate Philosophy", status: "incomplete" },
-            { name: "Modern Theories of Leadership", status: "incomplete" },
-            { name: "Business Ethics and Social Responsibility", status: "incomplete" },
-            { name: "Talent Management", status: "incomplete" },
-            { name: "Exam", status: "incomplete" }
+            { name: "Corporate Governance", status: "complete", certificate: certificates.find(c => c.name === 'Corporate Governance') },
+            { name: "Developing a Corporate Philosophy", status: "complete", certificate: certificates.find(c => c.name === 'Developing a Corporate Philosophy') },
+            { name: "Modern Theories of Leadership", status: "complete", certificate: certificates.find(c => c.name === 'Modern Theories of Leadership') },
+            { name: "Business Ethics and Social Responsibility", status: "complete", certificate: certificates.find(c => c.name === 'Business Ethics and Social Responsibility') },
+            { name: "Talent Management", status: "complete", certificate: certificates.find(c => c.name === 'Talent Management') },
+            { name: "Exam", status: "complete" }
         ]
     },
     {
