@@ -3,6 +3,34 @@
 // Month is 0-indexed (October = 9)
 const certificatesData = [
     {
+        filename: "Decentralized-Finance_QUANTIC_08_10_2026.png",
+        name: "Decentralized Finance",
+        issuer: "QUANTIC",
+        date: new Date(2026, 7, 10),
+        dateFormatted: "August 10, 2026",
+    },
+    {
+        filename: "Blockchains-In-Practice_QUANTIC_08_07_2026.png",
+        name: "Blockchains In Practice",
+        issuer: "QUANTIC",
+        date: new Date(2026, 7, 7),
+        dateFormatted: "August 7, 2026",
+    },
+    {
+        filename: "Decentralized-Applications_QUANTIC_08_05_2026.png",
+        name: "Decentralized Applications",
+        issuer: "QUANTIC",
+        date: new Date(2026, 7, 5),
+        dateFormatted: "August 5, 2026",
+    },
+    {
+        filename: "Introduction-To-Blockchain_QUANTIC_08_03_2026.png",
+        name: "Introduction to Blockchain",
+        issuer: "QUANTIC",
+        date: new Date(2026, 7, 3),
+        dateFormatted: "August 3, 2026",
+    },
+    {
         filename: "Talent-Management_QUANTIC_07_23_2026.png",
         name: "Talent Management",
         issuer: "QUANTIC",

@@ -6,7 +6,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const specializationsContainer = document.getElementById('specializations-container');
     if (specializationsContainer) {
-        renderCourses(specializationsContainer, specializations, true);
+        // Exclude incomplete specialization (STATISTICS FOR SOFTWARE ENGINEERING SPECIALIZATION)
+        const displayedSpecializations = specializations.filter(s => s.title !== 'STATISTICS FOR SOFTWARE ENGINEERING SPECIALIZATION');
+        renderCourses(specializationsContainer, displayedSpecializations, true);
     }
 
     const otherContainer = document.getElementById('other-courses-container');

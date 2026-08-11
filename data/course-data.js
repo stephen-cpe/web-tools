@@ -99,11 +99,11 @@ const specializations = [
     {
         title: "BLOCKCHAIN SPECIALIZATION",
         courses: [
-            { name: "Introduction to Blockchain", status: "incomplete" },
-            { name: "Decentralized Applications", status: "incomplete" },
-            { name: "Blockchain in Practice", status: "incomplete" },
-            { name: "Decentralized Finance", status: "incomplete" },
-            { name: "Exam", status: "incomplete" }
+            { name: "Introduction to Blockchain", status: "complete", certificate: certificates.find(c => c.name === 'Introduction to Blockchain') },
+            { name: "Decentralized Applications", status: "complete", certificate: certificates.find(c => c.name === 'Decentralized Applications') },
+            { name: "Blockchains in Practice", status: "complete", certificate: certificates.find(c => c.name === 'Blockchains In Practice') },
+            { name: "Decentralized Finance", status: "complete", certificate: certificates.find(c => c.name === 'Decentralized Finance') },
+            { name: "Exam", status: "complete" }
         ]
     },
     {
@@ -131,13 +131,12 @@ const specializations = [
         ]
     },
     {
+        // Incomplete: ran out of time to complete this specialization
         title: "STATISTICS FOR SOFTWARE ENGINEERING SPECIALIZATION",
         courses: [
             { name: "One-Variable Statistics", status: "incomplete" },
             { name: "Finding Relationships among Variables", status: "incomplete" },
             { name: "Probability Fundamentals and Rules", status: "incomplete" },
-            { name: "Probability Distributions", status: "incomplete" },
-            { name: "Probability Distributions", status: "incomplete" },
             { name: "Probability Distributions", status: "incomplete" },
             { name: "Exam", status: "incomplete" }
         ]
