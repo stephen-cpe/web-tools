@@ -26,6 +26,10 @@ class Lightbox {
         if (cert.credlyUrl) {
             credlyLinkHtml = `<p><a href="${cert.credlyUrl}" target="_blank" rel="noopener noreferrer" class="certificate-link">View on Credly</a></p>`;
         }
+        let parchmentLinkHtml = '';
+        if (cert.parchmentUrl) {
+            parchmentLinkHtml = `<p><a href="${cert.parchmentUrl}" target="_blank" rel="noopener noreferrer" class="certificate-link">View on Parchment</a></p>`;
+        }
         this.lightboxDetails.innerHTML = `
             <h3>${cert.name}</h3>
             <p><strong>Certificate:</strong> ${cert.name}</p>
@@ -33,6 +37,7 @@ class Lightbox {
             <p><strong>Date:</strong> ${cert.dateFormatted}</p>
             <p><strong>Filename:</strong> ${cert.filename}</p>
             ${credlyLinkHtml}
+            ${parchmentLinkHtml}
         `;
         this.lightbox.classList.add('active');
         this.active = true;

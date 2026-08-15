@@ -102,12 +102,19 @@ function renderCourses(container, courseData, isMSSE) {
 }
 
 function renderProfessionalCertifications(container) {
-    const professionalCertNames = ["AWS Certified Cloud Practitioner", "AWS Certified AI Practitioner"];
+    const professionalCertNames = [
+        "Master of Science in Software Engineering",
+        "AWS Certified Cloud Practitioner",
+        "AWS Certified AI Practitioner"
+    ];
     const professionalCerts = certificatesData.filter(cert => professionalCertNames.includes(cert.name));
 
     professionalCerts.forEach(cert => {
         const certItem = document.createElement('div');
         certItem.className = 'certificate-item';
+        if (cert.isDegree) {
+            certItem.classList.add('degree-item');
+        }
 
         const certTitle = document.createElement('p');
         certTitle.className = 'certificate-title';
@@ -129,6 +136,16 @@ function renderProfessionalCertifications(container) {
             credlyLink.className = 'credly-link';
             credlyLink.textContent = 'View on Credly';
             certItem.appendChild(credlyLink);
+        }
+
+        if (cert.parchmentUrl) {
+            const parchmentLink = document.createElement('a');
+            parchmentLink.href = cert.parchmentUrl;
+            parchmentLink.target = '_blank';
+            parchmentLink.rel = 'noopener noreferrer';
+            parchmentLink.className = 'parchment-link';
+            parchmentLink.textContent = 'View on Parchment';
+            certItem.appendChild(parchmentLink);
         }
 
         container.appendChild(certItem);

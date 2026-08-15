@@ -3,6 +3,15 @@
 // Month is 0-indexed (October = 9)
 const certificatesData = [
     {
+        filename: "Master_Of_Science_In_Software_Engineering_QUANTIC_08_13_2026.png",
+        name: "Master of Science in Software Engineering",
+        issuer: "QUANTIC",
+        date: new Date(2026, 7, 13),
+        dateFormatted: "August 13, 2026",
+        parchmentUrl: "https://www.parchment.com/lp/award/7aa39fe2-81ef-4a89-807f-51ec8733003f?unclaimedAward=580160e4-97e5-11f1-ba3c-17a9cda8a824",
+        isDegree: true
+    },
+    {
         filename: "Decentralized-Finance_QUANTIC_08_10_2026.png",
         name: "Decentralized Finance",
         issuer: "QUANTIC",

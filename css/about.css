@@ -228,3 +228,30 @@ li {
 .credly-link:hover {
     background-color: #005cc5;
 }
+
+/* Parchment link - Quantic coral palette */
+.parchment-link {
+    display: inline-block;
+    background-color: #ff6b5e;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 0.9em;
+    transition: background-color 0.2s;
+    margin-top: 8px;
+}
+
+.parchment-link:hover {
+    background-color: #e85a4f;
+}
+
+/* Degree item - Quantic coral accent */
+.degree-item {
+    border-color: #ff6b5e;
+    box-shadow: 0 4px 8px rgba(255, 107, 94, 0.15);
+}
+
+.degree-item:hover {
+    box-shadow: 0 8px 16px rgba(255, 107, 94, 0.3);
+}
