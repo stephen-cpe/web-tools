@@ -13,39 +13,23 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(data => {
             if (document.getElementById('footer-container')) {
-                let footerContent = data;
-                // Check if the current page is about.html or certificates.html
-                if (window.location.pathname.endsWith('about.html')) {
-                    // Replace the ABOUT link with WEB TOOLS link
-                    footerContent = footerContent.replace('<a href="about.html">ABOUT</a>', '<a href="index.html">WEB TOOLS</a>');
-                } else if (window.location.pathname.endsWith('certificates.html')) {
-                    // Replace the CERTIFICATES link with WEB TOOLS link
-                    footerContent = footerContent.replace('<a href="certificates.html">CERTIFICATES</a>', '<a href="index.html">WEB TOOLS</a>');
-                }
-                document.getElementById('footer-container').innerHTML = footerContent;
+                document.getElementById('footer-container').innerHTML = data;
             }
         })
         .catch(error => {
-            console.error('There has been a problem with your fetch operation:', error);
+            console.error('There has been a problem with your fetch operation: error');
             // Fallback: add the full footer content if fetch fails
             const fallbackFooter = document.createElement('footer');
             fallbackFooter.className = 'site-footer';
-            let fallbackContent = `
+            fallbackFooter.innerHTML = `
     <a href="https://github.com/stephen-cpe/study-and-learn" target="_blank">PROJECT 1</a> |
     <a href="https://github.com/stephen-cpe/notebook-project" target="_blank">PROJECT 2</a> |
     <a href="https://github.com/stephen-cpe/inventory_management_system" target="_blank">PROJECT 3</a> |
     <a href="https://github.com/stephen-cpe/eternal_fusion_pavilion" target="_blank">PROJECT 4</a> |
     <a href="#">PROJECT 5</a> |
     <a href="https://github.com/stephen-cpe/meteoric-garden-shop-v4" target="_blank">PROJECT 6</a> |
-    <a href="certificates.html">CERTIFICATES</a> |
-    <a href="about.html">ABOUT</a>
+    <a href="https://stephen-cpe.github.io/" target="_blank">ABOUT</a>
 `;
-            if (window.location.pathname.endsWith('about.html')) {
-                fallbackContent = fallbackContent.replace('<a href="about.html">ABOUT</a>', '<a href="index.html">WEB TOOLS</a>');
-            } else if (window.location.pathname.endsWith('certificates.html')) {
-                fallbackContent = fallbackContent.replace('<a href="certificates.html">CERTIFICATES</a>', '<a href="index.html">WEB TOOLS</a>');
-            }
-            fallbackFooter.innerHTML = fallbackContent;
             document.body.appendChild(fallbackFooter);
         });
 });
