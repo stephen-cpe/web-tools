@@ -3,7 +3,14 @@
 // Month is 0-indexed (October = 9)
 const certificatesData = [
     {
-        filename: "Master_Of_Science_In_Software_Engineering_QUANTIC_08_13_2026.png",
+        filename: "Network-Fundamentals_QUANTIC_08_16_2026.png",
+        name: "Network Fundamentals",
+        issuer: "QUANTIC",
+        date: new Date(2026, 7, 16),
+        dateFormatted: "August 16, 2026",
+    },
+    {
+        filename: "Master-Of-Science-In-Software-Engineering_QUANTIC_08_13_2026.png",
         name: "Master of Science in Software Engineering",
         issuer: "QUANTIC",
         date: new Date(2026, 7, 13),
@@ -131,21 +138,21 @@ const certificatesData = [
         dateFormatted: "May 28, 2026",
     },
     {
-        filename: "Microservices-3-Scaling-and-Kubernetes_QUANTIC_04_30_2026.png",
+        filename: "Microservices-3-Scaling-And-Kubernetes_QUANTIC_04_30_2026.png",
         name: "Microservices 3: Scaling and Kubernetes",
         issuer: "QUANTIC",
         date: new Date(2026, 3, 30),
         dateFormatted: "April 30, 2026",
     },
     {
-        filename: "Microservices-2-Deploying-and-Testing_QUANTIC_04_18_2026.png",
+        filename: "Microservices-2-Deploying-And-Testing_QUANTIC_04_18_2026.png",
         name: "Microservices 2: Deploying and Testing",
         issuer: "QUANTIC",
         date: new Date(2026, 3, 18),
         dateFormatted: "April 18, 2026",
     },
     {
-        filename: "Microservices-1-Designing-and-Building_QUANTIC_04_12_2026.png",
+        filename: "Microservices-1-Designing-And-Building_QUANTIC_04_12_2026.png",
         name: "Microservices 1: Designing and Building",
         issuer: "QUANTIC",
         date: new Date(2026, 3, 12),
@@ -173,56 +180,56 @@ const certificatesData = [
         dateFormatted: "March 7, 2026",
     },
     {
-        filename: "Introduction_To_Deep_Learning_QUANTIC_02_03_2026.png",
+        filename: "Introduction-To-Deep-Learning_QUANTIC_02_03_2026.png",
         name: "Introduction To Deep Learning",
         issuer: "QUANTIC",
         date: new Date(2026, 1, 3), 
         dateFormatted: "February 3, 2026",
     },
     {
-        filename: "Clustering_With_Unsupervised_Learning_QUANTIC_01_31_2026.png",
+        filename: "Clustering-With-Unsupervised-Learning_QUANTIC_01_31_2026.png",
         name: "Clustering With Unsupervised Learning",
         issuer: "QUANTIC",
         date: new Date(2026, 0, 31), 
         dateFormatted: "January 31, 2026",
     },
     {
-        filename: "Decision_Trees_And_Random_Forests_QUANTIC_01_27_2026.png",
+        filename: "Decision-Trees-And-Random-Forests_QUANTIC_01_27_2026.png",
         name: "Decision Trees And Random Forests",
         issuer: "QUANTIC",
         date: new Date(2026, 0, 27), 
         dateFormatted: "January 27, 2026",
     },
     {
-        filename: "Logistic_Regression_QUANTIC_01_27_2026.png",
+        filename: "Logistic-Regression_QUANTIC_01_27_2026.png",
         name: "Logistic Regression",
         issuer: "QUANTIC",
         date: new Date(2026, 0, 27), 
         dateFormatted: "January 27, 2026",
     },
     {
-        filename: "Linear_Algebra_For_Machine_Learning_QUANTIC_01_20_2026.png",
+        filename: "Linear-Algebra-For-Machine-Learning_QUANTIC_01_20_2026.png",
         name: "Linear Algebra For Machine Learning",
         issuer: "QUANTIC",
         date: new Date(2026, 0, 20), 
         dateFormatted: "January 20, 2026",
     },
     {
-        filename: "Data_Preprocessing_QUANTIC_01_19_2026.png",
+        filename: "Data-Preprocessing_QUANTIC_01_19_2026.png",
         name: "Data Preprocessing",
         issuer: "QUANTIC",
         date: new Date(2026, 0, 19), 
         dateFormatted: "January 19, 2026",
     },
     {
-        filename: "AWS_Certified_AI_Practitioner_CODECADEMY_01_12_2026.png",
+        filename: "AWS-Certified-AI-Practitioner_CODECADEMY_01_12_2026.png",
         name: "AIF-C01 AWS Certified AI Practitioner",
         issuer: "CODECADEMY",
         date: new Date(2026, 0, 12), 
         dateFormatted: "January 12, 2026",
     },
     {
-        filename: "AWS_Certified_AI_Practitioner.png",
+        filename: "AWS-Certified-AI-Practitioner_AWS_01_12_2026.png",
         name: "AWS Certified AI Practitioner",
         issuer: "AWS",
         date: new Date(2026, 0, 12), 
@@ -230,15 +237,15 @@ const certificatesData = [
         credlyUrl: "https://www.credly.com/badges/f5452386-703d-4eb1-b4c6-617b434406d8"
     },
     {
-        filename: "AWS_Certified_Cloud_Practitioner_.png",
+        filename: "AWS-Certified-Cloud-Practitioner_AWS_01_12_2026.png",
         name: "AWS Certified Cloud Practitioner",
         issuer: "AWS",
-        date: new Date(2026, 0, 12), 
-        dateFormatted: "January 12, 2026",
+        date: new Date(2025, 11, 15), 
+        dateFormatted: "December 15, 2025",
         credlyUrl: "https://www.credly.com/badges/ad4d2fd0-a693-4ea3-8a9d-0e2f6bea3114"
     },
     {
-        filename: "AWS_Artificial_Intelligence_Practitioner_Learning_Plan_AWS_12_22_2025.png",
+        filename: "AWS-Artificial-Intelligence-Practitioner-Learning-Plan_AWS_12_22_2025.png",
         name: "AWS Artificial Intelligence Practitioner Learning Plan",
         issuer: "AWS",
         date: new Date(2025, 11, 22),
@@ -246,7 +253,7 @@ const certificatesData = [
         
     },
     {
-        filename: "Essentials_of_Prompt_Engineering_AWS_12_22_2025.png",
+        filename: "Essentials-Of-Prompt-Engineering_AWS_12_22_2025.png",
         name: "Essentials of Prompt Engineering",
         issuer: "AWS",
         date: new Date(2025, 11, 22),
@@ -254,7 +261,7 @@ const certificatesData = [
         
     },
     {
-        filename: "Security_Compliance_and_Governance_for_AI_Solutions_AWS_12_22_2025.png",
+        filename: "Security-Compliance-And-Governance-For-AI-Solutions_AWS_12_22_2025.png",
         name: "Security, Compliance, and Governance for AI Solutions",
         issuer: "AWS",
         date: new Date(2025, 11, 22),
@@ -262,7 +269,7 @@ const certificatesData = [
         
     },
     {
-        filename: "Optimizing_Foundation_Models_AWS_12_20_2025.png",
+        filename: "Optimizing-Foundation-Models_AWS_12_20_2025.png",
         name: "Optimizing Foundation Models",
         issuer: "AWS",
         date: new Date(2025, 11, 20),
@@ -270,7 +277,7 @@ const certificatesData = [
         
     },
     {
-        filename: "Developing_Machine_Learning_Solutions_AWS_12_20_2025.png",
+        filename: "Developing-Machine-Learning-Solutions_AWS_12_20_2025.png",
         name: "Developing Machine Learning Solutions",
         issuer: "AWS",
         date: new Date(2025, 11, 20),
@@ -278,7 +285,7 @@ const certificatesData = [
         
     },
     {
-        filename: "Developing_Generative_Artificial_Intelligence_Solutions_AWS_12_20_2025.png",
+        filename: "Developing-Generative-Artificial-Intelligence-Solutions_AWS_12_20_2025.png",
         name: "Developing Generative Artificial Intelligence Solutions",
         issuer: "AWS",
         date: new Date(2025, 11, 20),
@@ -286,7 +293,7 @@ const certificatesData = [
         
     },
     {
-        filename: "Responsible_Artificial_Intelligence_Practices_AWS_12_19_2025.png",
+        filename: "Responsible-Artificial-Intelligence-Practices_AWS_12_19_2025.png",
         name: "Responsible Artificial Intelligence Practices",
         issuer: "AWS",
         date: new Date(2025, 11, 19),
@@ -294,7 +301,7 @@ const certificatesData = [
         
     },
     {
-        filename: "Exploring_Artificial_Intelligence_Use_Cases_and_Applications_AWS_12_18_2025.png",
+        filename: "Exploring-Artificial-Intelligence-Use-Cases-And-Applications_AWS_12_18_2025.png",
         name: "Exploring Artificial Intelligence Use Cases and Applications",
         issuer: "AWS",
         date: new Date(2025, 11, 18),
@@ -302,7 +309,7 @@ const certificatesData = [
         
     },
     {
-        filename: "Fundamentals_of_Machine_Learning_and_Artificial_Intelligence_AWS_12_18_2025.png",
+        filename: "Fundamentals-Of-Machine-Learning-And-Artificial-Intelligence_AWS_12_18_2025.png",
         name: "Fundamentals of Machine Learning and Artificial Intelligence",
         issuer: "AWS",
         date: new Date(2025, 11, 18),
@@ -310,7 +317,7 @@ const certificatesData = [
         
     },
     {
-        filename: "AWS_Cloud_Practitioner_Essentials_AWS_12_09_2025.png",
+        filename: "AWS-Cloud-Practitioner-Essentials_AWS_12_09_2025.png",
         name: "AWS Cloud Practitioner Essentials",
         issuer: "AWS",
         date: new Date(2025, 11, 9),
@@ -318,7 +325,7 @@ const certificatesData = [
         
     },
     {
-        filename: "Serverless_Application_Development_II_QUANTIC_12_04_2025.png",
+        filename: "Serverless-Application-Development-II_QUANTIC_12_04_2025.png",
         name: "Serverless Application Development II",
         issuer: "QUANTIC",
         date: new Date(2025, 11, 4),
@@ -326,7 +333,7 @@ const certificatesData = [
         
     },
     {
-        filename: "Serverless_Application_Development_I_QUANTIC_12_02_2025.png",
+        filename: "Serverless-Application-Development-I_QUANTIC_12_02_2025.png",
         name: "Serverless Application Development I",
         issuer: "QUANTIC",
         date: new Date(2025, 11, 2),
@@ -334,7 +341,7 @@ const certificatesData = [
         
     },
     {
-        filename: "Migrating_An_Existing_Web_Application_II_QUANTIC_11_28_2025.png",
+        filename: "Migrating-An-Existing-Web-Application-II_QUANTIC_11_28_2025.png",
         name: "Migrating an Existing Web Application II",
         issuer: "QUANTIC",
         date: new Date(2025, 10, 28),
@@ -342,7 +349,7 @@ const certificatesData = [
         
     },
     {
-        filename: "Migrating_An_Existing_Web_Application_I_QUANTIC_11_26_2025.png",
+        filename: "Migrating-An-Existing-Web-Application-I_QUANTIC_11_26_2025.png",
         name: "Migrating an Existing Web Application I",
         issuer: "QUANTIC",
         date: new Date(2025, 10, 26),
@@ -350,7 +357,7 @@ const certificatesData = [
         
     },
     {
-        filename: "AWS_Academy_Cloud_Foundations_QUANTIC_11_25_2025.png",
+        filename: "AWS-Academy-Cloud-Foundations_QUANTIC_11_25_2025.png",
         name: "AWS Academy Cloud Foundations",
         issuer: "QUANTIC",
         date: new Date(2025, 10, 25),
@@ -358,7 +365,7 @@ const certificatesData = [
         
     },
     {
-        filename: "Cloud_Foundations_AWS_ACADEMY_11_24_2025.png",
+        filename: "Cloud-Foundations_AWS_ACADEMY_11_24_2025.png",
         name: "Cloud Foundations",
         issuer: "AWS ACADEMY",
         date: new Date(2025, 10, 24),
@@ -366,7 +373,7 @@ const certificatesData = [
         
     },
     {
-        filename: "AWS_Technical_Essentials_AWS_11_19_2025.png",
+        filename: "AWS-Technical-Essentials_AWS_11_19_2025.png",
         name: "AWS Technical Essentials",
         issuer: "AWS",
         date: new Date(2025, 10, 19),
@@ -374,7 +381,7 @@ const certificatesData = [
         
     },
     {
-        filename: "Performance_Monitoring_QUANTIC_10_28_2025.png",
+        filename: "Performance-Monitoring_QUANTIC_10_28_2025.png",
         name: "Performance Monitoring",
         issuer: "QUANTIC",
         date: new Date(2025, 9, 28),
@@ -382,7 +389,7 @@ const certificatesData = [
         
     },
     {
-        filename: "Learn_How_to_Use_AI_for_Coding_CODECADEMY_10_09_2025.png",
+        filename: "Learn-How-To-Use-AI-For-Coding_CODECADEMY_10_09_2025.png",
         name: "Learn How to Use AI for Coding",
         issuer: "CODECADEMY",
         date: new Date(2025, 9, 9),
@@ -390,7 +397,7 @@ const certificatesData = [
         
     },
     {
-        filename: "Learn_How_to_Use_ChatGPT_CODECADEMY_10_06_2025.png",
+        filename: "Learn-How-To-Use-ChatGPT_CODECADEMY_10_06_2025.png",
         name: "Learn How to Use ChatGPT",
         issuer: "CODECADEMY",
         date: new Date(2025, 9, 6),
@@ -398,7 +405,7 @@ const certificatesData = [
         
     },
     {
-        filename: "CICD_And_Software-Maintenance_QUANTIC_10_08_2025.png",
+        filename: "CICD-And-Software-Maintenance_QUANTIC_10_08_2025.png",
         name: "CI/CD And Software-Maintenance",
         issuer: "QUANTIC",
         date: new Date(2025, 9, 8),
@@ -406,7 +413,7 @@ const certificatesData = [
         
     },
     {
-        filename: "Generative_AI_for_Everyone_CODECADEMY_10_09_2025.png",
+        filename: "Generative-AI-For-Everyone_CODECADEMY_10_09_2025.png",
         name: "Generative AI for Everyone",
         issuer: "CODECADEMY",
         date: new Date(2025, 9, 9),
@@ -414,7 +421,7 @@ const certificatesData = [
         
     },
     {
-        filename: "Intro_to_Vibe_Coding_CODECADEMY_09_26_2025.png",
+        filename: "Intro-To-Vibe-Coding_CODECADEMY_09_26_2025.png",
         name: "Intro to Vibe Coding",
         issuer: "CODECADEMY",
         date: new Date(2025, 8, 26),
@@ -422,7 +429,7 @@ const certificatesData = [
         
     },
     {
-        filename: "Software_Testing_QUANTIC_09_25_2025.png",
+        filename: "Software-Testing_QUANTIC_09_25_2025.png",
         name: "Software Testing",
         issuer: "QUANTIC",
         date: new Date(2025, 8, 25),
@@ -430,7 +437,7 @@ const certificatesData = [
         
     },
     {
-        filename: "Cloud_Services_And_Architectures_QUANTIC_09_10_2025.png",
+        filename: "Cloud-Services-And-Architectures_QUANTIC_09_10_2025.png",
         name: "Cloud Services And Architectures",
         issuer: "QUANTIC",
         date: new Date(2025, 8, 10),
@@ -438,7 +445,7 @@ const certificatesData = [
         
     },
     {
-        filename: "Introduction_to_Git_And_Github_QUANTIC_09_06_2025.png",
+        filename: "Introduction-To-Git-And-Github_QUANTIC_09_06_2025.png",
         name: "Introduction to Git And Github",
         issuer: "QUANTIC",
         date: new Date(2025, 8, 6),
@@ -446,7 +453,7 @@ const certificatesData = [
         
     },
     {
-        filename: "Enterprise_Architectures_QUANTIC_08_22_2025.png",
+        filename: "Enterprise-Architectures_QUANTIC_08_22_2025.png",
         name: "Enterprise Architectures",
         issuer: "QUANTIC",
         date: new Date(2025, 7, 22),
@@ -454,7 +461,7 @@ const certificatesData = [
         
     },
     {
-        filename: "Paradigms_And_Patterns_QUANTIC_08_09_2025.png",
+        filename: "Paradigms-And-Patterns_QUANTIC_08_09_2025.png",
         name: "Paradigms And Patterns",
         issuer: "QUANTIC",
         date: new Date(2025, 7, 9),
@@ -462,7 +469,7 @@ const certificatesData = [
         
     },
     {
-        filename: "Organizational_Behavior_Working_In_Groups_And_Teams_QUANTIC_07_05_2025.png",
+        filename: "Organizational-Behavior-Working-In-Groups-And-Teams_QUANTIC_07_05_2025.png",
         name: "Organizational Behavior: Working in Groups and Teams",
         issuer: "QUANTIC",
         date: new Date(2025, 6, 5),
@@ -470,7 +477,7 @@ const certificatesData = [
         
     },
     {
-        filename: "Design_And_UML_QUANTIC_06_29_2025.png",
+        filename: "Design-And-UML_QUANTIC_06_29_2025.png",
         name: "Design And UML",
         issuer: "QUANTIC",
         date: new Date(2025, 5, 29),
@@ -478,7 +485,7 @@ const certificatesData = [
         
     },
     {
-        filename: "Back_Ends_QUANTIC_06_23_2025.png",
+        filename: "Back-Ends_QUANTIC_06_23_2025.png",
         name: "Back Ends",
         issuer: "QUANTIC",
         date: new Date(2025, 5, 23),
@@ -486,7 +493,7 @@ const certificatesData = [
         
     },
     {
-        filename: "Relational_Databases_QUANTIC_06_16_2025.png",
+        filename: "Relational-Databases_QUANTIC_06_16_2025.png",
         name: "Relational Databases",
         issuer: "QUANTIC",
         date: new Date(2025, 5, 16),
@@ -494,7 +501,7 @@ const certificatesData = [
         
     },
     {
-        filename: "Interactive_Web_Pages_QUANTIC_06_10_2025.png",
+        filename: "Interactive-Web-Pages_QUANTIC_06_10_2025.png",
         name: "Interactive Web Pages",
         issuer: "QUANTIC",
         date: new Date(2025, 5, 10),
@@ -502,7 +509,7 @@ const certificatesData = [
         
     },
     {
-        filename: "Cultural_Intelligence_QUANTIC_06_02_2025.png",
+        filename: "Cultural-Intelligence_QUANTIC_06_02_2025.png",
         name: "Cultural Intelligence",
         issuer: "QUANTIC",
         date: new Date(2025, 5, 2),
@@ -510,7 +517,7 @@ const certificatesData = [
         
     },
     {
-        filename: "Web_Application_Foundations_QUANTIC_06_04_2025.png",
+        filename: "Web-Application-Foundations_QUANTIC_06_04_2025.png",
         name: "Web Application Foundations",
         issuer: "QUANTIC",
         date: new Date(2025, 5, 4),
@@ -518,7 +525,7 @@ const certificatesData = [
         
     },
     {
-        filename: "Cloud_Foundations_QUANTIC_05_29_2025.png",
+        filename: "Cloud-Foundations_QUANTIC_05_29_2025.png",
         name: "Cloud Foundations",
         issuer: "QUANTIC",
         date: new Date(2025, 4, 29),
@@ -526,7 +533,7 @@ const certificatesData = [
         
     },
     {
-        filename: "Professionalism_And_Ethics_QUANTIC_05_31_2025.png",
+        filename: "Professionalism-And-Ethics_QUANTIC_05_31_2025.png",
         name: "Professionalism And Ethics",
         issuer: "QUANTIC",
         date: new Date(2025, 4, 31),
@@ -534,7 +541,7 @@ const certificatesData = [
         
     },
     {
-        filename: "Change_Leadership_QUANTIC_03_05_2025.png",
+        filename: "Change-Leadership_QUANTIC_03_05_2025.png",
         name: "Change Leadership",
         issuer: "QUANTIC",
         date: new Date(2025, 2, 5),
@@ -542,7 +549,7 @@ const certificatesData = [
         
     },
     {
-        filename: "Manager_Mindset_QUANTIC_03_04_2025.png",
+        filename: "Manager-Mindset_QUANTIC_03_04_2025.png",
         name: "Manager Mindset",
         issuer: "QUANTIC",
         date: new Date(2025, 2, 4),
@@ -550,7 +557,7 @@ const certificatesData = [
         
     },
     {
-        filename: "Blue_Ocean_Strategy_QUANTIC_03_06_2025.png",
+        filename: "Blue-Ocean-Strategy_QUANTIC_03_06_2025.png",
         name: "Blue Ocean Strategy",
         issuer: "QUANTIC",
         date: new Date(2025, 2, 6),
@@ -558,7 +565,7 @@ const certificatesData = [
         
     },
     {
-        filename: "Entrepreneurship_1_Customer_Discovery_QUANTIC_02_24_2025.png",
+        filename: "Entrepreneurship-1-Customer-Discovery_QUANTIC_02_24_2025.png",
         name: "Entrepreneurship 1 Customer Discovery",
         issuer: "QUANTIC",
         date: new Date(2025, 1, 24),
@@ -566,7 +573,7 @@ const certificatesData = [
         
     },
     {
-        filename: "User-Centered_Design_QUANTIC_02_21_2025.png",
+        filename: "User-Centered-Design_QUANTIC_02_21_2025.png",
         name: "User-Centered Design",
         issuer: "QUANTIC",
         date: new Date(2025, 1, 21),
@@ -574,7 +581,7 @@ const certificatesData = [
         
     },
     {
-        filename: "Learn_to_Code_with_ChatGPT_QUANTIC_02_20_2025.png",
+        filename: "Learn-To-Code-With-ChatGPT_QUANTIC_02_20_2025.png",
         name: "Learn to Code with ChatGPT",
         issuer: "QUANTIC",
         date: new Date(2025, 1, 20),
@@ -582,7 +589,7 @@ const certificatesData = [
         
     },
     {
-        filename: "Introduction_to_Machine_Learning_QUANTIC_02_27_2025.png",
+        filename: "Introduction-To-Machine-Learning_QUANTIC_02_27_2025.png",
         name: "Introduction to Machine Learning",
         issuer: "QUANTIC",
         date: new Date(2025, 1, 27),
@@ -590,7 +597,7 @@ const certificatesData = [
         
     },
     {
-        filename: "Introduction_to_Artificial_Intelligence_QUANTIC_02_19_2025.png",
+        filename: "Introduction-To-Artificial-Intelligence_QUANTIC_02_19_2025.png",
         name: "Introduction to Artificial Intelligence",
         issuer: "QUANTIC",
         date: new Date(2025, 1, 19),
@@ -598,7 +605,7 @@ const certificatesData = [
         
     },
     {
-        filename: "Managing_Application_Development_QUANTIC_02_18_2025.png",
+        filename: "Managing-Application-Development_QUANTIC_02_18_2025.png",
         name: "Managing Application Development",
         issuer: "QUANTIC",
         date: new Date(2025, 1, 18),
